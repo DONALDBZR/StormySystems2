@@ -1,0 +1,94 @@
+/* Proxima Nova */
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../Fonts/Proxima Nova.otf");
+    src: url("../Fonts/Proxima Nova - Alternate.otf");
+}
+:root {
+    --proximaNova: "Proxima Nova";
+    --color1: rgb(0, 0, 0);
+    --color2: rgb(255, 255, 255);
+    --color3: rgb(0, 0, 128);
+    --color4: rgb(255, 0, 0);
+    --color5: rgb(0, 255, 255);
+    --horizontal: 100%;
+    --vertical: 100%;
+    --fontSize: 100%;
+    --horizontalHD: 1920px;
+    --verticalHD: 1080px;
+    --opacity: 100%;
+    background-color: var(--color1);
+    color: var(--color2);
+    font-size: var(--fontSize);
+    width: var(--horizontal);
+    height: var(--vertical);
+    margin: calc(var(--vertical) * 0);
+    font-family: sans-serif;
+}
+body {
+    margin: calc(var(--vertical) * 0);
+}
+header nav {
+    width: var(--horizontal);
+    display: flex;
+}
+header nav div {
+    width: calc(var(--horizontal) / 6);
+    text-align: center;
+}
+header nav a {
+    color: var(--color2);
+    font-size: calc(var(--fontSize) * 1.8);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    text-decoration: none;
+}
+header nav a img {
+    height: calc(var(--verticalHD) * 0.0531441);
+    width: auto;
+}
+header nav a img:hover {
+    opacity: calc(var(--opacity) * 0.5);
+}
+header nav a:hover {
+    text-decoration: underline;
+}
+main {
+    padding: calc(var(--vertical) * 0.01);
+}
+main #header {
+    font-size: calc(var(--fontSize) * 2);
+    font-family: var(--proximaNova);
+    padding-bottom: calc(var(--vertical) * 0.01);
+    text-align: center;
+    font-weight: bold;
+}
+main #service {
+    font-size: calc(var(--fontSize) * 1.18098);
+    font-family: var(--proximaNova);
+    width: calc(var(--horizontal) / 3);
+    margin: calc(var(--vertical) * 0) calc(var(--horizontal) / 3);
+    text-align: center;
+}
+main #service:hover {
+    text-shadow: calc(var(--horizontalHD) * 0) calc(var(--horizontalHD) * 0)
+        calc(var(--horizontalHD) / 135) var(--color5);
+    cursor: pointer;
+}
+footer {
+    margin-top: calc(var(--vertical) * 0.282458553);
+    text-align: center;
+}
+footer div {
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+}
+footer a {
+    font-size: calc(var(--fontSize) * 2);
+}
+footer a .faMail {
+    color: var(--color2);
+}
+footer a .faMail:hover {
+    color: var(--color5);
+}
