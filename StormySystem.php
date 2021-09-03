@@ -66,7 +66,7 @@ class User {
     private string $mailAddress;
     private int $type;
     private string $dateOfBirth;
-    public string $domain = "http://stormysystem.ddns.net/";
+    public string $domain = "http://stormy-systems.herokuapp.com/";
     protected $PHPMailer;
     protected $API;
     protected $Renderer;
