@@ -1,3 +1,3 @@
 <?php
-require_once './Pages/Homepage.html';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Pages/Homepage.html';
 ?>
