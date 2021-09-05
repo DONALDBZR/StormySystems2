@@ -55,6 +55,13 @@ ob_start();
                         <div id="guidelines">Please enter a username which is unique!</div>
                         <div id="guidelines">Ensure that your username is not NSFW!</div>
                     </div>
+                    <div id="mailAddress">
+                        <div id="input">
+                            <div>Mail Address *:</div>
+                            <input type="email" name="mailAddress" id="mailAddress" placeholder="Mail Address" required />
+                        </div>
+                        <div id="guidelines">The Mail Address is required to send you your password and to access your account, afterwards.</div>
+                    </div>
                     <div id="firstName">
                         <div id="input">
                             <div>First Name *:</div>

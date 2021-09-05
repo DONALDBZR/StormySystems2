@@ -6,8 +6,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/StormySystems2/PHPMailer/src/SMTP.php
 // API Class
 class API {
     // Class variables
-    private $dataSourceName = "mysql:dbname=StormySystem;host=127.0.0.1:3306";
-    private $username = "root";
+    private $dataSourceName = "mysql:dbname=StormySystem;host=stormysystem.ddns.net:3306";
+    private $username = "username1";
     private $password = "password1";
     private $databaseHandler;
     private $statement;
@@ -55,7 +55,18 @@ class API {
 }
 // Renderer Class
 class Renderer {
-    
+    // User Register Username Exists method
+    public function userRegisterUsernameExists() {
+        return "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
+    }
+    // User Register Too Young method
+    public function userRegisterTooYoung() {
+        return "<h1 id='userRegisterTooYoung'>You are too young to use this system.  Please come back when you are older!</h1>";
+    }
+    // User Register Success method
+    public function userRegisterSuccess() {
+        return "<h1 id='userRegisterSuccess'>You have been registered into the system, you will be redirected to the login page.</h1>";
+    }
 }
 // User Class
 class User {
@@ -66,7 +77,10 @@ class User {
     private string $mailAddress;
     private int $type;
     private string $dateOfBirth;
-    public string $domain = "http://stormy-systems.herokuapp.com/";
+    private string $profilePicture;
+    private string $password;
+    // public string $domain = "http://stormy-systems.herokuapp.com/";
+    public string $domain = "http://stormysystem.ddns.net/";
     protected $PHPMailer;
     protected $API;
     protected $Renderer;
@@ -103,6 +117,14 @@ class User {
     public function getDateOfBirth() {
         return $this->dateOfBirth;
     }
+    // Profile Picture accessor method
+    public function getProfilePicture() {
+        return $this->profilePicture;
+    }
+    // Password accessor method
+    public function getPassword() {
+        return $this->password;
+    }
     // Username mutator method
     public function setUsername($username) {
         $this->username = $username;
@@ -126,6 +148,99 @@ class User {
     // Date Of Birth mutator method
     public function setDateOfBirth($dateOfBirth) {
         $this->dateOfBirth = $dateOfBirth;
+    }
+    // Profile Picture mutator method
+    public function setProfilePicture($profilePicture) {
+        $this->profilePicture = $profilePicture;
+    }
+    // Password mutator method
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+    // Register method
+    public function register() {
+        // Preparing the query
+        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
+        // Binding the value
+        $this->API->bind(":UserUsername", $_POST["username"]);
+        // Executing the query
+        $this->API->execute();
+        // If-statement to verify whether the username does not exist in the database
+        if (empty($this->API->resultSet())) {
+            // Setting the date of birth of the user as the parameter for User::setDateOfBirth()
+            $this->setDateOfBirth($_POST['dateOfBirth']);
+            // Storing the difference in years.
+            $age = date("Y-m-d") - $this->getDateOfBirth();
+            // If-statement to verify whether the user has the minimum age to use the system.
+            if ($age >= 13) {
+                // Setting the password generated as the parameter for the User::setPassword()
+                $this->setPassword($this->generatePassword());
+                // Storing remaining data from the form
+                $this->setUsername($_POST['username']);
+                $this->setFirstName($_POST['firstName']);
+                $this->setLastName($_POST['lastName']);
+                $this->setType(1);
+                $this->setMailAddress($_POST['mailAddress']);
+                // Preparing the query
+                $this->API->query("INSERT INTO StormySystem.User (UserDateOfBirth, UserUsername, UserFirstName, UserLastName, UserType, UserMailAddress, UserPassword) VALUES (:UserDateOfBirth, :UserUsername, :UserFirstName, :UserLastName, :UserType, :UserMailAddress, :UserPassword)");
+                // Binding the values
+                $this->API->bind(":UserDateOfBirth", $this->getDateOfBirth());
+                $this->API->bind(":UserUsername", $this->getUsername());
+                $this->API->bind(":UserFirstName", $this->getFirstName());
+                $this->API->bind(":UserLastName", $this->getLastName());
+                $this->API->bind(":UserType", $this->getType());
+                $this->API->bind(":UserMailAddress", $this->getMailAddress());
+                $this->API->bind(":UserPassword", $this->getPassword());
+                // Executing the query
+                $this->API->execute();
+                // Calling Is SMTP function from PHPMailer.
+                $this->PHPMailer->IsSMTP();
+                // Assigning "UTF-8" as the value for the charset.
+                $this->PHPMailer->CharSet = "UTF-8";
+                // Assigning the host for gmail's SMTP.
+                $this->PHPMailer->Host = "ssl://smtp.gmail.com";
+                // Setting the debug mode to 0.
+                $this->PHPMailer->SMTPDebug = 0;
+                // Assigning the Port to 465 as GMail uses 465 as it also means that port 465 has been forwarded for its use.
+                $this->PHPMailer->Port = 465;
+                // Securing the SMTP connection by using SSL.
+                $this->PHPMailer->SMTPSecure = 'ssl';
+                // Enabling authorization for SMTP.
+                $this->PHPMailer->SMTPAuth = true;
+                // Ensuring that PHPMailer is called from a .html file.
+                $this->PHPMailer->IsHTML(true);
+                // Sender's mail address.
+                $this->PHPMailer->Username = "username2";
+                // Sender's password
+                $this->PHPMailer->Password = "password2";
+                // Assigning sender as a parameter in the sender's zone.
+                $this->PHPMailer->setFrom($this->PHPMailer->Username);
+                // Assinging the receiver mail's address which is retrieved from the User class.
+                $this->PHPMailer->addAddress($this->getMailAddress());
+                $this->PHPMailer->Subject = "Stormy System: Registration Complete!";
+                $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
+                // Sending the mail.
+                $this->PHPMailer->send();
+                // Printing Message
+                echo $this->Renderer->userRegisterSuccess();
+                // Redirecting towards the login page.
+                header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+            } else {
+                // Printing the message
+                echo $this->Renderer->userRegisterTooYoung();
+                // Redirecting towards the homepage.
+                header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
+            }
+        } else {
+            // Printing the message
+            echo $this->Renderer->userRegisterUsernameExists();
+            // Redirecting towards the Login page.
+            header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+        }
+    }
+    // Generate Password method
+    public function generatePassword() {
+        return uniqid();
     }
 }
 // Music Class

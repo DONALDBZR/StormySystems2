@@ -11,6 +11,7 @@
     --color3: rgb(0, 0, 128);
     --color4: rgb(255, 0, 0);
     --color5: rgb(0, 255, 255);
+    --color6: rgb(0, 255, 0);
     --horizontal: 100%;
     --vertical: 100%;
     --fontSize: 100%;
@@ -73,20 +74,23 @@ main form #label {
 main form #formContainer #username,
 main form #formContainer #firstName,
 main form #formContainer #lastName,
-main form #formContainer #dateOfBirth {
+main form #formContainer #dateOfBirth,
+main form #formContainer #mailAddress {
     margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0);
 }
 main form #formContainer #username #input,
 main form #formContainer #firstName #input,
 main form #formContainer #lastName #input,
-main form #formContainer #dateOfBirth #input {
+main form #formContainer #dateOfBirth #input,
+main form #formContainer #mailAddress #input {
     width: var(--horizontal);
     display: flex;
 }
 main form #formContainer #username #input input,
 main form #formContainer #firstName #input input,
 main form #formContainer #lastName #input input,
-main form #formContainer #dateOfBirth #input input {
+main form #formContainer #dateOfBirth #input input,
+main form #formContainer #mailAddress #input input {
     margin: calc(var(--vertical) * 0);
     width: calc(var(--horizontal) * 0.8);
     font-size: var(--fontSize);
@@ -95,7 +99,8 @@ main form #formContainer #dateOfBirth #input input {
 main form #formContainer #username #input div,
 main form #formContainer #firstName #input div,
 main form #formContainer #lastName #input div,
-main form #formContainer #dateOfBirth #input div {
+main form #formContainer #dateOfBirth #input div,
+main form #formContainer #mailAddress #input div {
     width: calc(var(--horizontal) * 0.2);
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
@@ -105,7 +110,8 @@ main form #formContainer #dateOfBirth #input div {
 main form #formContainer #username #guidelines,
 main form #formContainer #firstName #guidelines,
 main form #formContainer #lastName #guidelines,
-main form #formContainer #dateOfBirth #guidelines {
+main form #formContainer #dateOfBirth #guidelines,
+main form #formContainer #mailAddress #guidelines {
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
@@ -133,6 +139,13 @@ main form #serverRendering {
     text-align: center;
     margin-top: calc(var(--vertical) * 0.025);
     padding-bottom: calc(var(--vertical) * 0.025);
+}
+main form #serverRendering #userRegisterUsernameExists,
+main form #serverRendering #userRegisterTooYoung {
+    color: var(--color4);
+}
+main form #serverRendering #userRegisterSuccess {
+    color: var(--color6);
 }
 footer {
     text-align: center;
