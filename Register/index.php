@@ -1,6 +1,6 @@
 <?php
 // Importing User.php
-require $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/StormySystem.php';
 // Instantiation User
 $User = new User();
 // Starting Output Buffer
