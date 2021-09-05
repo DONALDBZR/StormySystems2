@@ -1,8 +1,8 @@
 <?php
 // Importing User.php
-require $_SERVER['DOCUMENT_ROOT'] . '/StormySystem.php';
+// require $_SERVER['DOCUMENT_ROOT'] . '/StormySystem.php';
 // Instantiation User
-$User = new User();
+// $User = new User();
 // Starting Output Buffer
 ob_start();
 ?>
@@ -91,9 +91,9 @@ ob_start();
                 <div id="serverRendering">
                     <?php
                     // If-statement to verify whether the registration button is pressed
-                    if (isset($_POST["register"])) {
-                        $User->register();
-                    }
+                    // if (isset($_POST["register"])) {
+                    //     $User->register();
+                    // }
                     ?>
                 </div>
             </form>
