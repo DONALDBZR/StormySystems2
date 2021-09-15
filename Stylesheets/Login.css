@@ -1,0 +1,144 @@
+/* Proxima Nova */
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../Fonts/Proxima Nova.otf");
+    src: url("../Fonts/Proxima Nova - Alternate.otf");
+}
+:root {
+    --proximaNova: "Proxima Nova";
+    --color1: rgb(0, 0, 0);
+    --color2: rgb(255, 255, 255);
+    --color3: rgb(0, 0, 128);
+    --color4: rgb(255, 0, 0);
+    --color5: rgb(0, 255, 255);
+    --color6: rgb(0, 255, 0);
+    --horizontal: 100%;
+    --vertical: 100%;
+    --fontSize: 100%;
+    --horizontalHD: 1920px;
+    --verticalHD: 1080px;
+    --opacity: 100%;
+    background-color: var(--color1);
+    color: var(--color2);
+    font-size: var(--fontSize);
+    width: var(--horizontal);
+    height: var(--vertical);
+    margin: calc(var(--vertical) * 0);
+    font-family: sans-serif;
+}
+body {
+    margin: calc(var(--vertical) * 0);
+}
+header nav {
+    width: var(--horizontal);
+    display: flex;
+}
+header nav div {
+    width: calc(var(--horizontal) / 6);
+    text-align: center;
+}
+header nav a {
+    color: var(--color2);
+    font-size: calc(var(--fontSize) * 1.8);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    text-decoration: none;
+}
+header nav a img {
+    height: calc(var(--verticalHD) * 0.0531441);
+    width: auto;
+}
+header nav a img:hover {
+    opacity: calc(var(--opacity) * 0.5);
+}
+header nav a:hover {
+    text-decoration: underline;
+}
+main form {
+    background-color: var(--color2);
+    color: var(--color1);
+    margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
+    padding-top: calc(var(--vertical) * 0.05);
+    padding-left: calc(var(--horizontal) * 0.05);
+    padding-right: calc(var(--horizontal) * 0.05);
+    padding-bottom: calc(var(--vertical) * 0);
+    width: calc(var(--horizontal) / 2);
+}
+main form #label {
+    text-align: center;
+    font-size: calc(var(--fontSize) * 2);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    padding-bottom: calc(var(--vertical) * 0.025937424);
+}
+main form #formContainer #usernameOrMailAddress,
+main form #formContainer #password {
+    margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0);
+}
+main form #formContainer #usernameOrMailAddress #input,
+main form #formContainer #password #input {
+    width: var(--horizontal);
+    display: flex;
+}
+main form #formContainer #usernameOrMailAddress #input input,
+main form #formContainer #password #input input {
+    margin: calc(var(--vertical) * 0);
+    width: calc(var(--horizontal) * 0.7);
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+}
+main form #formContainer #usernameOrMailAddress #input div,
+main form #formContainer #password #input div {
+    width: calc(var(--horizontal) * 0.3);
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    color: var(--color4);
+}
+main form #formContainer #usernameOrMailAddress #guidelines,
+main form #formContainer #password #guidelines {
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+}
+main form #formContainer #loginButton {
+    text-align: center;
+}
+main form #formContainer #loginButton input[type="submit"] {
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    background-color: var(--color1);
+    color: var(--color2);
+    padding: calc(var(--vertical) * 0.025) calc(var(--horizontal) * 0.05);
+    border: none;
+}
+main form #formContainer #loginButton input[type="submit"]:hover {
+    background-color: var(--color2);
+    color: var(--color1);
+    cursor: pointer;
+}
+main form #serverRendering {
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    text-align: center;
+    margin-top: calc(var(--vertical) * 0.025);
+    padding-bottom: calc(var(--vertical) * 0.025);
+}
+main form #serverRendering #userLoginUserDoesNotExist,
+main form #serverRendering #userLoginIncorrectPassword,
+main form #serverRendering #userCheckSessionBannedUser,
+main form #serverRendering #userCheckSessionCannotVerifyType {
+    color: var(--color4);
+}
+main form #serverRendering #userLoginSuccess {
+    color: var(--color6);
+}
+footer {
+    text-align: center;
+    margin-top: calc(var(--vertical) * 0.045949729);
+}
+footer h1 {
+    font-size: var(--fontSize);
+    font-family: var(--proximaNova);
+}

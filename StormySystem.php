@@ -67,6 +67,26 @@ class Renderer {
     public function userRegisterSuccess() {
         return "<h1 id='userRegisterSuccess'>You have been registered into the system, you will be redirected to the login page.</h1>";
     }
+    // User Login User Does Not Exist method
+    public function userLoginUserDoesNotExist($user) {
+        return "<h1 id='userLoginUserDoesNotExist'>{$user} does not exist!</h1>";
+    }
+    // User Login Incorrect Password method
+    public function userLoginIncorrectPassword() {
+        return "<h1 id='userLoginIncorrectPassword'>Incorrect Password!</h1>";
+    }
+    // User Check Session Banned User method
+    public function userCheckSessionBannedUser() {
+        return "<h1 id='userCheckSessionBannedUser'>You have been banned!  Please consider into contacting an administrator!</h1>";
+    }
+    // User Check Session Cannot Verify Type method
+    public function userCheckSessionCannotVerifyType() {
+        return "<h1 id='userCheckSessionCannotVerifyType'>There is an issue with the system.  Please try again later!</h1>";
+    }
+    // User Check Session User Does Not Exist method
+    public function userCheckSessionUserDoesNotExist($user) {
+        return "<h1 id='userCheckSessionUserDoesNotExist'>{$user} does not exist!</h1>";
+    }
 }
 // User Class
 class User {
@@ -241,6 +261,202 @@ class User {
     // Generate Password method
     public function generatePassword() {
         return uniqid();
+    }
+    // Login method
+    public function login() {
+        // Preparing the query to verify if the username entered exists in the database.
+        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
+        // Binding the value returned by the page for security purposes.
+        $this->API->bind(":UserUsername", $_POST['usernameOrMailAddress']);
+        // Executing the query.
+        $this->API->execute();
+        // Verifying whether the username exists and in case that it exists, the system will search whether the combination of the username and password is correct but in case that it does not exist, the system will verify whether the mail address exists.
+        if (!empty($this->API->resultSet())) {
+            // Storing the data needed in the class variables for further processing
+            $this->setMailAddress($_POST['usernameOrMailAddress']);
+            $this->setPassword($_POST['password']);
+            // Preparing the query to verify if the mail address entered exists in the database.
+            $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress AND UserPassword = :UserPassword");
+            // Binding the values returned by the page for security purposes.
+            $this->API->bind(":UserMailAddress", $this->getMailAddress());
+            $this->API->bind(":UserPassword", $this->getPassword());
+            // Executing the query.
+            $this->API->execute();
+            // Verifying whether the combination of mail address and password exist in the database and in the case that it exists, the user will be redirected to the required portal, else, the page will refresh.
+            if (!empty($this->API->resultSet())) {
+                // Verifying whether the profile picture of the user exists
+                if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
+                    // Storing the data retrieved from the database in the class variables
+                    $this->setUsername($this->API->resultSet()[0]['UserUsername']);
+                    $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                    $this->setPassword($this->API->resultSet()[0]['UserPassword']);
+                    $this->setType($this->API->resultSet()[0]['UserType']);
+                    $this->setProfilePicture($this->API->resultSet()[0]['UserProfilePicture']);
+                    $this->setFirstName($this->API->resultSet()[0]['UserFirstName']);
+                    $this->setLastName($this->API->resultSet()[0]['UserLastName']);
+                    $this->setDateOfBirth($this->API->resultSet()[0]['UserDateOfBirth']);
+                    // Starting session
+                    session_start();
+                    // Assigning the Session variable to be the username of the user
+                    $_SESSION['username'] = $this->getUsername();
+                    // Checking the session
+                    $this->checkLoginSession();
+                } else {
+                    // Storing the data retrieved from the database in the class variables
+                    $this->setUsername($this->API->resultSet()[0]['UserUsername']);
+                    $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                    $this->setPassword($this->API->resultSet()[0]['UserPassword']);
+                    $this->setType($this->API->resultSet()[0]['UserType']);
+                    $this->setProfilePicture("null");
+                    $this->setFirstName($this->API->resultSet()[0]['UserFirstName']);
+                    $this->setLastName($this->API->resultSet()[0]['UserLastName']);
+                    $this->setDateOfBirth($this->API->resultSet()[0]['UserDateOfBirth']);
+                    // Starting session
+                    session_start();
+                    // Assigning the Session variable to be the username of the user
+                    $_SESSION['username'] = $this->getUsername();
+                    // Checking the session
+                    $this->checkLoginSession();
+                }
+            } else {
+                // Printing the message
+                echo $this->Renderer->userLoginIncorrectPassword();
+                // Refreshing the page
+                header('refresh:2.2; url=' . $this->domain . '/StormySystems2/Login');
+            }
+        } else {
+            // Preparing the query to verify if the mail address entered exists in the database.
+            $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress");
+            // Binding the value returned by the page for security purposes.
+            $this->API->bind(":UserMailAddress", $_POST['usernameOrMailAddress']);
+            // Executing the query.
+            $this->API->execute();
+            // Verifying whether the mail address exists and in case that it exists, the system will search whether the combination of the mail address and password is correct but in case that it does not exist, the system will refresh.
+            if (!empty($this->API->resultSet())) {
+                // Storing the data needed in the class variables for further processing
+                $this->setMailAddress($_POST['usernameOrMailAddress']);
+                $this->setPassword($_POST['password']);
+                // Preparing the query to verify if the mail address entered exists in the database.
+                $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress AND UserPassword = :UserPassword");
+                // Binding the values returned by the page for security purposes.
+                $this->API->bind(":UserMailAddress", $this->getMailAddress());
+                $this->API->bind(":UserPassword", $this->getPassword());
+                // Executing the query.
+                $this->API->execute();
+                // Verifying whether the combination of mail address and password exist in the database and in the case that it exists, the user will be redirected to the required portal, else, the page will refresh.
+                if (!empty($this->API->resultSet())) {
+                    // Verifying whether the profile picture of the user exists
+                    if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
+                        // Storing the data retrieved from the database in the class variables
+                        $this->setUsername($this->API->resultSet()[0]['UserUsername']);
+                        $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                        $this->setPassword($this->API->resultSet()[0]['UserPassword']);
+                        $this->setType($this->API->resultSet()[0]['UserType']);
+                        $this->setProfilePicture($this->API->resultSet()[0]['UserProfilePicture']);
+                        $this->setFirstName($this->API->resultSet()[0]['UserFirstName']);
+                        $this->setLastName($this->API->resultSet()[0]['UserLastName']);
+                        $this->setDateOfBirth($this->API->resultSet()[0]['UserDateOfBirth']);
+                        // Starting session
+                        session_start();
+                        // Assigning the Session variable to be the username of the user
+                        $_SESSION['username'] = $this->getUsername();
+                        // Checking the session
+                        $this->checkLoginSession();
+                    } else {
+                        // Storing the data retrieved from the database in the class variables
+                        $this->setUsername($this->API->resultSet()[0]['UserUsername']);
+                        $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                        $this->setPassword($this->API->resultSet()[0]['UserPassword']);
+                        $this->setType($this->API->resultSet()[0]['UserType']);
+                        $this->setProfilePicture("null");
+                        $this->setFirstName($this->API->resultSet()[0]['UserFirstName']);
+                        $this->setLastName($this->API->resultSet()[0]['UserLastName']);
+                        $this->setDateOfBirth($this->API->resultSet()[0]['UserDateOfBirth']);
+                        // Starting session
+                        session_start();
+                        // Assigning the Session variable to be the username of the user
+                        $_SESSION['username'] = $this->getUsername();
+                        // Checking the session
+                        $this->checkLoginSession();
+                    }
+                } else {
+                    // Printing the message
+                    echo $this->Renderer->userLoginIncorrectPassword();
+                    // Refreshing the page
+                    header('refresh:2.8; url=' . $this->domain . '/StormySystems2/Login');
+                }
+            } else {
+                // Printing the message
+                echo $this->Renderer->userLoginUserDoesNotExist($_POST['usernameOrMailAddress']);
+                // Refreshing the page
+                header('refresh:1.6; url=' . $this->domain . '/StormySystems2/Login');
+            }
+        }
+    }
+    // Check Login Session method
+    public function checkLoginSession() {
+        // If-statement to verify whether the Session variable is the User's Username
+        if ($_SESSION["username"] == $this->getUsername()) {
+            // If-statement to verify the Type of the User
+            if ($this->getType() == 0) {
+                // Printing message
+                echo $this->Renderer->userCheckSessionBannedUser();
+                // Calling PHPMailer::IsSMTP()
+                $this->Mail->IsSMTP();
+                // Setting the charset to be UTF-8
+                $this->Mail->CharSet = "UTF-8";
+                // Setting the host according to the Mail service provider
+                $this->Mail->Host = "ssl://smtp.gmail.com";
+                // Setting the SMTP Debugging mode to off
+                $this->Mail->SMTPDebug = 0;
+                // Setting the port of the mail service provider to TCP 465 port
+                $this->Mail->Port = 465;
+                // Setting the SMTP Secure mode to SSL connection
+                $this->Mail->SMTPSecure = 'ssl';
+                // Enablig the SMTP Authorization mode
+                $this->Mail->SMTPAuth = true;
+                // Assuring that the mail is sent from HTML mode
+                $this->Mail->IsHTML(true);
+                // Setting the sender's mail address
+                $this->Mail->Username = "username2";
+                // Setting the sender's password
+                $this->Mail->Password = "password2";
+                // Assigning the sender's mail address from PHPMailer::Username
+                $this->Mail->setFrom($this->Mail->Username);
+                // Assigning the recipient address from User::getMailAddress()
+                $this->Mail->addAddress($this->getMailAddress());
+                // Setting the subject
+                $this->Mail->Subject = "Stormy System: Ban Notification";
+                // Setting the body
+                $this->Mail->Body = "You are currently banned from the system!  Before, you can actually get accessed to the system once again, you will have to get it unban by contacting an administrator.";
+                // Sending the mail
+                $this->Mail->send();
+                // Redirecting the user towards the Main Portal
+                header('refresh:7.2; url=' . $this->domain . '/StormySystems2');
+            } else if ($this->getType() == 1) {
+                // Redirecting the user towards the Public portal
+                header('Location:' . $this->domain . '/StormySystems2/Public');
+            } else if ($this->getType() == 2) {
+                // Redirecting the user towards the Member Portal
+                header('Location:' . $this->domain . '/StormySystems2/Member');
+            } else if ($this->getType() == 3) {
+                // Redirecting the user towards the Workplace Portal
+                header('Location:' . $this->domain . '/StormySystems2/Workplace');
+            } else if ($this->getType() == 4) {
+                // Redirecting the user towards the Admin Portal
+                header('Location:' . $this->domain . '/StormySystems2/Admin');
+            } else {
+                // Printing the message
+                echo $this->Renderer->userCheckSessionCannotVerifyType();
+                // Refreshing the page
+                header('refresh:4.2;');
+            }
+        } else {
+            // Printing the message
+            echo $this->Renderer->userCheckSessionUserDoesNotExist($this->getUsername());
+            // Redirecting the user towards the homepage
+            header('refresh:4.2; url=' . $this->domain . '/StormySystems2');
+        }
     }
 }
 // Music Class
