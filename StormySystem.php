@@ -99,8 +99,8 @@ class User {
     private string $dateOfBirth;
     private string $profilePicture;
     private string $password;
-    public string $domain = "http://stormy-systems.herokuapp.com/";
-    // public string $domain = "http://stormysystem.ddns.net/";
+    // public string $domain = "http://stormy-systems.herokuapp.com/";
+    public string $domain = "http://stormysystem.ddns.net/";
     protected $PHPMailer;
     protected $API;
     protected $Renderer;
