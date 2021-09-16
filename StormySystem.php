@@ -659,6 +659,78 @@ class Design {
         // Instantiating User
         $this->User = new User();
     }
+    // ID accessor method
+    public function getId() {
+        return $this->id;
+    }
+    // Title accessor method
+    public function getTitle() {
+        return $this->title;
+    }
+    // Author accessor method
+    public function getAuthor() {
+        return $this->author;
+    }
+    // Date Uploaded accessor method
+    public function getDateUploaded() {
+        return $this->dateUploaded;
+    }
+    // Downloads accessor method
+    public function getDownloads() {
+        return $this->downloads;
+    }
+    // Views accessor method
+    public function getViews() {
+        return $this->views;
+    }
+    // Uploader accessor method
+    public function getUploader() {
+        return $this->uploader;
+    }
+    // Likes accessor method
+    public function getLikes() {
+        return $this->likes;
+    }
+    // Hates accessor method
+    public function getHates() {
+        return $this->hates;
+    }
+    // ID mutator method
+    public function setId($id) {
+        $this->id = $id;
+    }
+    // Title mutator method
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+    // Author mutator method
+    public function setAuthor($author) {
+        $this->author = $author;
+    }
+    // Date Uploaded mutator method
+    public function setDateUploaded($dateUploaded) {
+        $this->dateUploaded = $dateUploaded;
+    }
+    // Downloads mutator method
+    public function setDownloads($downloads) {
+        $this->downloads = $downloads;
+    }
+    // Views mutator method
+    public function setViews($views) {
+        $this->views = $views;
+    }
+    // Uploader mutator method
+    public function setUploader($uploader) {
+        $this->uploader = $uploader;
+    }
+    // Likes mutator method
+    public function setLikes($likes) {
+        $this->likes = $likes;
+    }
+    // Hates mutator method
+    public function setHates($hates) {
+        $this->hates = $hates;
+    }
 }
 // Application Class
 class Application {
