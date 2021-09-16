@@ -796,8 +796,8 @@ class Application {
         $this->hates = $hates;
     }
 }
-// Activities Class
-class Activities {
+// Activity Class
+class Activity {
     // Class variables
     private int $id;
     private string $action;
