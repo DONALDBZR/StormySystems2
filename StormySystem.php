@@ -7,8 +7,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/StormySystems2/PHPMailer/src/SMTP.php
 class API {
     // Class variables
     private $dataSourceName = "mysql:dbname=StormySystem;host=stormysystem.ddns.net:3306";
-    private $username = "Darkness4869";
-    private $password = "Aegis4869";
+    private $username = "username1";
+    private $password = "password1";
     private $databaseHandler;
     private $statement;
     // Constructor method
@@ -240,9 +240,9 @@ class User {
                 // Ensuring that PHPMailer is called from a .html file.
                 $this->PHPMailer->IsHTML(true);
                 // Sender's mail address.
-                $this->PHPMailer->Username = "andygaspard003@gmail.com";
+                $this->PHPMailer->Username = "username2";
                 // Sender's password
-                $this->PHPMailer->Password = "Aegis050200";
+                $this->PHPMailer->Password = "password2";
                 // Assigning sender as a parameter in the sender's zone.
                 $this->PHPMailer->setFrom($this->PHPMailer->Username);
                 // Assinging the receiver mail's address which is retrieved from the User class.
@@ -414,9 +414,9 @@ class User {
                 // Assuring that the mail is sent from HTML mode
                 $this->Mail->IsHTML(true);
                 // Setting the sender's mail address
-                $this->Mail->Username = "andygaspard003@gmail.com";
+                $this->Mail->Username = "username2";
                 // Setting the sender's password
-                $this->Mail->Password = "Aegis050200";
+                $this->Mail->Password = "password2";
                 // Assigning the sender's mail address from PHPMailer::Username
                 $this->Mail->setFrom($this->Mail->Username);
                 // Assigning the recipient address from User::getMailAddress()
@@ -490,9 +490,9 @@ class User {
         // Assuring that the mail is sent from HTML mode
         $this->Mail->IsHTML(true);
         // Setting the sender's mail address
-        $this->Mail->Username = "andygaspard003@gmail.com";
+        $this->Mail->Username = "username2";
         // Setting the sender's password
-        $this->Mail->Password = "Aegis050200";
+        $this->Mail->Password = "password2";
         // Assigning the sender's mail address from PHPMailer::Username
         $this->Mail->setFrom($this->Mail->Username);
         // Assigning the recipient address from User::getMailAddress()
