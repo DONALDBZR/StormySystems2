@@ -7,8 +7,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/StormySystems2/PHPMailer/src/SMTP.php
 class API {
     // Class variables
     private $dataSourceName = "mysql:dbname=StormySystem;host=stormysystem.ddns.net:3306";
-    private $username = "username1";
-    private $password = "password1";
+    private $username = "Darkness4869";
+    private $password = "Aegis4869";
     private $databaseHandler;
     private $statement;
     // Constructor method
@@ -73,7 +73,13 @@ class Renderer {
     }
     // User Login Incorrect Password method
     public function userLoginIncorrectPassword() {
-        return "<h1 id='userLoginIncorrectPassword'>Incorrect Password!</h1>";
+        return "
+        <div id='userLoginIncorrectPassword'>
+            <h1>Incorrect Password!</h1>
+            <form method='post'>
+                <input type='submit' value='Reset Password' />
+            </form>
+        </div>";
     }
     // User Check Session Banned User method
     public function userCheckSessionBannedUser() {
@@ -230,9 +236,9 @@ class User {
                 // Ensuring that PHPMailer is called from a .html file.
                 $this->PHPMailer->IsHTML(true);
                 // Sender's mail address.
-                $this->PHPMailer->Username = "username2";
+                $this->PHPMailer->Username = "andygaspard003@gmail.com";
                 // Sender's password
-                $this->PHPMailer->Password = "password2";
+                $this->PHPMailer->Password = "Aegis050200";
                 // Assigning sender as a parameter in the sender's zone.
                 $this->PHPMailer->setFrom($this->PHPMailer->Username);
                 // Assinging the receiver mail's address which is retrieved from the User class.
@@ -321,8 +327,6 @@ class User {
             } else {
                 // Printing the message
                 echo $this->Renderer->userLoginIncorrectPassword();
-                // Refreshing the page
-                header('refresh:2.2; url=' . $this->domain . '/StormySystems2/Login');
             }
         } else {
             // Preparing the query to verify if the mail address entered exists in the database.
@@ -382,8 +386,6 @@ class User {
                 } else {
                     // Printing the message
                     echo $this->Renderer->userLoginIncorrectPassword();
-                    // Refreshing the page
-                    header('refresh:2.8; url=' . $this->domain . '/StormySystems2/Login');
                 }
             } else {
                 // Printing the message
@@ -418,9 +420,9 @@ class User {
                 // Assuring that the mail is sent from HTML mode
                 $this->Mail->IsHTML(true);
                 // Setting the sender's mail address
-                $this->Mail->Username = "username2";
+                $this->Mail->Username = "andygaspard003@gmail.com";
                 // Setting the sender's password
-                $this->Mail->Password = "password2";
+                $this->Mail->Password = "Aegis050200";
                 // Assigning the sender's mail address from PHPMailer::Username
                 $this->Mail->setFrom($this->Mail->Username);
                 // Assigning the recipient address from User::getMailAddress()

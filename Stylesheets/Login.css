@@ -54,7 +54,7 @@ header nav a img:hover {
 header nav a:hover {
     text-decoration: underline;
 }
-main form {
+main #formContainer {
     background-color: var(--color2);
     color: var(--color1);
     margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
@@ -64,46 +64,79 @@ main form {
     padding-bottom: calc(var(--vertical) * 0);
     width: calc(var(--horizontal) / 2);
 }
-main form #label {
+main #formContainer form #label {
     text-align: center;
     font-size: calc(var(--fontSize) * 2);
     font-family: var(--proximaNova);
     font-weight: bold;
     padding-bottom: calc(var(--vertical) * 0.025937424);
 }
-main form #formContainer #usernameOrMailAddress,
-main form #formContainer #password {
+main #formContainer form #formContainerInsideAForm #usernameOrMailAddress,
+main #formContainer form #formContainerInsideAForm #password {
     margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0);
 }
-main form #formContainer #usernameOrMailAddress #input,
-main form #formContainer #password #input {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #usernameOrMailAddress
+    #input,
+main #formContainer form #formContainerInsideAForm #password #input {
     width: var(--horizontal);
     display: flex;
 }
-main form #formContainer #usernameOrMailAddress #input input,
-main form #formContainer #password #input input {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #usernameOrMailAddress
+    #input
+    input,
+main #formContainer form #formContainerInsideAForm #password #input input {
     margin: calc(var(--vertical) * 0);
     width: calc(var(--horizontal) * 0.7);
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
-main form #formContainer #usernameOrMailAddress #input div,
-main form #formContainer #password #input div {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #usernameOrMailAddress
+    #input
+    div,
+main #formContainer form #formContainerInsideAForm #password #input div {
     width: calc(var(--horizontal) * 0.3);
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     color: var(--color4);
 }
-main form #formContainer #usernameOrMailAddress #guidelines,
-main form #formContainer #password #guidelines {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #usernameOrMailAddress
+    #guidelines,
+main #formContainer form #formContainerInsideAForm #password #guidelines {
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
-main form #formContainer #loginButton {
+main #formContainer form #formContainerInsideAForm #loginButton {
     text-align: center;
 }
-main form #formContainer #loginButton input[type="submit"] {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #loginButton
+    input[type="submit"],
+main
+    #formContainer
+    #serverRendering
+    #userLoginIncorrectPassword
+    form
+    input[type="submit"] {
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
@@ -112,12 +145,23 @@ main form #formContainer #loginButton input[type="submit"] {
     padding: calc(var(--vertical) * 0.025) calc(var(--horizontal) * 0.05);
     border: none;
 }
-main form #formContainer #loginButton input[type="submit"]:hover {
+main
+    #formContainer
+    form
+    #formContainerInsideAForm
+    #loginButton
+    input[type="submit"]:hover,
+main
+    #formContainer
+    #serverRendering
+    #userLoginIncorrectPassword
+    form
+    input[type="submit"]:hover {
     background-color: var(--color2);
     color: var(--color1);
     cursor: pointer;
 }
-main form #serverRendering {
+main #formContainer #serverRendering {
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
@@ -125,13 +169,13 @@ main form #serverRendering {
     margin-top: calc(var(--vertical) * 0.025);
     padding-bottom: calc(var(--vertical) * 0.025);
 }
-main form #serverRendering #userLoginUserDoesNotExist,
-main form #serverRendering #userLoginIncorrectPassword,
-main form #serverRendering #userCheckSessionBannedUser,
-main form #serverRendering #userCheckSessionCannotVerifyType {
+main #formContainer #serverRendering #userLoginUserDoesNotExist,
+main #formContainer #serverRendering #userLoginIncorrectPassword h1,
+main #formContainer #serverRendering #userCheckSessionBannedUser,
+main #formContainer #serverRendering #userCheckSessionCannotVerifyType {
     color: var(--color4);
 }
-main form #serverRendering #userLoginSuccess {
+main #formContainer #serverRendering #userLoginSuccess {
     color: var(--color6);
 }
 footer {
