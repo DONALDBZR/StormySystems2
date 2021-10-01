@@ -77,7 +77,7 @@ class Renderer {
         <div id='userLoginIncorrectPassword'>
             <h1>Incorrect Password!</h1>
             <form method='post'>
-                <input type='submit' value='Reset Password' />
+                <input type='submit' value='Reset Password' name='resetPassword' />
             </form>
         </div>";
     }
@@ -92,6 +92,10 @@ class Renderer {
     // User Check Session User Does Not Exist method
     public function userCheckSessionUserDoesNotExist($user) {
         return "<h1 id='userCheckSessionUserDoesNotExist'>{$user} does not exist!</h1>";
+    }
+    // User Reset Password Password Changed method
+    public function userResetPasswordPasswordChanged() {
+        return "<h1 id='userResetPasswordPasswordChanged'>Your password has been changed!</h1>";
     }
 }
 // User Class
@@ -279,17 +283,9 @@ class User {
         // Verifying whether the username exists and in case that it exists, the system will search whether the combination of the username and password is correct but in case that it does not exist, the system will verify whether the mail address exists.
         if (!empty($this->API->resultSet())) {
             // Storing the data needed in the class variables for further processing
-            $this->setMailAddress($_POST['usernameOrMailAddress']);
-            $this->setPassword($_POST['password']);
-            // Preparing the query to verify if the mail address entered exists in the database.
-            $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress AND UserPassword = :UserPassword");
-            // Binding the values returned by the page for security purposes.
-            $this->API->bind(":UserMailAddress", $this->getMailAddress());
-            $this->API->bind(":UserPassword", $this->getPassword());
-            // Executing the query.
-            $this->API->execute();
-            // Verifying whether the combination of mail address and password exist in the database and in the case that it exists, the user will be redirected to the required portal, else, the page will refresh.
-            if (!empty($this->API->resultSet())) {
+            $this->setUsername($this->API->resultSet()[0]['UserUsername']);
+            // If-statement to verify whether the password is the same from the form in the database
+            if ($_POST['password'] == $this->API->resultSet()[0]['UserPassword']) {
                 // Verifying whether the profile picture of the user exists
                 if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
                     // Storing the data retrieved from the database in the class variables
@@ -325,6 +321,9 @@ class User {
                     $this->checkLoginSession();
                 }
             } else {
+                // Setting the class variables
+                $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                $this->setUsername($this->API->resultSet()[0]['UserUsername']);
                 // Printing the message
                 echo $this->Renderer->userLoginIncorrectPassword();
             }
@@ -338,17 +337,9 @@ class User {
             // Verifying whether the mail address exists and in case that it exists, the system will search whether the combination of the mail address and password is correct but in case that it does not exist, the system will refresh.
             if (!empty($this->API->resultSet())) {
                 // Storing the data needed in the class variables for further processing
-                $this->setMailAddress($_POST['usernameOrMailAddress']);
-                $this->setPassword($_POST['password']);
-                // Preparing the query to verify if the mail address entered exists in the database.
-                $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress AND UserPassword = :UserPassword");
-                // Binding the values returned by the page for security purposes.
-                $this->API->bind(":UserMailAddress", $this->getMailAddress());
-                $this->API->bind(":UserPassword", $this->getPassword());
-                // Executing the query.
-                $this->API->execute();
-                // Verifying whether the combination of mail address and password exist in the database and in the case that it exists, the user will be redirected to the required portal, else, the page will refresh.
-                if (!empty($this->API->resultSet())) {
+                $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                // If-statement to verify whether the password is the same as the password saved in the database
+                if ($_POST['password'] == $this->API->resultSet()[0]['UserPassword']) {
                     // Verifying whether the profile picture of the user exists
                     if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
                         // Storing the data retrieved from the database in the class variables
@@ -384,6 +375,9 @@ class User {
                         $this->checkLoginSession();
                     }
                 } else {
+                    // Setting the class variables
+                    $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
+                    $this->setUsername($this->API->resultSet()[0]['UserUsername']);
                     // Printing the message
                     echo $this->Renderer->userLoginIncorrectPassword();
                 }
@@ -459,6 +453,58 @@ class User {
             // Redirecting the user towards the homepage
             header('refresh:4.2; url=' . $this->domain . '/StormySystems2');
         }
+    }
+    // Reset Password method
+    public function resetPassword() {
+        // Preparing the query
+        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
+        // Binding the value
+        $this->API->bind(":UserUsername", $this->getUsername());
+        // Executing the query
+        $this->API->execute();
+        // Changing the password
+        $this->setPassword($this->generatePassword());
+        // Preparing the query
+        $this->API->query("UPDATE StormySystem.User SET UserPassword = :UserPassword WHERE UserMailAddress = :UserMailAddress");
+        // Binding the values
+        $this->API->bind(":UserPassword", $this->getPassword());
+        $this->API->bind(":UserMailAddress", $this->API->resultSet()[0]['UserMailAddress']);
+        // Executing the query
+        $this->API->execute();
+        // Printing message
+        echo $this->Renderer->userResetPasswordPasswordChanged();
+        // Calling PHPMailer::IsSMTP()
+        $this->Mail->IsSMTP();
+        // Setting the charset to be UTF-8
+        $this->Mail->CharSet = "UTF-8";
+        // Setting the host according to the Mail service provider
+        $this->Mail->Host = "ssl://smtp.gmail.com";
+        // Setting the SMTP Debugging mode to off
+        $this->Mail->SMTPDebug = 0;
+        // Setting the port of the mail service provider to TCP 465 port
+        $this->Mail->Port = 465;
+        // Setting the SMTP Secure mode to SSL connection
+        $this->Mail->SMTPSecure = 'ssl';
+        // Enablig the SMTP Authorization mode
+        $this->Mail->SMTPAuth = true;
+        // Assuring that the mail is sent from HTML mode
+        $this->Mail->IsHTML(true);
+        // Setting the sender's mail address
+        $this->Mail->Username = "andygaspard003@gmail.com";
+        // Setting the sender's password
+        $this->Mail->Password = "Aegis050200";
+        // Assigning the sender's mail address from PHPMailer::Username
+        $this->Mail->setFrom($this->Mail->Username);
+        // Assigning the recipient address from User::getMailAddress()
+        $this->Mail->addAddress($this->getMailAddress());
+        // Setting the subject
+        $this->Mail->Subject = "Stormy System: Reset Password";
+        // Setting the body
+        $this->Mail->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
+        // Sending the mail
+        $this->Mail->send();
+        // Redirecting the user towards the Main Portal
+        header('refresh:5; url=' . $this->domain . '/StormySystems2/Login');
     }
 }
 // Music Class

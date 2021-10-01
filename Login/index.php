@@ -73,6 +73,10 @@ ob_start();
                     // If-statement to verify whether the registration button is pressed
                     if (isset($_POST["login"])) {
                         $User->login();
+                        // If-statement to verify whether the reset password button is pressed
+                        if (isset($_POST["resetPassword"])) {
+                            $User->resetPassword();
+                        }
                     }
                     ?>
                 </div>
