@@ -17,24 +17,17 @@ ob_start();
         <link rel="stylesheet" href="../Stylesheets/Register.css" />
         <link rel="shortcut icon" href="../Images/Logo.ico" type="image/x-icon" />
         <script src="../Scripts/Font-Awesome.js"></script>
-        <script
-            crossorigin
-            src="https://unpkg.com/react@17/umd/react.production.min.js"
-        ></script>
-        <script
-            crossorigin
-            src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
-            integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-        <script src="../Scripts/StormySystems.js"></script>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body id="app">
         <!-- <script type="text/babel" src="../Scripts/Register.js"></script> -->
+        <script>
+            importScripts("../Scripts/StormySystems");
+            const User = new User();
+            User.register();
+        </script>
         <header>
             <nav>
                 <div>
@@ -66,13 +59,7 @@ ob_start();
                     <div id="username">
                         <div id="input">
                             <div>Username *:</div>
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                placeholder="Username"
-                                required
-                            />
+                            <input type="text" name="username" id="username" placeholder="Username" required />
                         </div>
                         <div id="guidelines">
                             Please enter a username which is unique!
@@ -84,13 +71,7 @@ ob_start();
                     <div id="mailAddress">
                         <div id="input">
                             <div>Mail Address *:</div>
-                            <input
-                                type="email"
-                                name="mailAddress"
-                                id="mailAddress"
-                                placeholder="Mail Address"
-                                required
-                            />
+                            <input type="email" name="mailAddress" id="mailAddress" placeholder="Mail Address" required />
                         </div>
                         <div id="guidelines">
                             The Mail Address is required to send you your
@@ -100,13 +81,7 @@ ob_start();
                     <div id="firstName">
                         <div id="input">
                             <div>First Name *:</div>
-                            <input
-                                type="text"
-                                name="firstName"
-                                id="firstName"
-                                placeholder="First Name"
-                                required
-                            />
+                            <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
                         </div>
                         <div id="guidelines">
                             Please enter your first name!
@@ -115,13 +90,7 @@ ob_start();
                     <div id="lastName">
                         <div id="input">
                             <div>Last Name *:</div>
-                            <input
-                                type="text"
-                                name="lastName"
-                                id="lastName"
-                                placeholder="Last Name"
-                                required
-                            />
+                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
                         </div>
                         <div id="guidelines">
                             Please enter your last name!
@@ -130,12 +99,7 @@ ob_start();
                     <div id="dateOfBirth">
                         <div id="input">
                             <div>Date Of Birth *:</div>
-                            <input
-                                type="date"
-                                name="dateOfBirth"
-                                id="dateOfBirth"
-                                required
-                            />
+                            <input type="date" name="dateOfBirth" id="dateOfBirth" required />
                         </div>
                         <div id="guidelines">
                             Please enter your date of birth!
@@ -146,11 +110,7 @@ ob_start();
                         </div>
                     </div>
                     <div id="registrationButton">
-                        <input
-                            type="submit"
-                            value="Register"
-                            name="register"
-                            onClick={User.register()}
+                        <input type="submit" value="Register" name="register" onClick="User.register()"
                         />
                     </div>
                 </div>
@@ -158,7 +118,7 @@ ob_start();
                     <?php
                     // If-statement to verify whether the registration button is pressed
                     if (isset($_POST["register"])) {
-                        $User->register();
+                        // $User->register();
                     }
                     ?>
                 </div>

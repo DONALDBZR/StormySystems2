@@ -1,5 +1,5 @@
 // User class
-class User {
+export class User {
     // Class variables
     #username;
     #firstName;
@@ -79,33 +79,26 @@ class User {
     // Register method
     register() {
         // Fetching the Username
-        this.setUsername(document.querySelector("#username").value);
+        this.setUsername(document.getElementById("username").value);
         // Fetching the Mail Address
-        this.setMailAddress(document.querySelector("#mailAddress").value);
+        this.setMailAddress(document.getElementById("#mailAddress").value);
         // Fetching the First Name
-        this.setFirstName(document.querySelector("#firstName").value);
+        this.setFirstName(document.getElementById("#firstName").value);
         // Fetching the Last Name
-        this.setLastName(document.querySelector("#lastName").value);
+        this.setLastName(document.getElementById("#lastName").value);
         // Fetching the Date Of Birth
-        this.setDateOfBirth(document.querySelector("#dateOfBirth").value);
-        // Creating the JSON
-        let userObject = new Object();
-        // Taking the data needed for the JSON
-        userObject.username = this.getUsername();
-        userObject.mailAddress = this.getMailAddress();
-        userObject.firstName = this.getFirstName();
-        userObject.lastName = this.getLastName();
-        userObject.dateOfBirth = this.getDateOfBirth();
-        // Sending the JSON
-        let userRegisterJSON = JSON.stringify(userObject);
-        // Calling the POST Request
-        xmlhttp.open("POST", "http://stormysystem.ddns.net/Register");
-        // Setting the content type
-        xmlhttp.setRequestHeader(
-            "Content-Type",
-            "application/x-www-form-urlencoded;charset=UTF-8"
+        this.setDateOfBirth(document.getElementById("#dateOfBirth").value);
+        // DEBUGGING
+        alert(
+            this.getUsername +
+                " " +
+                this.getMailAddress +
+                " " +
+                this.getFirstName +
+                " " +
+                this.getLastName +
+                " " +
+                this.getDateOfBirth
         );
-        // Sending the JSON
-        xmlhttp.send(userRegisterJSON);
     }
 }
