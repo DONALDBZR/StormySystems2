@@ -1,5 +1,5 @@
 // User class
-export class User {
+class User {
     // Class variables
     #username;
     #firstName;
@@ -81,24 +81,30 @@ export class User {
         // Fetching the Username
         this.setUsername(document.getElementById("username").value);
         // Fetching the Mail Address
-        this.setMailAddress(document.getElementById("#mailAddress").value);
+        this.setMailAddress(document.getElementById("mailAddress").value);
         // Fetching the First Name
-        this.setFirstName(document.getElementById("#firstName").value);
+        this.setFirstName(document.getElementById("firstName").value);
         // Fetching the Last Name
-        this.setLastName(document.getElementById("#lastName").value);
+        this.setLastName(document.getElementById("lastName").value);
         // Fetching the Date Of Birth
-        this.setDateOfBirth(document.getElementById("#dateOfBirth").value);
-        // DEBUGGING
-        alert(
-            this.getUsername +
-                " " +
-                this.getMailAddress +
-                " " +
-                this.getFirstName +
-                " " +
-                this.getLastName +
-                " " +
-                this.getDateOfBirth
-        );
+        this.setDateOfBirth(document.getElementById("dateOfBirth").value);
+        // Instantiating the User Object
+        const userObject = new Object();
+        // Filling User Object with data
+        userObject.username = this.getUsername();
+        userObject.mailAddress = this.getMailAddress();
+        userObject.firstName = this.getFirstName();
+        userObject.lastName = this.getLastName();
+        userObject.dateOfBirth = this.getDateOfBirth();
+        // Serializing User Data
+        const userData = JSON.stringify(userObject);
+        // Instantiating AJAX XML HTTP Request
+        const XHR = new XMLHttpRequest();
+        // Setting the POST Request
+        XHR.open("POST", "../StormySystem.php", true);
+        // Setting the Header
+        XHR.setRequestHeader("Content-type", "application/json");
+        // Sending the JSON
+        XHR.send(userData);
     }
 }
