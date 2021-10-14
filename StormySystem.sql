@@ -1,4 +1,6 @@
+-- Creating the Database
 CREATE DATABASE StormySystem;
+-- Creating the User table
 CREATE TABLE StormySystem.User (
     UserUsername VARCHAR(64) NOT NULL PRIMARY KEY,
     UserMailAddress VARCHAR(64) NOT NULL,
@@ -9,4 +11,5 @@ CREATE TABLE StormySystem.User (
     UserLastName VARCHAR(64) NOT NULL,
     UserDateOfBirth VARCHAR(16) NOT NULL
 );
-DELETE FROM StormySystem.User WHERE UserUsername = "username1";
+-- TESTING CODE 1: Removing data from the User table
+DELETE FROM StormySystem.User WHERE UserMailAddress = "andygaspard@hotmail.com";

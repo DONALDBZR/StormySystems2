@@ -57,7 +57,9 @@ class API {
 class Renderer {
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
-        return "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
+        $message = "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
+        // Converting the message to be printed into a JSON
+        $JSON = json_encode($message);
     }
     // User Register Too Young method
     public function userRegisterTooYoung() {
@@ -189,16 +191,20 @@ class User {
     }
     // Register method
     public function register() {
+        // Receiving the JSON from the POST Request
+        $userJSON = file_get_contents('php://input');
+        // Converting User JSON into a PHP Object
+        $userObject = json_decode($userJSON);
         // Preparing the query
         $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // Binding the value
-        $this->API->bind(":UserUsername", $_POST["username"]);
+        $this->API->bind(":UserUsername", $userObject[0]);
         // Executing the query
         $this->API->execute();
         // If-statement to verify whether the username does not exist in the database
         if (empty($this->API->resultSet())) {
             // Setting the date of birth of the user as the parameter for User::setDateOfBirth()
-            $this->setDateOfBirth($_POST['dateOfBirth']);
+            $this->setDateOfBirth($userObject[4]);
             // Storing the difference in years.
             $age = date("Y-m-d") - $this->getDateOfBirth();
             // If-statement to verify whether the user has the minimum age to use the system.
@@ -206,11 +212,11 @@ class User {
                 // Setting the password generated as the parameter for the User::setPassword()
                 $this->setPassword($this->generatePassword());
                 // Storing remaining data from the form
-                $this->setUsername($_POST['username']);
-                $this->setFirstName($_POST['firstName']);
-                $this->setLastName($_POST['lastName']);
+                $this->setUsername($userObject[0]);
+                $this->setFirstName($userObject[2]);
+                $this->setLastName($userObject[3]);
                 $this->setType(1);
-                $this->setMailAddress($_POST['mailAddress']);
+                $this->setMailAddress($userObject[1]);
                 // Preparing the query
                 $this->API->query("INSERT INTO StormySystem.User (UserDateOfBirth, UserUsername, UserFirstName, UserLastName, UserType, UserMailAddress, UserPassword) VALUES (:UserDateOfBirth, :UserUsername, :UserFirstName, :UserLastName, :UserType, :UserMailAddress, :UserPassword)");
                 // Binding the values
