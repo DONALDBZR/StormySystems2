@@ -191,13 +191,13 @@ class User {
     public function register() {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
-        // // Coverting User JSON
-        // $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
+        // Coverting User JSON
+        $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
         // Converting User JSON into a PHP Object
-        $userObject = json_decode($userJSON, true);
+        $userObject = json_decode($convertedUserJSON, true);
         // Printing the Object
         echo "JSON: ";
-        print_r($userObject);
+        print_r($convertedUserJSON);
         echo json_last_error_msg();
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
