@@ -1,26 +1,33 @@
 // Register function
 function register() {
-    document.querySelector("form").addEventListener("submit", async (event) => {
-        // Preventing Default data to be inserted
-        event.preventDefault();
-        // Instantiating Form Data
-        const input = new FormData(event.target);
-        // Sending the Object as the body without the header rather than sending as JSON
-        const userObject = [...input.keys()].reduce((response, key) => {
-            const values = input.getAll(key);
-            response[key] = values.length === 1 ? values[0] : values;
-            return response;
-        }, {});
-        const response = await fetch("../StormySystem.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userObject),
-        });
-        const data = await response.json();
-        console.log(data);
-    });
+    // Fetching the Username
+    const username = document.getElementById("username").value;
+    // Fetching the Mail Address
+    const mailAddress = document.getElementById("mailAddress").value;
+    // Fetching the First Name
+    const firstName = document.getElementById("firstName").value;
+    // Fetching the Last Name
+    const lastName = document.getElementById("lastName").value;
+    // Fetching the Date Of Birth
+    const dateOfBirth = document.getElementById("dateOfBirth").value;
+    // Creating User JSON String
+    const userJSONString = {
+        username: username,
+        mailAddress: mailAddress,
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+    };
+    // Creating User JSON
+    const userJSON = JSON.stringify(userJSONString);
+    // Instantiating AJAX XML HTTP Request
+    const XHR = new XMLHttpRequest();
+    // Setting the POST Request
+    XHR.open("POST", "../StormySystem.php", true);
+    // Setting the Header
+    XHR.setRequestHeader("Content-type", "application/json");
+    // Sending the JSON
+    XHR.send(userJSON);
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
