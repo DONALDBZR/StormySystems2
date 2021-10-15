@@ -16,7 +16,7 @@ async function register() {
         return response;
     }, {});
     // Requesting the server to GET the JSON
-    const request = await fetch("../JSON", {
+    const request = await fetch("../StormySystem.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userObject),
