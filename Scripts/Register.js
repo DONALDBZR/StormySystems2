@@ -1,4 +1,7 @@
-document.querySelector("form").addEventListener("submit", register);
+// Storing the Query Selector
+const form = document.querySelector("form");
+// Adding Event Listener to the form.
+form.addEventListener("submit", register);
 // Register function
 async function register() {
     // Fetching the Username
