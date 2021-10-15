@@ -1,3 +1,4 @@
+document.getElementsByName("form").addEventListener("submit", register);
 // Register function
 function register() {
     // Fetching the Username
