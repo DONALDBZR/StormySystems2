@@ -7,9 +7,6 @@ function register() {
         const response = await fetch("../StormySystem.php", {
             method: "POST",
             body: input,
-            headers: {
-                "Content-Type": "application/json",
-            },
         });
         const data = await response.json();
         console.log(data);
