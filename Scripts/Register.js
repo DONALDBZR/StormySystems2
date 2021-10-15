@@ -1,6 +1,6 @@
 // Register function
 function register() {
-    document.querySelector("form").addEventListener("submit", async (event) => {
+    document.querySelector("form").addEventListener("button", async (event) => {
         event.preventDefault();
         // Instantiating Form Data
         const input = new FormData(event.target);
