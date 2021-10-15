@@ -190,7 +190,7 @@ class User {
     // Register method
     public function register() {
         // Receiving the JSON from the POST Request
-        $userJSON = utf8_encode(file_get_contents('php://input'));
+        $userJSON = file_get_contents('php://input');
         // Decoding User JSON into a PHP Object
         $userObject = json_decode($userJSON, true);
         // Printing the Object
