@@ -190,13 +190,16 @@ class User {
     // Register method
     public function register() {
         // Receiving the JSON from the POST Request
-        $userJSON[] = file_get_contents('php://input');
-        // Converting User JSON to UTF-8 encoding
-        $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
+        $userJSON = file_get_contents('php://input');
+        // Removing unwanted data from JSON
+        $newUserJSON = substr($userJSON, strpos($userJSON , "®ister=Register"));
+        $JSON[] = $newUserJSON;
+        // // Converting User JSON to UTF-8 encoding
+        // $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
         // // Decoding User JSON into a PHP Object
-        // $userObject = json_decode($convertedUserJSON, true);
+        // $userObject = json_decode($userJSON, true);
         // For-each loop to check for any error in the JSON
-        foreach ($userJSON as $string) {
+        foreach ($JSON as $string) {
             echo 'Decoding: ' . $string;
             json_decode($string);
             // Switch-case to show the error in the JSON
