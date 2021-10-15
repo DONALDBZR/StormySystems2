@@ -199,7 +199,7 @@ class User {
         foreach ($userJSON as $string) {
             echo 'Decoding: ' . $string;
             json_decode($string);
-            // Switch-case to define the errors!
+            // Switch-case to show the error in the JSON
             switch (json_last_error()) {
                 case JSON_ERROR_NONE:
                     echo ' - No errors';
@@ -223,13 +223,15 @@ class User {
                     echo ' - Unknown error';
                 break;
             }
-        // Printing the Object
-        if ($userObject == null) {
-            echo "ERROR: " . json_last_error_msg();
-        } else {
-            echo "JSON: ";
-            print_r($userObject);
+            echo PHP_EOL;
         }
+        // // Printing the Object
+        // if ($userObject == null) {
+        //     echo "ERROR: " . json_last_error_msg();
+        // } else {
+        //     echo "JSON: ";
+        //     print_r($userObject);
+        // }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // // Binding the value
