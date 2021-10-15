@@ -192,7 +192,7 @@ class User {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
         // Converting User JSON into a PHP Object
-        $userObject = json_decode($userJSON, true);
+        $userObject = json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $userJSON), true);
         // Printing the Object
         echo "JSON: ";
         print_r($userObject);
