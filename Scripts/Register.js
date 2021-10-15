@@ -18,16 +18,24 @@ function register() {
         lastName: lastName,
         dateOfBirth: dateOfBirth,
     };
+    // Instantiating Form Data
+    const userJSON = new FormData();
     // Creating User JSON
-    const userJSON = JSON.stringify(userJSONString);
-    // Instantiating AJAX XML HTTP Request
-    const XHR = new XMLHttpRequest();
-    // Setting the POST Request
-    XHR.open("POST", "../StormySystem.php", true);
-    // Setting the Header
-    XHR.setRequestHeader("Content-type", "application/json");
-    // Sending the JSON
-    XHR.send(userJSON);
+    userJSON.append("json", JSON.stringify(userJSONString));
+    // Sending User JSON to the JSON folder of the Web Server
+    fetch("../JSON/", {
+        method: "POST",
+        body: userJSON,
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (userJSON) {
+            alert(JSON.stringify(userJSON));
+        });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
