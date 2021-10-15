@@ -196,6 +196,7 @@ class User {
         // Printing the Object
         echo "JSON: ";
         print_r($userObject);
+        echo json_last_error_msg();
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // // Binding the value
