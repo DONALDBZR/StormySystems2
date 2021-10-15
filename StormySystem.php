@@ -191,8 +191,10 @@ class User {
     public function register() {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
+        // // Coverting User JSON
+        // $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
         // Converting User JSON into a PHP Object
-        $userObject = json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $userJSON), true);
+        $userObject = json_decode($userJSON, true);
         // Printing the Object
         echo "JSON: ";
         print_r($userObject);
