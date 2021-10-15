@@ -13,3 +13,5 @@ CREATE TABLE StormySystem.User (
 );
 -- TESTING CODE 1: Removing data from the User table
 DELETE FROM StormySystem.User WHERE UserMailAddress = "andygaspard@hotmail.com";
+-- TESTING CODE 2: Selecting all data from the User table
+SELECT * FROM StormySystem.User;
