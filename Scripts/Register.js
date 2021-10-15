@@ -25,6 +25,9 @@ function register() {
     // Sending User JSON to the JSON folder of the Web Server
     fetch("../StormySystem.php", {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: userJSON,
     })
         .then(function (response) {
