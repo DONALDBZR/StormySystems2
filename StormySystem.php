@@ -194,7 +194,7 @@ class User {
         // // Decoding User JSON into a PHP Object
         // $userObject = json_decode($userJSON, true);
         // Printing the Object
-        var_dump(file_get_contents('php://input'));
+        var_dump(json_encode(file_get_contents('php://input')));
         foreach ($userJSON as $string) {
             echo 'Decoding: ' . $string;
             json_decode($string);
