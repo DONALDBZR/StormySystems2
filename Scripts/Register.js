@@ -1,4 +1,4 @@
-document.getElementsByName("form").addEventListener("submit", register);
+document.querySelector("form").addEventListener("submit", register);
 // Register function
 async function register() {
     // Fetching the Username
@@ -26,7 +26,7 @@ async function register() {
     // Appending the JSON
     fD.append("Register", userJSON);
     // Sending the JSON
-    fetch("../JSON", { method: "POST", body: fD });
+    fetch("../StormySystem.php", { method: "POST", body: fD });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
