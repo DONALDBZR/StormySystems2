@@ -50,7 +50,7 @@ ob_start();
             </nav>
         </header>
         <main>
-            <form method="post" onsubmit="register()">
+            <form method="post">
                 <div id="label">Registration Form</div>
                 <div id="formContainer">
                     <div id="username">
