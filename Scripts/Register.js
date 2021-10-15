@@ -23,6 +23,17 @@ async function register() {
     });
     const data = await request.json();
     console.log(data);
+    fetch("../StormySystem.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+    })
+        .then((response) => response.text())
+        .then(
+            (result) =>
+                (document.getElementById("serverRendering").innerHTML = result)
+        );
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
