@@ -194,11 +194,11 @@ class User {
         // Decoding User JSON into a PHP Object
         $userObject = json_decode($userJSON, true);
         // Printing the Object
-        if ($userJSON == null) {
+        if ($userObject == null) {
             echo "ERROR: " . json_last_error_msg();
         } else {
             echo "JSON: ";
-            print_r($userJSON);
+            print_r($userObject);
         }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
