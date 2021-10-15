@@ -1,41 +1,26 @@
 // Register function
 function register() {
-    // Fetching the Username
-    const username = document.getElementById("username").value;
-    // Fetching the Mail Address
-    const mailAddress = document.getElementById("mailAddress").value;
-    // Fetching the First Name
-    const firstName = document.getElementById("firstName").value;
-    // Fetching the Last Name
-    const lastName = document.getElementById("lastName").value;
-    // Fetching the Date Of Birth
-    const dateOfBirth = document.getElementById("dateOfBirth").value;
-    // Creating User JSON String
-    const userJSONString = {
-        username: username,
-        mailAddress: mailAddress,
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: dateOfBirth,
-    };
-    // Instantiating Form Data
-    const userJSON = new FormData();
-    // Creating User JSON
-    userJSON.append("json", JSON.stringify(userJSONString));
-    // Sending User JSON to the JSON folder of the Web Server
-    fetch("../StormySystem.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: userJSON,
-    })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (userJSON) {
-            alert(JSON.stringify(userJSON));
+    document.querySelector("form").addEventListener("submit", async (event) => {
+        // Preventing Default data to be inserted
+        event.preventDefault();
+        // Instantiating Form Data
+        const input = new FormData(event.target);
+        // Sending the Object as the body without the header rather than sending as JSON
+        const userObject = [...input.keys()].reduce((response, key) => {
+            const values = input.getAll(key);
+            response[key] = values.length === 1 ? values[0] : values;
+            return response;
+        }, {});
+        const response = await fetch("../StormySystem.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userObject),
         });
+        const data = await response.json();
+        console.log(data);
+    });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
