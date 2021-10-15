@@ -192,7 +192,7 @@ class User {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
         // Decoding User JSON into a PHP Object
-        $userObject = json_decode($userJSON, true);
+        $userObject = json_decode(utf8_encode($userJSON), true);
         // Printing the Object
         if ($userObject == null) {
             echo "ERROR: " . json_last_error_msg();

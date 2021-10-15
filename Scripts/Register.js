@@ -24,7 +24,7 @@ function register() {
         dateOfBirth +
         " }";
     // Creating User JSON
-    const userJSON = JSON.parse(userJSONString);
+    const userJSON = JSON.stringify(userJSONString);
     // Instantiating AJAX XML HTTP Request
     const XHR = new XMLHttpRequest();
     // Setting the POST Request
