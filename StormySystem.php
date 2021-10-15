@@ -192,13 +192,13 @@ class User {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
         // Decoding User JSON into a PHP Object
-        $userObject = json_decode(utf8_encode($userJSON), true);
+        $userObject = json_decode($userJSON, true);
         // Printing the Object
-        if ($userJSON == null) {
-            echo "ERROR: " . json_last_error_msg();
+        if ($userObject == null) {
+            echo "ERROR: " . json_last_error();
         } else {
             echo "JSON: ";
-            print_r($userJSON);
+            print_r($userObject);
         }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
