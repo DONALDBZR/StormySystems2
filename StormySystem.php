@@ -197,6 +197,7 @@ class User {
         if ($userObject == null) {
             print_r($userObject);
             echo "ERROR: NULL";
+            echo "JSON ERROR: " . json_last_error_msg();
         } else {
             echo "JSON: ";
             print_r($userObject);
