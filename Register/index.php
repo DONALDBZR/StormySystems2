@@ -111,12 +111,7 @@ ob_start();
                     </div>
                 </div>
                 <div id="serverRendering">
-                    <?php
-                    // If-statement to verify whether the registration button is pressed
-                    if (isset($_POST["username"])) {
-                        $User->register();
-                    }
-                    ?>
+                    
                 </div>
             </form>
         </main>

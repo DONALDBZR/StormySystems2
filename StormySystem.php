@@ -189,7 +189,41 @@ class User {
     }
     // Register method
     public function register() {
-        var_dump($_POST);
+        // Receiving the JSON from the POST Request
+        $userJSON[] = file_get_contents('php://input');
+        // // Decoding User JSON into a PHP Object
+        // $userObject = json_decode($userJSON, true);
+        // Printing the Object
+        var_dump(json_encode(file_get_contents('php://input')));
+        foreach ($userJSON as $string) {
+            echo 'Decoding: ' . $string;
+            json_decode($string);
+            switch (json_last_error()) {
+                case JSON_ERROR_NONE:
+                    echo ' - No errors';
+                break;
+                case JSON_ERROR_DEPTH:
+                    echo ' - Maximum stack depth exceeded';
+                break;
+                case JSON_ERROR_STATE_MISMATCH:
+                    echo ' - Underflow or the modes mismatch';
+                break;
+                case JSON_ERROR_CTRL_CHAR:
+                    echo ' - Unexpected control character found';
+                break;
+                case JSON_ERROR_SYNTAX:
+                    echo ' - Syntax error, malformed JSON';
+                break;
+                case JSON_ERROR_UTF8:
+                    echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+                default:
+                    echo ' - Unknown error';
+                break;
+            }
+        
+            echo PHP_EOL;
+        }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // // Binding the value
