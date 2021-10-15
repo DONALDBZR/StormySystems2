@@ -15,7 +15,7 @@ async function register() {
         response[key] = values.length === 1 ? values[0] : values;
         return response;
     }, {});
-    // Requesting the server to GET the JSON
+    // Requesting the client to POST the JSON
     const request = await fetch("../StormySystem.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

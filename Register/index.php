@@ -110,9 +110,7 @@ ob_start();
                         <button>Register</button>
                     </div>
                 </div>
-                <div id="serverRendering">
-                    
-                </div>
+                <div id="serverRendering"></div>
             </form>
         </main>
         <footer>
