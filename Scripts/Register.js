@@ -2,7 +2,7 @@
 const register = async (event) => {
     event.preventDefault();
     // Instantiating Form Data
-    const input = new FormData(e.target);
+    const input = new FormData(event.target);
     const response = await fetch("../StormySystem.php", {
         method: "POST",
         body: input,
