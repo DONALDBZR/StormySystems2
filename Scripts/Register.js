@@ -1,11 +1,19 @@
 // Register asynchronuous function
 const register = async (event) => {
     event.preventDefault();
-    // Instantiating Form Data
     const input = new FormData(event.target);
+    // Sending the formData object as the body
+    const inputObject = [...input.keys()].reduce((response, key) => {
+        const values = input.getAll(key);
+        response[key] = values.length === 1 ? values[0] : values;
+        return response;
+    }, {});
     const response = await fetch("../StormySystem.php", {
         method: "POST",
-        body: input,
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputObject),
     });
     const data = await response.json();
     console.log(data);
