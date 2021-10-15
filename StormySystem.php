@@ -190,18 +190,16 @@ class User {
     // Register method
     public function register() {
         // Receiving the JSON from the POST Request
-        $userJSON = file_get_contents('php://input');
-        // Removing unwanted data from JSON
-        $newUserJSON = str_replace("®ister=Register", "", $userJSON);
-        // Decoding User JSON into a PHP Object
-        $userObject = json_decode($newUserJSON, true);
+        $userJSON = str_replace("®ister=Register", "", file_get_contents('php://input'));
+        // // Decoding User JSON into a PHP Object
+        // $userObject = json_decode($userJSON, true);
         // Printing the Object
-        if ($userObject == null) {
-            print_r($newUserJSON);
-            echo "ERROR: " . json_last_error_msg();
+        if ($userJSON == null) {
+            print_r($userJSON);
+            echo "ERROR: NULL";
         } else {
             echo "JSON: ";
-            print_r($userObject);
+            print_r($userJSON);
         }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
