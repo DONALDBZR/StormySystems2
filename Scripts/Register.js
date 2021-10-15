@@ -1,17 +1,16 @@
-// Register function
-function register() {
-    document.querySelector("form").addEventListener("button", async (event) => {
-        event.preventDefault();
-        // Instantiating Form Data
-        const input = new FormData(event.target);
-        const response = await fetch("../StormySystem.php", {
-            method: "POST",
-            body: input,
-        });
-        const data = await response.json();
-        console.log(data);
+// Register asynchronuous function
+const register = async (event) => {
+    event.preventDefault();
+    // Instantiating Form Data
+    const input = new FormData(e.target);
+    const response = await fetch("../StormySystem.php", {
+        method: "POST",
+        body: input,
     });
-}
+    const data = await response.json();
+    console.log(data);
+};
+document.querySelector("form").addEventListener("submit", register);
 // // Importing StormySystems
 // importScripts("./StormySystems");
 // // Instantiating User
