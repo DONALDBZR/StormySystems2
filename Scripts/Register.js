@@ -28,7 +28,7 @@ function register() {
     // Instantiating AJAX XML HTTP Request
     const XHR = new XMLHttpRequest();
     // Setting the POST Request
-    XHR.open("POST", "http://stormysystem.ddns.net/StormySystems2/JSON", true);
+    XHR.open("POST", "../StormySystem.php", true);
     // Setting the Header
     XHR.setRequestHeader("Content-type", "application/json");
     // Sending the JSON
