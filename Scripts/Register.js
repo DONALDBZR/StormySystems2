@@ -11,18 +11,13 @@ function register() {
     // Fetching the Date Of Birth
     const dateOfBirth = document.getElementById("dateOfBirth").value;
     // Creating User JSON String
-    const userJSONString =
-        '{ "username": ' +
-        username +
-        ' , "mailAddress": ' +
-        mailAddress +
-        ' , "firstName":' +
-        firstName +
-        ' , "lastName": ' +
-        lastName +
-        ' , "dateOfBirth": ' +
-        dateOfBirth +
-        " }";
+    const userJSONString = {
+        username: username,
+        mailAddress: mailAddress,
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+    };
     // Creating User JSON
     const userJSON = JSON.stringify(userJSONString);
     // Instantiating AJAX XML HTTP Request
