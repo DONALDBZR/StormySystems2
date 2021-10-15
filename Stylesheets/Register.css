@@ -118,7 +118,7 @@ main form #formContainer #mailAddress #guidelines {
 main form #formContainer #registrationButton {
     text-align: center;
 }
-main form #formContainer #registrationButton button {
+main form #formContainer #registrationButton input[type="submit"] {
     font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
@@ -127,7 +127,7 @@ main form #formContainer #registrationButton button {
     padding: calc(var(--vertical) * 0.025) calc(var(--horizontal) * 0.05);
     border: none;
 }
-main form #formContainer #registrationButton button:hover {
+main form #formContainer #registrationButton input[type="submit"]:hover {
     background-color: var(--color2);
     color: var(--color1);
     cursor: pointer;

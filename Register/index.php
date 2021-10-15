@@ -107,13 +107,13 @@ ob_start();
                         </div>
                     </div>
                     <div id="registrationButton">
-                        <button type="submit" name="record" onclick="register()">Register</button>
+                        <input type="submit" value="Register" onclick="register()" />
                     </div>
                 </div>
                 <div id="serverRendering">
                     <?php
                     // If-statement to verify whether the registration button is pressed
-                    if (isset($_POST["record"])) {
+                    if (isset($_POST)) {
                         $User->register();
                     }
                     ?>
