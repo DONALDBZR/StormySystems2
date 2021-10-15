@@ -1,24 +1,39 @@
-// Register asynchronuous function
-const register = async (event) => {
-    event.preventDefault();
-    const input = new FormData(event.target);
-    // Sending the formData object as the body
-    const inputObject = [...input.keys()].reduce((response, key) => {
-        const values = input.getAll(key);
-        response[key] = values.length === 1 ? values[0] : values;
-        return response;
-    }, {});
-    const response = await fetch("../StormySystem.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputObject),
-    });
-    const data = await response.json();
-    console.log(data);
-};
-document.querySelector("form").addEventListener("submit", register);
+// Register function
+function register() {
+    // Fetching the Username
+    const username = document.getElementById("username").value;
+    // Fetching the Mail Address
+    const mailAddress = document.getElementById("mailAddress").value;
+    // Fetching the First Name
+    const firstName = document.getElementById("firstName").value;
+    // Fetching the Last Name
+    const lastName = document.getElementById("lastName").value;
+    // Fetching the Date Of Birth
+    const dateOfBirth = document.getElementById("dateOfBirth").value;
+    // Creating User JSON String
+    const userJSONString =
+        '{ "username": ' +
+        username +
+        ' , "mailAddress": ' +
+        mailAddress +
+        ' , "firstName":' +
+        firstName +
+        ' , "lastName": ' +
+        lastName +
+        ' , "dateOfBirth": ' +
+        dateOfBirth +
+        " }";
+    // Creating User JSON
+    const userJSON = JSON.parse(userJSONString);
+    // Instantiating AJAX XML HTTP Request
+    const XHR = new XMLHttpRequest();
+    // Setting the POST Request
+    XHR.open("POST", "../StormySystem.php", true);
+    // Setting the Header
+    XHR.setRequestHeader("Content-type", "application/json");
+    // Sending the JSON
+    XHR.send(userJSON);
+}
 // // Importing StormySystems
 // importScripts("./StormySystems");
 // // Instantiating User
