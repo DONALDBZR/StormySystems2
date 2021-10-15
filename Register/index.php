@@ -107,7 +107,7 @@ ob_start();
                         </div>
                     </div>
                     <div id="registrationButton">
-                        <input type="submit" value="Register" name="record" onclick="register()" />
+                        <button type="submit" name="record" onclick="register()">Register</button>
                     </div>
                 </div>
                 <div id="serverRendering">
