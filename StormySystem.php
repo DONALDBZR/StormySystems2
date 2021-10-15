@@ -193,8 +193,36 @@ class User {
         $userJSON = file_get_contents('php://input');
         // Converting User JSON to UTF-8 encoding
         $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
-        // Decoding User JSON into a PHP Object
-        $userObject = json_decode($convertedUserJSON, true);
+        // // Decoding User JSON into a PHP Object
+        // $userObject = json_decode($convertedUserJSON, true);
+        // For-each loop to check for any error in the JSON
+        foreach ($userJSON as $string) {
+            echo 'Decoding: ' . $string;
+            json_decode($string);
+            // Switch-case to define the errors!
+            switch (json_last_error()) {
+                case JSON_ERROR_NONE:
+                    echo ' - No errors';
+                break;
+                case JSON_ERROR_DEPTH:
+                    echo ' - Maximum stack depth exceeded';
+                break;
+                case JSON_ERROR_STATE_MISMATCH:
+                    echo ' - Underflow or the modes mismatch';
+                break;
+                case JSON_ERROR_CTRL_CHAR:
+                    echo ' - Unexpected control character found';
+                break;
+                case JSON_ERROR_SYNTAX:
+                    echo ' - Syntax error, malformed JSON';
+                break;
+                case JSON_ERROR_UTF8:
+                    echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+                default:
+                    echo ' - Unknown error';
+                break;
+            }
         // Printing the Object
         if ($userObject == null) {
             echo "ERROR: " . json_last_error_msg();
