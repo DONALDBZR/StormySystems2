@@ -196,6 +196,7 @@ class User {
         // Decoding User JSON into a PHP Object
         $userObject = json_decode($convertedUserJSON, true);
         // Printing the Object
+        echo "JSON: " ;
         print_r($userObject);
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
