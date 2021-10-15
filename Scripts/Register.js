@@ -1,6 +1,6 @@
 document.getElementsByName("form").addEventListener("submit", register);
 // Register function
-function register() {
+async function register() {
     // Fetching the Username
     const username = document.getElementById("username").value;
     // Fetching the Mail Address
