@@ -12,28 +12,21 @@ function register() {
     // Fetching the Date Of Birth
     const dateOfBirth = document.getElementById("dateOfBirth").value;
     // Creating User JSON String
-    const userJSONString =
-        '{ "username": ' +
-        username +
-        ' , "mailAddress": ' +
-        mailAddress +
-        ' , "firstName":' +
-        firstName +
-        ' , "lastName": ' +
-        lastName +
-        ' , "dateOfBirth": ' +
-        dateOfBirth +
-        " }";
+    const userJSONString = {
+        username: username,
+        mailAddress: mailAddress,
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+    };
     // Creating User JSON
-    const userJSON = JSON.parse(userJSONString);
-    // Instantiating AJAX XML HTTP Request
-    const XHR = new XMLHttpRequest();
-    // Setting the POST Request
-    XHR.open("POST", "../StormySystem.php", true);
-    // Setting the Header
-    XHR.setRequestHeader("Content-type", "application/json");
+    const userJSON = JSON.stringify(userJSONString);
+    // Instantiating Form Data
+    const fD = new FormData();
+    // Appending the JSON
+    fD.append("Register", userJSON);
     // Sending the JSON
-    XHR.send(userJSON);
+    fetch("../JSON", { method: "POST", body: fD });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
