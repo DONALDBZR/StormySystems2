@@ -23,7 +23,7 @@ function register() {
     // Creating User JSON
     userJSON.append("json", JSON.stringify(userJSONString));
     // Sending User JSON to the JSON folder of the Web Server
-    fetch("../JSON/", {
+    fetch("../StormySystem.php", {
         method: "POST",
         body: userJSON,
     })
