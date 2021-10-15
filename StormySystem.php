@@ -192,49 +192,17 @@ class User {
         // Receiving the JSON from the POST Request
         $userJSON = file_get_contents('php://input');
         // Removing unwanted data from JSON
-        $newUserJSON = substr($userJSON, strpos($userJSON , "®ister=Register"));
-        $JSON[] = $newUserJSON;
-        // // Converting User JSON to UTF-8 encoding
-        // $convertedUserJSON = mb_convert_encoding($userJSON, "UTF-8");
-        // // Decoding User JSON into a PHP Object
-        // $userObject = json_decode($userJSON, true);
-        // For-each loop to check for any error in the JSON
-        foreach ($JSON as $string) {
-            echo 'Decoding: ' . $string;
-            json_decode($string);
-            // Switch-case to show the error in the JSON
-            switch (json_last_error()) {
-                case JSON_ERROR_NONE:
-                    echo ' - No errors';
-                break;
-                case JSON_ERROR_DEPTH:
-                    echo ' - Maximum stack depth exceeded';
-                break;
-                case JSON_ERROR_STATE_MISMATCH:
-                    echo ' - Underflow or the modes mismatch';
-                break;
-                case JSON_ERROR_CTRL_CHAR:
-                    echo ' - Unexpected control character found';
-                break;
-                case JSON_ERROR_SYNTAX:
-                    echo ' - Syntax error, malformed JSON';
-                break;
-                case JSON_ERROR_UTF8:
-                    echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-                break;
-                default:
-                    echo ' - Unknown error';
-                break;
-            }
-            echo PHP_EOL;
+        $newUserJSON = str_replace("®ister=Register", "", $userJSON);
+        // Decoding User JSON into a PHP Object
+        $userObject = json_decode($newUserJSON, true);
+        // Printing the Object
+        if ($userObject == null) {
+            print_r($newUserJSON);
+            echo "ERROR: " . json_last_error_msg();
+        } else {
+            echo "JSON: ";
+            print_r($userObject);
         }
-        // // Printing the Object
-        // if ($userObject == null) {
-        //     echo "ERROR: " . json_last_error_msg();
-        // } else {
-        //     echo "JSON: ";
-        //     print_r($userObject);
-        // }
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // // Binding the value
