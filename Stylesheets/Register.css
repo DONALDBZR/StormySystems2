@@ -139,6 +139,7 @@ main form #serverRendering {
     text-align: center;
     margin-top: calc(var(--vertical) * 0.025);
     padding-bottom: calc(var(--vertical) * 0.025);
+    width: var(--horizontal);
 }
 main form #serverRendering #userRegisterUsernameExists,
 main form #serverRendering #userRegisterTooYoung {
