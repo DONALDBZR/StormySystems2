@@ -16,28 +16,10 @@ async function register() {
         return response;
     }, {});
     // Requesting the client to POST the JSON
-    const request = fetch("../StormySystem.php", {
+    fetch("../StormySystem.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userObject),
-    });
-    const data = request.json();
-    console.log(data);
-    // Sending the JSON to the required function in StormySystem.php
-    jQuery.ajax({
-        type: "POST",
-        url: "../StormySystem.php",
-        datatype: "json",
-        data: {
-            functionname: "register",
-        },
-        success: function (object, status) {
-            if (!"error" in object) {
-                response = object.result;
-            } else {
-                console.log(object.error);
-            }
-        },
     });
 }
 // // Importing StormySystems
