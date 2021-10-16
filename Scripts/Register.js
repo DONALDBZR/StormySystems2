@@ -21,7 +21,7 @@ async function register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userObject),
     });
-    const data = await request.json();
+    const data = request.json();
     console.log(data);
 }
 // // Importing StormySystems
