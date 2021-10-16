@@ -54,8 +54,8 @@ class Main extends React.Component {
     }
     // Submit handler method
     handleSubmit(event) {
-        // Preventing default submission
-        event.preventDefault();
+        // // Preventing default submission
+        // event.preventDefault();
         // Generating a POST request
         fetch("../StormySystem.php", {
             method: "POST",
@@ -70,15 +70,6 @@ class Main extends React.Component {
                 "Content-Type": "application/json",
             },
         }).then((response) => response.json());
-        // Generating a POST request to call User::register()
-        fetch("./index.php", {
-            method: "POST",
-            body: JSON.stringify({ register: "register" }),
-            headers: {
-                "Content-Type":
-                    "application/x-www-form-urlencoded; charset=UTF-8",
-            },
-        }).then((response) => response.text());
     }
     // Render method
     render() {
