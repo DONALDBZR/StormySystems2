@@ -32,27 +32,31 @@ class Header extends React.Component {
 }
 // Main class
 class Main extends React.Component {
-    // Register Asynchronous method
-    async register() {
-        // Adding event listener
-        document.querySelector("form").addEventListener("submit", (event) => {
-            // Preventing default submission
-            event.preventDefault();
-            // Instantiating Form Data
-            const fD = new FormData(event.target);
-            // Calling AJAX to call User::register() from StormySystem.php
-            $.ajax({
-                url: "./index.php",
-                type: "POST",
-                data: JSON.stringify(fD),
-            });
-        });
+    // Register method
+    register(props) {
+        const [user, setUser] = useState(props.user);
+        submit();
+    }
+    // Submit function
+    submit(event) {
+        // Preventing default submission
+        event.preventDefault();
+        // Generating a POST request
+        fetch("../JSON/", {
+            method: "POST",
+            body: JSON.stringify({ user }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((json) => setUser(json.user));
     }
     // Render method
     render() {
         return (
             <main>
-                <form method="post">
+                <form onSubmit={submit}>
                     <div id="label">Registration Form</div>
                     <div id="formContainer">
                         <div id="username">
@@ -63,6 +67,13 @@ class Main extends React.Component {
                                     name="username"
                                     id="username"
                                     placeholder="Username"
+                                    value={user.username}
+                                    onChange={(event) =>
+                                        setUser({
+                                            ...user,
+                                            username: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                             </div>
@@ -81,6 +92,13 @@ class Main extends React.Component {
                                     name="mailAddress"
                                     id="mailAddress"
                                     placeholder="Mail Address"
+                                    value={user.mailAddress}
+                                    onChange={(event) =>
+                                        setUser({
+                                            ...user,
+                                            mailAddress: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                             </div>
@@ -97,6 +115,13 @@ class Main extends React.Component {
                                     name="firstName"
                                     id="firstName"
                                     placeholder="First Name"
+                                    value={user.firstName}
+                                    onChange={(event) =>
+                                        setUser({
+                                            ...user,
+                                            firstName: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                             </div>
@@ -112,6 +137,13 @@ class Main extends React.Component {
                                     name="lastName"
                                     id="lastName"
                                     placeholder="Last Name"
+                                    value={user.lastName}
+                                    onChange={(event) =>
+                                        setUser({
+                                            ...user,
+                                            lastName: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                             </div>
@@ -126,6 +158,13 @@ class Main extends React.Component {
                                     type="date"
                                     name="dateOfBirth"
                                     id="dateOfBirth"
+                                    value={user.dateOfBirth}
+                                    onChange={(event) =>
+                                        setUser({
+                                            ...user,
+                                            dateOfBirth: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                             </div>

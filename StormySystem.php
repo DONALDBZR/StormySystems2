@@ -252,18 +252,18 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Printing Message
-                json_encode($this->Renderer->userRegisterSuccess());
+                copy(json_encode($this->Renderer->userRegisterSuccess()), "../JSON/");
                 // Redirecting towards the login page.
                 header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
                 // Printing the message
-                json_encode($this->Renderer->userRegisterTooYoung());
+                copy(json_encode($this->Renderer->userRegisterTooYoung()), "../JSON/");
                 // Redirecting towards the homepage.
                 header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
             }
         } else {
             // Printing the message
-            json_encode($this->Renderer->userRegisterUsernameExists());
+            copy(json_encode($this->Renderer->userRegisterUsernameExists()), "../JSON/");
             // Redirecting towards the Login page.
             header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
         }
