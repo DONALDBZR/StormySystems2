@@ -45,13 +45,11 @@ class Main extends React.Component {
     }
     // Change handler method
     handleChange(event) {
-        // Changing the state of the props
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
         this.setState({
-            username: event.target.value,
-            mailAddress: event.target.value,
-            firstName: event.target.value,
-            lastName: event.target.value,
-            dateOfBirth: event.target.value,
+            [name]: value,
         });
     }
     // Submit handler method
@@ -59,7 +57,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("../JSON/", {
+        fetch("../JSON", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
