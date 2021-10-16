@@ -141,10 +141,17 @@ class Main extends React.Component {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering"></div>
+                    <ServerRendering />
                 </form>
             </main>
         );
+    }
+}
+// Server Rendering class
+class ServerRendering extends React.Component {
+    // Render class
+    render() {
+        return <div id="serverRendering"></div>;
     }
 }
 // Footer class
