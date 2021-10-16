@@ -113,7 +113,7 @@ ob_start();
                 <div id="serverRendering">
                     <?php
                     // If-statement to verify whether the request is sent correctly
-                    if (isset($_POST['register'])) {
+                    if (isset($_POST['username'])) {
                         // Calling User::register()
                         $User->register();
                     }
