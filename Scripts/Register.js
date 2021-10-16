@@ -4,29 +4,29 @@ const form = document.querySelector("form");
 form.addEventListener("submit", register);
 // Register function
 async function register() {
-    // Accessing the data from the form
-    const data = new URLSearchParams();
-    // Retrieving data from the form
-    data.append("username", document.getElementById("username").value);
-    data.append("mailAddress", document.getElementById("mailAddress").value);
-    data.append("firstName", document.getElementById("firstName").value);
-    data.append("lastName", document.getElementById("lastName").value);
-    data.append("dateOfBirth", document.getElementById("dateOfBirth").value);
-    // Calling Fetch function
-    fetch("./index.php", {
-        method: "POST",
-        body: data,
-    })
-        .then(function (response) {
-            return response.text();
-        })
-        .then(function (text) {
-            console.log(text);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    return false;
+    // // Accessing the data from the form
+    // const data = new URLSearchParams();
+    // // Retrieving data from the form
+    // data.append("username", document.getElementById("username").value);
+    // data.append("mailAddress", document.getElementById("mailAddress").value);
+    // data.append("firstName", document.getElementById("firstName").value);
+    // data.append("lastName", document.getElementById("lastName").value);
+    // data.append("dateOfBirth", document.getElementById("dateOfBirth").value);
+    // // Calling Fetch function
+    // fetch("./index.php", {
+    //     method: "POST",
+    //     body: data,
+    // })
+    //     .then(function (response) {
+    //         return response.text();
+    //     })
+    //     .then(function (text) {
+    //         console.log(text);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+    // return false;
     // // Preventing Default submission
     // form.preventDefault();
     // Instantiating Form Data
@@ -39,21 +39,22 @@ async function register() {
     //     },
     //     body: JSON.stringify(userObject),
     // });
-    // // Calling AJAX to call $User::register() from StormySystem.php
-    // $.ajax({
-    //     url: "./index.php",
-    //     type: "POST",
-    //     data: {
-    //         username: document.querySelector("input#username"),
-    //         mailAddress: document.querySelector("input#mailAddress"),
-    //         firstName: document.querySelector("input#firstName"),
-    //         lastName: document.querySelector("input#lastName"),
-    //         dateOfBirth: document.querySelector("input#dateOfBirth"),
-    //     },
-    //     success: function (response) {
-    //         console.log(response);
-    //     },
-    // });
+    // Calling AJAX to call $User::register() from StormySystem.php
+    $.ajax({
+        url: "./index.php",
+        type: "POST",
+        data: {
+            username: document.getElementById("username").value,
+            mailAddress: document.getElementById("mailAddress").value,
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            dateOfBirth: document.getElementById("dateOfBirth").value,
+            register: "register",
+        },
+        success: function (response) {
+            console.log(response);
+        },
+    });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
