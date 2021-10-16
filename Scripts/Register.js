@@ -16,6 +16,18 @@ async function register() {
         },
         body: JSON.stringify(userObject),
     });
+    // Calling User Register funtion
+    userRegister();
+}
+function userRegister() {
+    // Using AJAX
+    $.ajax({
+        url: "../StormySystem.php",
+        type: "POST",
+        success: function (data) {
+            console.log(data);
+        },
+    });
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
