@@ -52,7 +52,7 @@ async function register() {
             register: "register",
         },
         success: function (response) {
-            console.log(response);
+            document.getElementById("serverRendering") = response;
         },
     });
 }
