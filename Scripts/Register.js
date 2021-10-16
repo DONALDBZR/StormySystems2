@@ -41,7 +41,6 @@ class Main extends React.Component {
             firstName: "",
             lastName: "",
             dateOfBirth: "",
-            register: "register",
         };
     }
     // Change handler method
@@ -58,7 +57,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("./index.php", {
+        fetch("../StormySystem.php", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
@@ -66,12 +65,21 @@ class Main extends React.Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
-                register: "register",
             }),
             headers: {
                 "Content-Type": "application/json",
             },
         }).then((response) => response.json());
+        // Generating a POST request to call User::register()
+        $.ajax({
+            type: "POST",
+            url: "./index.php",
+            data: { register: "register" },
+            dataType: "dataType",
+            success: function (response) {
+                console.log(response);
+            },
+        });
     }
     // Render method
     render() {
