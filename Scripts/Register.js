@@ -36,7 +36,7 @@ class Main extends React.Component {
     register(props) {
         const [user, setUser] = useState(props.user);
         // Calling Submit function
-        submit();
+        this.submit();
     }
     // Submit method
     submit(event) {
