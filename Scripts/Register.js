@@ -71,10 +71,10 @@ class Main extends React.Component {
             },
         }).then((response) => response.json());
         // Generating a POST request to call User::register()
-        $.ajax({
+        jQuery.ajax({
             type: "POST",
             url: "./index.php",
-            data: { register: "register" },
+            data: { functionName: "register" },
             dataType: "application/x-www-urlencoded; charset=UTF-8",
             success: function (response) {
                 console.log(response);
