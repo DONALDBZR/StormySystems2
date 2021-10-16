@@ -6,23 +6,15 @@ form.addEventListener("submit", register);
 async function register() {
     // Preventing Default submission
     act.preventDefault();
-    // Creating the JSON
-    const userJSON = {
-        username: document.getElementById("username").value,
-        mailAddress: document.getElementById("mailAddress").value,
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
-        dateOfBirth: document.getElementById("dateOfBirth").value,
-    };
-    // // Instantiating Form Data
-    // const fD = new FormData(act.target);
-    // // Using Form Data as the object
-    // const userObject = [...fD.keys()].reduce((response, key) => {
-    //     // Accessing all the values
-    //     const values = fD.getAll(key);
-    //     response[key] = values.length === 1 ? values[0] : values;
-    //     return response;
-    // }, {});
+    // Instantiating Form Data
+    const fD = new FormData(act.target);
+    // Using Form Data as the object
+    const userJSON = [...fD.keys()].reduce((response, key) => {
+        // Accessing all the values
+        const values = fD.getAll(key);
+        response[key] = values.length === 1 ? values[0] : values;
+        return response;
+    }, {});
     // Calling Fetch function
     const request = await fetch("../StormySystem.php", {
         method: "POST",
@@ -38,8 +30,8 @@ async function register() {
         .catch(function (error) {
             console.log(error);
         });
-    const data = await request.json();
-    console.log(data);
+    // const data = await request.json();
+    // console.log(data);
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
