@@ -20,18 +20,9 @@ async function register() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userJSON),
-    })
-        .then(function () {
-            return request.text();
-        })
-        .then(function (text) {
-            console.log(text);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    // const data = await request.json();
-    // console.log(data);
+    });
+    const data = await request.json();
+    console.log(data);
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
