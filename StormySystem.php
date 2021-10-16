@@ -191,90 +191,84 @@ class User {
     public function register() {
         // Retrieving the JSON from the client
         $userJSON = json_decode(file_get_contents('php://input'));
-        if ($userJSON != null) {
-            echo "JSON: ";
-            var_dump($userJSON);
+        // Preparing the query
+        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
+        // Binding the value
+        $this->API->bind(":UserUsername", $userJSON->username);
+        // Executing the query
+        $this->API->execute();
+        // If-statement to verify whether the username does not exist in the database
+        if (empty($this->API->resultSet())) {
+            // Setting the date of birth of the user as the parameter for User::setDateOfBirth()
+            $this->setDateOfBirth($userJSON->dateOfBirth);
+            // Storing the difference in years.
+            $age = date("Y-m-d") - $this->getDateOfBirth();
+            // If-statement to verify whether the user has the minimum age to use the system.
+            if ($age >= 13) {
+                // Setting the password generated as the parameter for the User::setPassword()
+                $this->setPassword($this->generatePassword());
+                // Storing remaining data from the form
+                $this->setUsername($userJSON->username);
+                $this->setFirstName($userJSON->firstName);
+                $this->setLastName($userJSON->lastName);
+                $this->setType(1);
+                $this->setMailAddress($userJSON->mailAddress);
+                // Preparing the query
+                $this->API->query("INSERT INTO StormySystem.User (UserDateOfBirth, UserUsername, UserFirstName, UserLastName, UserType, UserMailAddress, UserPassword) VALUES (:UserDateOfBirth, :UserUsername, :UserFirstName, :UserLastName, :UserType, :UserMailAddress, :UserPassword)");
+                // Binding the values
+                $this->API->bind(":UserDateOfBirth", $this->getDateOfBirth());
+                $this->API->bind(":UserUsername", $this->getUsername());
+                $this->API->bind(":UserFirstName", $this->getFirstName());
+                $this->API->bind(":UserLastName", $this->getLastName());
+                $this->API->bind(":UserType", $this->getType());
+                $this->API->bind(":UserMailAddress", $this->getMailAddress());
+                $this->API->bind(":UserPassword", $this->getPassword());
+                // Executing the query
+                $this->API->execute();
+                // Calling Is SMTP function from PHPMailer.
+                $this->PHPMailer->IsSMTP();
+                // Assigning "UTF-8" as the value for the charset.
+                $this->PHPMailer->CharSet = "UTF-8";
+                // Assigning the host for gmail's SMTP.
+                $this->PHPMailer->Host = "ssl://smtp.gmail.com";
+                // Setting the debug mode to 0.
+                $this->PHPMailer->SMTPDebug = 0;
+                // Assigning the Port to 465 as GMail uses 465 as it also means that port 465 has been forwarded for its use.
+                $this->PHPMailer->Port = 465;
+                // Securing the SMTP connection by using SSL.
+                $this->PHPMailer->SMTPSecure = 'ssl';
+                // Enabling authorization for SMTP.
+                $this->PHPMailer->SMTPAuth = true;
+                // Ensuring that PHPMailer is called from a .html file.
+                $this->PHPMailer->IsHTML(true);
+                // Sender's mail address.
+                $this->PHPMailer->Username = "stormysystems@gmail.com";
+                // Sender's password
+                $this->PHPMailer->Password = "Aegis4869";
+                // Assigning sender as a parameter in the sender's zone.
+                $this->PHPMailer->setFrom($this->PHPMailer->Username);
+                // Assinging the receiver mail's address which is retrieved from the User class.
+                $this->PHPMailer->addAddress($this->getMailAddress());
+                $this->PHPMailer->Subject = "Stormy System: Registration Complete!";
+                $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
+                // Sending the mail.
+                $this->PHPMailer->send();
+                // // Printing Message
+                // // copy(json_encode($this->Renderer->userRegisterSuccess()), "../JSON/");
+                // // Redirecting towards the login page.
+                // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+            } else {
+                // // Printing the message
+                // copy(json_encode($this->Renderer->userRegisterTooYoung()), "../JSON/");
+                // // Redirecting towards the homepage.
+                // header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
+            }
         } else {
-            echo "ERROR: " . json_last_error_msg();
+            // // Printing the message
+            // copy(json_encode($this->Renderer->userRegisterUsernameExists()), "../JSON/");
+            // // Redirecting towards the Login page.
+            // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
         }
-        // // Preparing the query
-        // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
-        // // Binding the value
-        // $this->API->bind(":UserUsername", $_POST['username']);
-        // // Executing the query
-        // $this->API->execute();
-        // // If-statement to verify whether the username does not exist in the database
-        // if (empty($this->API->resultSet())) {
-        //     // Setting the date of birth of the user as the parameter for User::setDateOfBirth()
-        //     $this->setDateOfBirth($_POST['dateOfBirth']);
-        //     // Storing the difference in years.
-        //     $age = date("Y-m-d") - $this->getDateOfBirth();
-        //     // If-statement to verify whether the user has the minimum age to use the system.
-        //     if ($age >= 13) {
-        //         // Setting the password generated as the parameter for the User::setPassword()
-        //         $this->setPassword($this->generatePassword());
-        //         // Storing remaining data from the form
-        //         $this->setUsername($_POST['username']);
-        //         $this->setFirstName($_POST['firstName']);
-        //         $this->setLastName($_POST['lastName']);
-        //         $this->setType(1);
-        //         $this->setMailAddress($_POST['mailAddress']);
-        //         // Preparing the query
-        //         $this->API->query("INSERT INTO StormySystem.User (UserDateOfBirth, UserUsername, UserFirstName, UserLastName, UserType, UserMailAddress, UserPassword) VALUES (:UserDateOfBirth, :UserUsername, :UserFirstName, :UserLastName, :UserType, :UserMailAddress, :UserPassword)");
-        //         // Binding the values
-        //         $this->API->bind(":UserDateOfBirth", $this->getDateOfBirth());
-        //         $this->API->bind(":UserUsername", $this->getUsername());
-        //         $this->API->bind(":UserFirstName", $this->getFirstName());
-        //         $this->API->bind(":UserLastName", $this->getLastName());
-        //         $this->API->bind(":UserType", $this->getType());
-        //         $this->API->bind(":UserMailAddress", $this->getMailAddress());
-        //         $this->API->bind(":UserPassword", $this->getPassword());
-        //         // Executing the query
-        //         $this->API->execute();
-        //         // Calling Is SMTP function from PHPMailer.
-        //         $this->PHPMailer->IsSMTP();
-        //         // Assigning "UTF-8" as the value for the charset.
-        //         $this->PHPMailer->CharSet = "UTF-8";
-        //         // Assigning the host for gmail's SMTP.
-        //         $this->PHPMailer->Host = "ssl://smtp.gmail.com";
-        //         // Setting the debug mode to 0.
-        //         $this->PHPMailer->SMTPDebug = 0;
-        //         // Assigning the Port to 465 as GMail uses 465 as it also means that port 465 has been forwarded for its use.
-        //         $this->PHPMailer->Port = 465;
-        //         // Securing the SMTP connection by using SSL.
-        //         $this->PHPMailer->SMTPSecure = 'ssl';
-        //         // Enabling authorization for SMTP.
-        //         $this->PHPMailer->SMTPAuth = true;
-        //         // Ensuring that PHPMailer is called from a .html file.
-        //         $this->PHPMailer->IsHTML(true);
-        //         // Sender's mail address.
-        //         $this->PHPMailer->Username = "stormysystems@gmail.com";
-        //         // Sender's password
-        //         $this->PHPMailer->Password = "Aegis4869";
-        //         // Assigning sender as a parameter in the sender's zone.
-        //         $this->PHPMailer->setFrom($this->PHPMailer->Username);
-        //         // Assinging the receiver mail's address which is retrieved from the User class.
-        //         $this->PHPMailer->addAddress($this->getMailAddress());
-        //         $this->PHPMailer->Subject = "Stormy System: Registration Complete!";
-        //         $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
-        //         // Sending the mail.
-        //         $this->PHPMailer->send();
-        //         // Printing Message
-        //         copy(json_encode($this->Renderer->userRegisterSuccess()), "../JSON/");
-        //         // Redirecting towards the login page.
-        //         header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
-        //     } else {
-        //         // Printing the message
-        //         copy(json_encode($this->Renderer->userRegisterTooYoung()), "../JSON/");
-        //         // Redirecting towards the homepage.
-        //         header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
-        //     }
-        // } else {
-        //     // Printing the message
-        //     copy(json_encode($this->Renderer->userRegisterUsernameExists()), "../JSON/");
-        //     // Redirecting towards the Login page.
-        //     header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
-        // }
     }
     // Generate Password method
     public function generatePassword() {
