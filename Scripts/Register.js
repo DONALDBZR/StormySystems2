@@ -73,7 +73,7 @@ class Main extends React.Component {
         // Generating a POST request to call User::register()
         fetch("./index.php", {
             method: "POST",
-            body: { register: "register" },
+            body: JSON.stringify({ register: "register" }),
             headers: {
                 "Content-Type":
                     "application/x-www-form-urlencoded; charset=UTF-8",
