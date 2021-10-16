@@ -1,11 +1,3 @@
-// // Storing the Query Selector
-// const form = document.querySelector("form");
-// // Adding Event Listener to the form.
-// form.addEventListener("submit", register);
-// // Importing StormySystems
-// importScripts("../Scripts/StormySystems.js");
-// // Instantiating User
-// const User = new User();
 // Header class
 class Header extends React.Component {
     // Render method
@@ -40,10 +32,44 @@ class Header extends React.Component {
 }
 // Main class
 class Main extends React.Component {
+    // Register Asynchronous method
+    async register() {
+        // Adding event listener
+        document.querySelector("form").addEventListener("submit", (event) => {
+            // Preventing default submission
+            event.preventDefault();
+            // Instantiating Form Data
+            const fD = new FormData(event.target);
+            // Calling AJAX to call User::register() from StormySystem.php
+            $.ajax({
+                url: "./index.php",
+                type: "POST",
+                data: fD,
+            });
+        });
+        // // Data retrieved from the form.
+        // const data = {
+        //     username: document.getElementById("username").value,
+        //     mailAddress: document.getElementById("mailAddress").value,
+        //     firstName: document.getElementById("firstName").value,
+        //     lastName: document.getElementById("lastName").value,
+        //     dateOfBirth: document.getElementById("dateOfBirth").value,
+        // };
+        // // Calling AJAX to call $User::register() from StormySystem.php
+        // $.ajax({
+        //     url: "./index.php",
+        //     type: "POST",
+        //     header: {
+        //         "Content-Type": "application/x-www-form-urlencoded",
+        //     },
+        //     data: JSON.stringify(data),
+        // });
+    }
+    // Render method
     render() {
         return (
             <main>
-                <form method="post" action="./">
+                <form method="post">
                     <div id="label">Registration Form</div>
                     <div id="formContainer">
                         <div id="username">
@@ -129,12 +155,7 @@ class Main extends React.Component {
                             </div>
                         </div>
                         <div id="registrationButton">
-                            <input
-                                type="submit"
-                                value="Register"
-                                name="register"
-                                onClick={User.register()}
-                            />
+                            <button>Register</button>
                         </div>
                     </div>
                     <div id="serverRendering"></div>
