@@ -8,7 +8,7 @@ async function register() {
     // form.preventDefault();
     // Instantiating Form Data
     const userObject = Object.fromEntries(new FormData(form));
-    // Requesting the client to POST the JSON
+    // Calling Fetch function to request the client to POST the JSON
     fetch("../StormySystem.php", {
         method: "POST",
         headers: {
@@ -16,17 +16,19 @@ async function register() {
         },
         body: JSON.stringify(userObject),
     });
-    // Calling User Register funtion
+    // Calling User Register function
     userRegister();
 }
+// User Register function
 function userRegister() {
-    // Using AJAX
-    $.ajax({
-        url: "../StormySystem.php",
-        type: "POST",
-        success: function (data) {
-            console.log(data);
+    // Calling Fetch function to request the client to POST a call
+    fetch("../StormySystem.php", {
+        method: "POST",
+        body: {
+            action: "register",
         },
+    }).then((data) => {
+        console.log(data);
     });
 }
 // // Importing StormySystems
