@@ -190,15 +190,10 @@ class User {
     // Register method
     public function register() {
         // Receiving the JSON from the POST Request
-        $userJSON = utf8_decode(file_get_contents('php://input'));
-        // Decoding User JSON into a PHP Object
-        $userObject = json_decode($userJSON, true);
-        // If-statement to verify whether the JSON has been corretly decoded
-        if ($userObject == null) {
-            echo "ERROR: " . json_last_error_msg();
-        } else {
-            echo $userObject;
-        }
+        $userObject = file_get_contents('php://input');
+        // Debugging
+        print_r("Sent by JS: " . $userObject . "<br />" . "Sent by POST: ");
+        var_dump($_POST);
         // Printing the Object
         // // Preparing the query
         // $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");

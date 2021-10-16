@@ -24,8 +24,8 @@ $User = new User();
         <script async src="../Scripts/Register.js"></script>
     </head>
     <body id="app">
-        <!-- <script type="text/babel" src="../Scripts/Register.js"></script> -->
-        <header>
+        <script type="text/babel" src="../Scripts/Register.js"></script>
+        <!-- <header>
             <nav>
                 <div>
                     <a href="../">
@@ -110,20 +110,12 @@ $User = new User();
                         <button>Register</button>
                     </div>
                 </div>
-                <div id="serverRendering">
-                    <?php
-                    // If-statement to verify whether the request is sent correctly
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        // Calling User::register()
-                        $User->register();
-                    }
-                    ?>
-                </div>
+                <div id="serverRendering"></div>
             </form>
         </main>
         <footer>
             <h1>Stormy Systems</h1>
-        </footer>
+        </footer> -->
     </body>
 </html>
 <?php

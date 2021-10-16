@@ -76,35 +76,24 @@ class User {
     setMailAddress(mailAddress) {
         this.#mailAddress = mailAddress;
     }
-    // Register method
-    register() {
-        // Fetching the Username
-        this.setUsername(document.getElementById("username").value);
-        // Fetching the Mail Address
-        this.setMailAddress(document.getElementById("mailAddress").value);
-        // Fetching the First Name
-        this.setFirstName(document.getElementById("firstName").value);
-        // Fetching the Last Name
-        this.setLastName(document.getElementById("lastName").value);
-        // Fetching the Date Of Birth
-        this.setDateOfBirth(document.getElementById("dateOfBirth").value);
-        // Instantiating the User Object
-        const userObject = new Object();
-        // Filling User Object with data
-        userObject.username = this.getUsername();
-        userObject.mailAddress = this.getMailAddress();
-        userObject.firstName = this.getFirstName();
-        userObject.lastName = this.getLastName();
-        userObject.dateOfBirth = this.getDateOfBirth();
-        // Serializing User Data
-        const userData = JSON.stringify(userObject);
-        // Instantiating AJAX XML HTTP Request
-        const XHR = new XMLHttpRequest();
-        // Setting the POST Request
-        XHR.open("POST", "../StormySystem.php", true);
-        // Setting the Header
-        XHR.setRequestHeader("Content-type", "application/json");
-        // Sending the JSON
-        XHR.send(userData);
+    // Register Asynchronuous method
+    async register() {
+        // Data retrieved from the form.
+        const data = {
+            username: document.getElementById("username").value,
+            mailAddress: document.getElementById("mailAddress").value,
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            dateOfBirth: document.getElementById("dateOfBirth").value,
+        };
+        // Calling AJAX to call $User::register() from StormySystem.php
+        $.ajax({
+            url: "./index.php",
+            type: "POST",
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            data: JSON.stringify(data),
+        });
     }
 }
