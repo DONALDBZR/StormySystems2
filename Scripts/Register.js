@@ -4,17 +4,19 @@ const form = document.querySelector("form");
 form.addEventListener("submit", register);
 // Register function
 async function register() {
+    // Data retrieved from the form.
+    const data = {
+        username: document.getElementById("username").value,
+        mailAddress: document.getElementById("mailAddress").value,
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        dateOfBirth: document.getElementById("dateOfBirth").value,
+    };
     // Calling AJAX to call $User::register() from StormySystem.php
     $.ajax({
         url: "./index.php",
         type: "POST",
-        data: {
-            username: document.getElementById("username").value,
-            mailAddress: document.getElementById("mailAddress").value,
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            dateOfBirth: document.getElementById("dateOfBirth").value,
-        },
+        data: JSON.stringify(data),
     });
 }
 // // Importing StormySystems
