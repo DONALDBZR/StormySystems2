@@ -57,7 +57,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("./index.php", {
+        fetch("../StormySystem.php", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
@@ -71,13 +71,11 @@ class Main extends React.Component {
             },
         }).then((response) => response.json());
         // Generating a POST request to call User::register()
-        jQuery.ajax({
-            type: "POST",
-            url: "./index.php",
-            data: { functionName: "register" },
-            dataType: "application/x-www-urlencoded; charset=UTF-8",
-            success: function (response) {
-                console.log(response);
+        fetch("./index.php", {
+            method: "POST",
+            body: { register: "register" },
+            headers: {
+                "Content-Type": "multipart/form-data;",
             },
         });
     }
