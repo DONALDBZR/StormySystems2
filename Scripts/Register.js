@@ -5,35 +5,47 @@ form.addEventListener("submit", register);
 // Register function
 async function register() {
     // Preventing Default submission
-    event.preventDefault();
-    // Instantiating Form Data
-    const fD = new FormData(event.target);
-    // Using Form Data as the object
-    const userObject = [...fD.keys()].reduce((response, key) => {
-        // Accessing all the values
-        const values = fD.getAll(key);
-        response[key] = values.length === 1 ? values[0] : values;
-        return response;
-    }, {});
-    // Requesting the client to POST the JSON
-    const request = await fetch("../StormySystem.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userObject),
-    });
-    const data = await request.json();
-    console.log(data);
+    act.preventDefault();
+    // Creating the JSON
+    const userJSON = {
+        username: document.getElementById("username").value,
+        mailAddress: document.getElementById("mailAddress").value,
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        dateOfBirth: document.getElementById("dateOfBirth").value,
+    };
+    // Calling Fetch function
     fetch("../StormySystem.php", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userJSON),
     })
-        .then((response) => response.text())
-        .then(
-            (result) =>
-                (document.getElementById("serverRendering").innerHTML = result)
-        );
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (text) {
+            console.log(text);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    // // Instantiating Form Data
+    // const fD = new FormData(act.target);
+    // // Using Form Data as the object
+    // const userObject = [...fD.keys()].reduce((response, key) => {
+    //     // Accessing all the values
+    //     const values = fD.getAll(key);
+    //     response[key] = values.length === 1 ? values[0] : values;
+    //     return response;
+    // }, {});
+    // // Requesting the client to POST the JSON
+    // const request = await fetch("../StormySystem.php", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(userObject),
+    // });
+    // const data = await request.json();
+    // console.log(data);
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
