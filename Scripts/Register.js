@@ -21,8 +21,8 @@ async function register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userJSON),
     })
-        .then(function (response) {
-            return response.text();
+        .then(function () {
+            return request.text();
         })
         .then(function (text) {
             console.log(text);
