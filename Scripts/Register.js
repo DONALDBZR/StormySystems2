@@ -69,20 +69,7 @@ class Main extends React.Component {
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((response) => response.json())
-            .then(
-                localStorage.setItem(
-                    "myStorage",
-                    JSON.stringify({
-                        username: this.state.username,
-                        mailAddress: this.state.mailAddress,
-                        firstName: this.state.firstName,
-                        lastName: this.state.lastName,
-                        dateOfBirth: this.state.dateOfBirth,
-                    })
-                )
-            );
+        }).then((response) => response.json());
     }
     // Render method
     render() {
