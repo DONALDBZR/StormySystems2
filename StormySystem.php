@@ -192,7 +192,8 @@ class User {
         // Retrieving the JSON from the client
         $userJSON = json_decode(file_get_contents('php://input'));
         if ($userJSON != null) {
-            echo "JSON: " . $userJSON;
+            echo "JSON: ";
+            var_dump($userJSON);
         } else {
             echo "ERROR: " . json_last_error_msg();
         }
