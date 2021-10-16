@@ -44,7 +44,7 @@ class Main extends React.Component {
             $.ajax({
                 url: "./index.php",
                 type: "POST",
-                data: fD,
+                data: JSON.stringify(fD),
             });
         });
     }
