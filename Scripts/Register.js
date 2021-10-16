@@ -18,7 +18,9 @@ async function register() {
     // Requesting the client to POST the JSON
     fetch("../StormySystem.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify(userObject),
     });
 }
