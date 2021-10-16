@@ -8,8 +8,8 @@ if (isset($_POST['register'])) {
     // Calling User::register()
     $User->register();
 }
-// Starting Output Buffer
-ob_start();
+// // Starting Output Buffer
+// ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,10 +124,10 @@ ob_start();
     </body>
 </html>
 <?php
-// Storing the contents of the output buffer into a variable
-$html = ob_get_contents();
-// Deleting the contents of the output buffer.
-ob_end_clean();
-// Printing the html page
-echo $html;
+// // Storing the contents of the output buffer into a variable
+// $html = ob_get_contents();
+// // Deleting the contents of the output buffer.
+// ob_end_clean();
+// // Printing the html page
+// echo $html;
 ?>
