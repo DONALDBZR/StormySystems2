@@ -69,18 +69,7 @@ class Main extends React.Component {
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((response) => response.json())
-            .then(
-                $.ajax({
-                    url: "./index.php",
-                    type: "POST",
-                    data: { register: "register" },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                })
-            );
+        }).then((response) => response.json());
     }
     // Render method
     render() {
