@@ -75,9 +75,16 @@ class Main extends React.Component {
             method: "POST",
             body: { register: "register" },
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type":
+                    "application/x-www-form-urlencoded; charset=UTF-8",
             },
-        });
+        })
+            .then((response) => response.text())
+            .then(
+                (resource) =>
+                    (document.getElementById("serverRendering").innerHTML =
+                        resource)
+            );
     }
     // Render method
     render() {
