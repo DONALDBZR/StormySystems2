@@ -254,7 +254,7 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Encoding the JSON to be sent to the client
-                $url = $this->domain . "/StormySystems2/Register";
+                $url = $this->domain . "/StormySystems2/Register/index.php";
                 // Generating the JSON to be sent as a POST Response
                 $data = array(
                     "message" => $this->Renderer->userRegisterSuccess()
@@ -275,7 +275,7 @@ class User {
                 header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
                 // Encoding the JSON to be sent to the client
-                $url = $this->domain . "/StormySystems2/Register";
+                $url = $this->domain . "/StormySystems2/Register/index.php";
                 // Generating the JSON to be sent as a POST Response
                 $data = array(
                     "message" => $this->Renderer->userRegisterTooYoung()
@@ -297,7 +297,7 @@ class User {
             }
         } else {
             // Encoding the JSON to be sent to the client
-            $url = $this->domain . "/StormySystems2/Register";
+            $url = $this->domain . "/StormySystems2/Register/index.php";
             // Generating the JSON to be sent as a POST Response
             $data = array(
                 "message" => $this->Renderer->userRegisterUsernameExists()

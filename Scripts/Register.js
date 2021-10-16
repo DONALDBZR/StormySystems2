@@ -182,6 +182,17 @@ class Main extends React.Component {
 }
 // Server Rendering class
 class ServerRendering extends React.Component {
+    // Register method
+    register() {
+        fetch("./index.php")
+            .then((response) => response.json())
+            .then(
+                (output) =>
+                    (document.getElementById("serverRendering").innerHTML =
+                        output)
+            )
+            .catch((error) => console.log(error));
+    }
     // Render class
     render() {
         return <div id="serverRendering"></div>;
