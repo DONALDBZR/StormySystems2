@@ -49,7 +49,6 @@ async function register() {
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
             dateOfBirth: document.getElementById("dateOfBirth").value,
-            register: "register",
         },
         success: function (response) {
             console.log(response);
