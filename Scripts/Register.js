@@ -41,6 +41,7 @@ class Main extends React.Component {
             firstName: "",
             lastName: "",
             dateOfBirth: "",
+            register: "register",
         };
     }
     // Change handler method
@@ -65,6 +66,7 @@ class Main extends React.Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 dateOfBirth: this.state.dateOfBirth,
+                register: "register",
             }),
             headers: {
                 "Content-Type": "application/json",
