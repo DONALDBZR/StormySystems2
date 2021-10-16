@@ -5,21 +5,21 @@ form.addEventListener("submit", register);
 // Register function
 async function register() {
     // Preventing Default submission
-    act.preventDefault();
+    event.preventDefault();
     // Instantiating Form Data
-    const fD = new FormData(act.target);
+    const fD = new FormData(event.target);
     // Using Form Data as the object
-    const userJSON = [...fD.keys()].reduce((response, key) => {
+    const userObject = [...fD.keys()].reduce((response, key) => {
         // Accessing all the values
         const values = fD.getAll(key);
         response[key] = values.length === 1 ? values[0] : values;
         return response;
     }, {});
-    // Calling Fetch function
+    // Requesting the client to POST the JSON
     const request = await fetch("../StormySystem.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userJSON),
+        body: JSON.stringify(userObject),
     });
     const data = await request.json();
     console.log(data);
