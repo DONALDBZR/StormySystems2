@@ -3,11 +3,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
 // Instantiation User
 $User = new User();
-// If-statement to verify whether the request is sent correctly
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Calling User::register()
-    $User->register();
-}
 // // Starting Output Buffer
 // ob_start();
 ?>
@@ -115,7 +110,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button>Register</button>
                     </div>
                 </div>
-                <div id="serverRendering"></div>
+                <div id="serverRendering">
+                    <?php
+                    // If-statement to verify whether the request is sent correctly
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        // Calling User::register()
+                        $User->register();
+                    }
+                    ?>
+                </div>
             </form>
         </main>
         <footer>
