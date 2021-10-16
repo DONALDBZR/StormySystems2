@@ -78,13 +78,7 @@ class Main extends React.Component {
                 "Content-Type":
                     "application/x-www-form-urlencoded; charset=UTF-8",
             },
-        })
-            .then((response) => response.text())
-            .then(
-                (resource) =>
-                    (document.getElementById("serverRendering").innerHTML =
-                        resource)
-            );
+        }).then((response) => response.text());
     }
     // Render method
     render() {
