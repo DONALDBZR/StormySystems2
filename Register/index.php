@@ -110,7 +110,15 @@ ob_start();
                         <button>Register</button>
                     </div>
                 </div>
-                <div id="serverRendering"></div>
+                <div id="serverRendering">
+                    <?php
+                    // If-statement to verify whether the request is sent correctly
+                    if (isset($_POST['register'])) {
+                        // Calling User::register()
+                        $User->register();
+                    }
+                    ?>
+                </div>
             </form>
         </main>
         <footer>

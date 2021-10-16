@@ -16,19 +16,16 @@ async function register() {
         },
         body: JSON.stringify(userObject),
     });
-    // Calling User Register function
-    userRegister();
-}
-// User Register function
-function userRegister() {
-    // Calling Fetch function to request the client to POST a call
-    fetch("../StormySystem.php", {
-        method: "POST",
-        body: {
-            action: "register",
+    // Calling AJAX to call $User::register() from StormySystem.php
+    $.ajax({
+        url: "./index.php",
+        type: "POST",
+        data: {
+            register: "register",
         },
-    }).then((data) => {
-        console.log(data);
+        success: function (response) {
+            console.log(response);
+        },
     });
 }
 // // Importing StormySystems
