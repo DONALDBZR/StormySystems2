@@ -16,6 +16,9 @@ async function register() {
     $.ajax({
         url: "./index.php",
         type: "POST",
+        header: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
         data: JSON.stringify(data),
     });
 }
