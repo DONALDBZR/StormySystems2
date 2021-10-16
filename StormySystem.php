@@ -191,7 +191,7 @@ class User {
     public function register() {
         // Retrieving the JSON from the client
         $userJSON = json_decode(file_get_contents('php://input'));
-        if ($userJSON == null) {
+        if ($userJSON != null) {
             echo "JSON: " . $userJSON;
         } else {
             echo "ERROR: " . json_last_error_msg();
