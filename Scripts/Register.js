@@ -33,24 +33,21 @@ class Header extends React.Component {
 // Main class
 class Main extends React.Component {
     // Register method
-    register(props) {
+    const register = props => {
         const [user, setUser] = useState(props.user);
-        submit();
-    }
-    // Submit function
-    submit(event) {
-        // Preventing default submission
-        event.preventDefault();
-        // Generating a POST request
-        fetch("../JSON/", {
-            method: "POST",
-            body: JSON.stringify({ user }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => res.json())
-            .then((json) => setUser(json.user));
+        // Submit function
+        const submit = event => {
+            // Preventing default submission
+            event.preventDefault();
+            // Generating POST request
+            fetch("../JSON/", {
+                method: "POST",
+                body: JSON.stringify({ user }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(response => response.json()).then(json => setUser(json.user));
+        }
     }
     // Render method
     render() {
