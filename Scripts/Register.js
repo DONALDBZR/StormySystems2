@@ -75,7 +75,7 @@ class Main extends React.Component {
             type: "POST",
             url: "./index.php",
             data: { register: "register" },
-            dataType: "dataType",
+            dataType: "application/x-www-urlencoded; charset=UTF-8",
             success: function (response) {
                 console.log(response);
             },
