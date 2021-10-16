@@ -57,7 +57,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("../StormySystem.php", {
+        fetch("../JSON/", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
@@ -69,7 +69,20 @@ class Main extends React.Component {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => response.json());
+        })
+            .then((response) => response.json())
+            .then(
+                localStorage.setItem(
+                    "myStorage",
+                    JSON.stringify({
+                        username: this.state.username,
+                        mailAddress: this.state.mailAddress,
+                        firstName: this.state.firstName,
+                        lastName: this.state.lastName,
+                        dateOfBirth: this.state.dateOfBirth,
+                    })
+                )
+            );
     }
     // Render method
     render() {
