@@ -84,7 +84,7 @@ class Main extends React.Component {
     render() {
         return (
             <main>
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form method="POST" onSubmit={this.handleSubmit.bind(this)}>
                     <div id="label">Registration Form</div>
                     <div id="formContainer">
                         <div id="username">
