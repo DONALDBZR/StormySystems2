@@ -32,32 +32,52 @@ class Header extends React.Component {
 }
 // Main class
 class Main extends React.Component {
-    // Register method
-    register(props) {
-        const [user, setUser] = useState(props.user);
-        // Calling Submit function
-        this.submit();
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            mailAddress: "",
+            firstName: "",
+            lastName: "",
+            dateOfBirth: "",
+        };
     }
-    // Submit method
-    submit(event) {
+    // Change handler method
+    handleChange(event) {
+        // Changing the state of the props
+        this.setState({
+            username: event.target.value,
+            mailAddress: event.target.value,
+            firstName: event.target.value,
+            lastName: event.target.value,
+            dateOfBirth: event.target.value,
+        });
+    }
+    // Submit handler method
+    handleSubmit(event) {
         // Preventing default submission
         event.preventDefault();
-        // Generating POST request
+        // Generating a POST request
         fetch("../JSON/", {
             method: "POST",
-            body: JSON.stringify({ user }),
+            body: JSON.stringify({
+                username: this.state.username,
+                mailAddress: this.state.mailAddress,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                dateOfBirth: this.state.dateOfBirth,
+            }),
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((response) => response.json())
-            .then((json) => setUser(json.user));
+        }).then((response) => response.json());
     }
     // Render method
     render() {
         return (
             <main>
-                <form onSubmit={this.submit}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <div id="label">Registration Form</div>
                     <div id="formContainer">
                         <div id="username">
@@ -68,13 +88,8 @@ class Main extends React.Component {
                                     name="username"
                                     id="username"
                                     placeholder="Username"
-                                    value={user.username}
-                                    onChange={(event) =>
-                                        setUser({
-                                            ...user,
-                                            username: event.target.value,
-                                        })
-                                    }
+                                    value={this.state.username}
+                                    onChange={this.handleChange.bind(this)}
                                     required
                                 />
                             </div>
@@ -93,13 +108,8 @@ class Main extends React.Component {
                                     name="mailAddress"
                                     id="mailAddress"
                                     placeholder="Mail Address"
-                                    value={user.mailAddress}
-                                    onChange={(event) =>
-                                        setUser({
-                                            ...user,
-                                            mailAddress: event.target.value,
-                                        })
-                                    }
+                                    value={this.state.mailAddress}
+                                    onChange={this.handleChange.bind(this)}
                                     required
                                 />
                             </div>
@@ -116,13 +126,8 @@ class Main extends React.Component {
                                     name="firstName"
                                     id="firstName"
                                     placeholder="First Name"
-                                    value={user.firstName}
-                                    onChange={(event) =>
-                                        setUser({
-                                            ...user,
-                                            firstName: event.target.value,
-                                        })
-                                    }
+                                    value={this.state.firstName}
+                                    onChange={this.handleChange.bind(this)}
                                     required
                                 />
                             </div>
@@ -138,13 +143,8 @@ class Main extends React.Component {
                                     name="lastName"
                                     id="lastName"
                                     placeholder="Last Name"
-                                    value={user.lastName}
-                                    onChange={(event) =>
-                                        setUser({
-                                            ...user,
-                                            lastName: event.target.value,
-                                        })
-                                    }
+                                    value={this.state.lastName}
+                                    onChange={this.handleChange.bind(this)}
                                     required
                                 />
                             </div>
@@ -159,13 +159,8 @@ class Main extends React.Component {
                                     type="date"
                                     name="dateOfBirth"
                                     id="dateOfBirth"
-                                    value={user.dateOfBirth}
-                                    onChange={(event) =>
-                                        setUser({
-                                            ...user,
-                                            dateOfBirth: event.target.value,
-                                        })
-                                    }
+                                    value={this.state.dateOfBirth}
+                                    onChange={this.handleChange.bind(this)}
                                     required
                                 />
                             </div>
