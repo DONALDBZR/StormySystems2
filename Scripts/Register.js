@@ -14,17 +14,17 @@ async function register() {
         lastName: document.getElementById("lastName").value,
         dateOfBirth: document.getElementById("dateOfBirth").value,
     };
-    // Instantiating Form Data
-    const fD = new FormData(act.target);
-    // Using Form Data as the object
-    const userObject = [...fD.keys()].reduce((response, key) => {
-        // Accessing all the values
-        const values = fD.getAll(key);
-        response[key] = values.length === 1 ? values[0] : values;
-        return response;
-    }, {});
+    // // Instantiating Form Data
+    // const fD = new FormData(act.target);
+    // // Using Form Data as the object
+    // const userObject = [...fD.keys()].reduce((response, key) => {
+    //     // Accessing all the values
+    //     const values = fD.getAll(key);
+    //     response[key] = values.length === 1 ? values[0] : values;
+    //     return response;
+    // }, {});
     // Calling Fetch function
-    await fetch("../StormySystem.php", {
+    const request = await fetch("../StormySystem.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userJSON),
@@ -38,6 +38,8 @@ async function register() {
         .catch(function (error) {
             console.log(error);
         });
+    const data = await request.json();
+    console.log(data);
 }
 // // Importing StormySystems
 // importScripts("./StormySystems");
