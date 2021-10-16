@@ -57,7 +57,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("./index.php", {
+        fetch("./", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
