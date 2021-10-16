@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
 // Instantiation User
 $User = new User();
 // If-Statement to verify the type of the request sent
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_POST["register"]) {
     // Calling User::register()
     $User->register();
 }
