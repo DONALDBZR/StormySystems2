@@ -47,23 +47,6 @@ class Main extends React.Component {
                 data: fD,
             });
         });
-        // // Data retrieved from the form.
-        // const data = {
-        //     username: document.getElementById("username").value,
-        //     mailAddress: document.getElementById("mailAddress").value,
-        //     firstName: document.getElementById("firstName").value,
-        //     lastName: document.getElementById("lastName").value,
-        //     dateOfBirth: document.getElementById("dateOfBirth").value,
-        // };
-        // // Calling AJAX to call $User::register() from StormySystem.php
-        // $.ajax({
-        //     url: "./index.php",
-        //     type: "POST",
-        //     header: {
-        //         "Content-Type": "application/x-www-form-urlencoded",
-        //     },
-        //     data: JSON.stringify(data),
-        // });
     }
     // Render method
     render() {
