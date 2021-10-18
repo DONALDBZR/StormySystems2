@@ -44,9 +44,10 @@ class ServerRendering extends React.Component {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./index.php")
             .then((response) => response.json())
+            .then((response) => JSON.parse(response))
             .then((response) =>
-                this.setState({
-                    data: response,
+                setState({
+                    data: response.message,
                 })
             );
     }
