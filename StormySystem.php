@@ -282,48 +282,64 @@ class User {
                 // // Redirecting towards the login page.
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
-                // Encoding the JSON to be sent to the client
-                $url = $this->domain . "/StormySystems2/Register/index.php";
-                // Generating the JSON to be sent as a POST Response
-                $data = array(
+                // Preparing the header for the JSON
+                header("Content-Type: application/json");
+                // Message to be encoded and sent
+                $message = [
                     "message" => $this->Renderer->userRegisterTooYoung()
-                );
-                $options = array(
-                    "http" => array(
-                        "method" => "POST",
-                        "header" => "Accept: application/json\r\n" . "Content-Type: application/json\r\n",
-                        "content" => json_encode($data)
-                    )
-                );
-                // Creating the stream for the response
-                $context = stream_context_create($options);
-                // Sending the POST response
-                $result = file_get_contents($url, false, $context);
-                var_dump($result);
-                // Redirecting towards the homepage.
-                header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
+                ];
+                // Sending the JSON
+                echo json_encode($message);
+                // // Encoding the JSON to be sent to the client
+                // $url = $this->domain . "/StormySystems2/Register/index.php";
+                // // Generating the JSON to be sent as a POST Response
+                // $data = array(
+                //     "message" => $this->Renderer->userRegisterTooYoung()
+                // );
+                // $options = array(
+                //     "http" => array(
+                //         "method" => "POST",
+                //         "header" => "Accept: application/json\r\n" . "Content-Type: application/json\r\n",
+                //         "content" => json_encode($data)
+                //     )
+                // );
+                // // Creating the stream for the response
+                // $context = stream_context_create($options);
+                // // Sending the POST response
+                // $result = file_get_contents($url, false, $context);
+                // var_dump($result);
+                // // Redirecting towards the homepage.
+                // header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
             }
         } else {
-            // Encoding the JSON to be sent to the client
-            $url = $this->domain . "/StormySystems2/Register/index.php";
-            // Generating the JSON to be sent as a POST Response
-            $data = array(
+            // Preparing the header for the JSON
+            header("Content-Type: application/json");
+            // Message to be encoded and sent
+            $message = [
                 "message" => $this->Renderer->userRegisterUsernameExists()
-            );
-            $options = array(
-                "http" => array(
-                    "method" => "POST",
-                    "header" => "Accept: application/json\r\n" . "Content-Type: application/json\r\n",
-                    "content" => json_encode($data)
-                )
-            );
-            // Creating the stream for the response
-            $context = stream_context_create($options);
-            // Sending the POST response
-            $result = file_get_contents($url, false, $context);
-            var_dump($result);
-            // Redirecting towards the Login page.
-            header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+            ];
+            // Sending the JSON
+            echo json_encode($message);
+            // // Encoding the JSON to be sent to the client
+            // $url = $this->domain . "/StormySystems2/Register/index.php";
+            // // Generating the JSON to be sent as a POST Response
+            // $data = array(
+            //     "message" => $this->Renderer->userRegisterUsernameExists()
+            // );
+            // $options = array(
+            //     "http" => array(
+            //         "method" => "POST",
+            //         "header" => "Accept: application/json\r\n" . "Content-Type: application/json\r\n",
+            //         "content" => json_encode($data)
+            //     )
+            // );
+            // // Creating the stream for the response
+            // $context = stream_context_create($options);
+            // // Sending the POST response
+            // $result = file_get_contents($url, false, $context);
+            // var_dump($result);
+            // // Redirecting towards the Login page.
+            // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
         }
     }
     // Generate Password method
