@@ -52,7 +52,7 @@ class ServerRendering extends React.Component {
     }
     // Render method
     render() {
-        return <div id="serverRendering">{this.props.data}</div>;
+        return <div id="serverRendering">{this.state.data}</div>;
     }
 }
 // Main class
