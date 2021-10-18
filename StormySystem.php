@@ -254,11 +254,11 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Preparing the header for the JSON
-                header("Content-Type: application/json");
+                header("Content-Type: text/json");
                 // Message to be encoded and sent
-                $message = [
+                $message = array(
                     "message" => $this->Renderer->userRegisterSuccess()
-                ];
+                );
                 // Sending the JSON
                 echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
@@ -283,11 +283,11 @@ class User {
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
                 // Preparing the header for the JSON
-                header("Content-Type: application/json");
+                header("Content-Type: text/json");
                 // Message to be encoded and sent
-                $message = [
+                $message = array(
                     "message" => $this->Renderer->userRegisterTooYoung()
-                ];
+                );
                 // Sending the JSON
                 echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
@@ -313,11 +313,11 @@ class User {
             }
         } else {
             // Preparing the header for the JSON
-            header("Content-Type: application/json");
+            header("Content-Type: text/json");
             // Message to be encoded and sent
-            $message = [
+            $message = array(
                 "message" => $this->Renderer->userRegisterUsernameExists()
-            ];
+            );
             // Sending the JSON
             echo json_encode($message);
             // // Encoding the JSON to be sent to the client
