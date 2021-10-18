@@ -54,8 +54,8 @@ class Main extends React.Component {
     }
     // Submit handler method
     handleSubmit(event) {
-        // Preventing default submission
-        event.preventDefault();
+        // // Preventing default submission
+        // event.preventDefault();
         // Generating a POST request
         fetch("./index.php", {
             method: "POST",
