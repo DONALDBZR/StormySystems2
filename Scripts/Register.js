@@ -36,14 +36,14 @@ class ServerRendering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null,
+            data: "",
         };
     }
     // Component Did Mount method
     componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./index.php")
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((response) =>
                 this.setState({
                     data: response,

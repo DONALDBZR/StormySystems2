@@ -253,16 +253,16 @@ class User {
                 $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
                 // Sending the mail.
                 $this->PHPMailer->send();
-                // Printing the message
-                echo $this->Renderer->userRegisterSuccess();
-                // // Preparing the header for the JSON
-                // header("Content-Type: application/json");
-                // // Message to be encoded and sent
-                // $message = array(
-                //     "message" => $this->Renderer->userRegisterSuccess()
-                // );
-                // // Sending the JSON
-                // echo json_encode($message);
+                // // Printing the message
+                // echo $this->Renderer->userRegisterSuccess();
+                // Preparing the header for the JSON
+                header("Content-Type: application/json");
+                // Message to be encoded and sent
+                $message = array(
+                    "message" => $this->Renderer->userRegisterSuccess()
+                );
+                // Sending the JSON
+                echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
                 // $url = $this->domain . "/StormySystems2/Register/index.php";
                 // // Generating the JSON to be sent as a POST Response
@@ -284,16 +284,16 @@ class User {
                 // // Redirecting towards the login page.
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
-                // Printing Message
-                echo $this->Renderer->userRegisterTooYoung();
-                // // Preparing the header for the JSON
-                // header("Content-Type: application/json");
-                // // Message to be encoded and sent
-                // $message = array(
-                //     "message" => $this->Renderer->userRegisterTooYoung()
-                // );
-                // // Sending the JSON
-                // echo json_encode($message);
+                // // Printing Message
+                // echo $this->Renderer->userRegisterTooYoung();
+                // Preparing the header for the JSON
+                header("Content-Type: application/json");
+                // Message to be encoded and sent
+                $message = array(
+                    "message" => $this->Renderer->userRegisterTooYoung()
+                );
+                // Sending the JSON
+                echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
                 // $url = $this->domain . "/StormySystems2/Register/index.php";
                 // // Generating the JSON to be sent as a POST Response
@@ -316,16 +316,16 @@ class User {
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
             }
         } else {
-            // Printing Message
-            echo $this->Renderer->userRegisterUsernameExists();
-            // // Preparing the header for the JSON
-            // header("Content-Type: application/json");
-            // // Message to be encoded and sent
-            // $message = array(
-            //     "message" => $this->Renderer->userRegisterUsernameExists()
-            // );
-            // // Sending the JSON
-            // echo json_encode($message);
+            // // Printing Message
+            // echo $this->Renderer->userRegisterUsernameExists();
+            // Preparing the header for the JSON
+            header("Content-Type: application/json");
+            // Message to be encoded and sent
+            $message = array(
+                "message" => $this->Renderer->userRegisterUsernameExists()
+            );
+            // Sending the JSON
+            echo json_encode($message);
             // // Encoding the JSON to be sent to the client
             // $url = $this->domain . "/StormySystems2/Register/index.php";
             // // Generating the JSON to be sent as a POST Response
