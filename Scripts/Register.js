@@ -38,6 +38,7 @@ class ServerRendering extends React.Component {
         this.state = {
             success: false,
             message: "",
+            object: "",
         };
     }
     // Component Did Mount method
@@ -45,6 +46,7 @@ class ServerRendering extends React.Component {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./index.php")
             .then((response) => response.json())
+            .then((response) => JSON.parse(response))
             .then((response) =>
                 setState({
                     success: response.success,
