@@ -1,14 +1,3 @@
-<?php
-// Importing User.php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
-// Instantiation User
-$User = new User();
-// If-Statement to verify whether there is a JSON
-if (json_decode(file_get_contents("php://input")) != null) {
-    // Calling User::register()
-    $User->register();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,5 +17,16 @@ if (json_decode(file_get_contents("php://input")) != null) {
     </head>
     <body id="app">
         <script type="text/babel" src="../Scripts/Register.js"></script>
+        <?php
+        // Importing User.php
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
+        // Instantiation User
+        $User = new User();
+        // If-Statement to verify whether there is a JSON
+        if (json_decode(file_get_contents("php://input")) != null) {
+            // Calling User::register()
+            $User->register();
+        }
+        ?>
     </body>
 </html>
