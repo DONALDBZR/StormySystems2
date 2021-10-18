@@ -39,7 +39,7 @@ class ServerRendering extends React.Component {
             data: "",
         };
     }
-    // Componenet Did Mount method
+    // Component Did Mount method
     componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./index.php")
