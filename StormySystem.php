@@ -55,20 +55,6 @@ class API {
 }
 // Renderer Class
 class Renderer {
-    // React Script Maker method
-    public function reactScriptMaker($message) {
-        return "<script type='text/babel'>
-            // Server Rendering class
-            class ServerRendering extends React.Component {
-                // Render method
-                render() {
-                    return {$message};
-                }
-            }
-            ReactDOM.render(<ServerRendering />, document.getElementById('serverRendering'));
-        </script>
-        ";
-    }
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
         return "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
@@ -268,7 +254,7 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Printing the message
-                echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterSuccess());
+                echo $this->Renderer->userRegisterSuccess();
                 // // Preparing the header for the JSON
                 // header("Content-Type: application/json");
                 // // Message to be encoded and sent
@@ -299,7 +285,7 @@ class User {
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
                 // Printing Message
-                echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterTooYoung());
+                echo $this->Renderer->userRegisterTooYoung();
                 // // Preparing the header for the JSON
                 // header("Content-Type: application/json");
                 // // Message to be encoded and sent
@@ -331,7 +317,7 @@ class User {
             }
         } else {
             // Printing Message
-            echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterUsernameExists());
+            echo $this->Renderer->userRegisterUsernameExists();
             // // Preparing the header for the JSON
             // header("Content-Type: application/json");
             // // Message to be encoded and sent
