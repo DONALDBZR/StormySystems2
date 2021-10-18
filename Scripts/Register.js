@@ -174,7 +174,7 @@ class Main extends React.Component {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering"></div></div>
+                    <div id="serverRendering"></div>
                 </form>
             </main>
         );
