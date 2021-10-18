@@ -182,20 +182,28 @@ class Main extends React.Component {
 }
 // Server Rendering class
 class ServerRendering extends React.Component {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: "",
+        };
+    }
     // Register method
     register() {
-        fetch("./index.php")
-            .then((response) => response.json())
-            .then(
-                (output) =>
-                    (document.getElementById("serverRendering").innerHTML =
-                        output)
-            )
-            .catch((error) => console.log(error));
+        // Retrieving the JSON response from the Back-End
+        $.get("./index.php", function (json) {
+            // Decoding the JSON
+            const userRegisterJSON = JSON.parse(json);
+            // Storing the message in a state
+            this.setState({
+                [message]: userRegisterJSON.message,
+            });
+        });
     }
     // Render class
     render() {
-        return <div id="serverRendering"></div>;
+        return <div id="serverRendering">{this.state.message}</div>;
     }
 }
 // Footer class
