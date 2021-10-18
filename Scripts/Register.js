@@ -53,7 +53,23 @@ class ServerRendering extends React.Component {
     }
     // Render method
     render() {
-        return <div id="serverRendering">{this.state.data}</div>;
+        // If-statement to verify whether the message is a success registration
+        if (
+            this.state.data ==
+            "You have been registered into the system, you will be redirected to the login page."
+        ) {
+            return (
+                <div id="serverRendering">
+                    <h1 id="userRegisterSuccess">{this.state.data}</h1>
+                </div>
+            );
+        } else {
+            return (
+                <div id="serverRendering">
+                    <h1 id="userRegisterFailure">{this.state.data}</h1>
+                </div>
+            );
+        }
     }
 }
 // Main class

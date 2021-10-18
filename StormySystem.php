@@ -57,15 +57,15 @@ class API {
 class Renderer {
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
-        return "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
+        return "You already have an account on the system!  You will be redirected to the login page!";
     }
     // User Register Too Young method
     public function userRegisterTooYoung() {
-        return "<h1 id='userRegisterTooYoung'>You are too young to use this system.  Please come back when you are older!</h1>";
+        return "You are too young to use this system.  Please come back when you are older!";
     }
     // User Register Success method
     public function userRegisterSuccess() {
-        return "<h1 id='userRegisterSuccess'>You have been registered into the system, you will be redirected to the login page.</h1>";
+        return "You have been registered into the system, you will be redirected to the login page.";
     }
     // User Login User Does Not Exist method
     public function userLoginUserDoesNotExist($user) {
