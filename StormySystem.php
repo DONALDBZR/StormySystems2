@@ -259,6 +259,7 @@ class User {
                 header("Content-Type: application/json");
                 // Message to be encoded and sent
                 $message = array(
+                    "success" => true,
                     "message" => $this->Renderer->userRegisterSuccess()
                 );
                 // Sending the JSON
@@ -290,6 +291,7 @@ class User {
                 header("Content-Type: application/json");
                 // Message to be encoded and sent
                 $message = array(
+                    "success" => false,
                     "message" => $this->Renderer->userRegisterTooYoung()
                 );
                 // Sending the JSON
@@ -322,6 +324,7 @@ class User {
             header("Content-Type: application/json");
             // Message to be encoded and sent
             $message = array(
+                "success" => false,
                 "message" => $this->Renderer->userRegisterUsernameExists()
             );
             // Sending the JSON

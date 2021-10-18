@@ -36,7 +36,8 @@ class ServerRendering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: "",
+            success: false,
+            message: "",
         };
     }
     // Component Did Mount method
@@ -44,29 +45,26 @@ class ServerRendering extends React.Component {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./index.php")
             .then((response) => response.json())
-            .then((response) => JSON.parse(response))
             .then((response) =>
                 setState({
-                    data: response.message,
+                    success: response.success,
+                    message: response.message,
                 })
             );
     }
     // Render method
     render() {
         // If-statement to verify whether the message is a success registration
-        if (
-            this.state.data ==
-            "You have been registered into the system, you will be redirected to the login page."
-        ) {
+        if (this.state.success) {
             return (
                 <div id="serverRendering">
-                    <h1 id="userRegisterSuccess">{this.state.data}</h1>
+                    <h1 id="userRegisterSuccess">{this.state.message}</h1>
                 </div>
             );
         } else {
             return (
                 <div id="serverRendering">
-                    <h1 id="userRegisterFailure">{this.state.data}</h1>
+                    <h1 id="userRegisterFailure">{this.state.message}</h1>
                 </div>
             );
         }
