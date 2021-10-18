@@ -55,6 +55,20 @@ class API {
 }
 // Renderer Class
 class Renderer {
+    // React Script Maker method
+    public function reactScriptMaker($message) {
+        return "<script>
+            // Server Rendering class
+            class ServerRendering extends React.Component {
+                // Render method
+                render() {
+                    return {$message};
+                }
+            }
+            ReactDOM.render(<ServerRendering />, document.getElementById('serverRendering'));
+        </script>
+        ";
+    }
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
         return "<h1 id='userRegisterUsernameExists'>You already have an account on the system!  You will be redirected to the login page!</h1>";
@@ -253,14 +267,16 @@ class User {
                 $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
                 // Sending the mail.
                 $this->PHPMailer->send();
-                // Preparing the header for the JSON
-                header("Content-Type: application/json");
-                // Message to be encoded and sent
-                $message = array(
-                    "message" => $this->Renderer->userRegisterSuccess()
-                );
-                // Sending the JSON
-                echo json_encode($message);
+                // Printing the message
+                echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterSuccess());
+                // // Preparing the header for the JSON
+                // header("Content-Type: application/json");
+                // // Message to be encoded and sent
+                // $message = array(
+                //     "message" => $this->Renderer->userRegisterSuccess()
+                // );
+                // // Sending the JSON
+                // echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
                 // $url = $this->domain . "/StormySystems2/Register/index.php";
                 // // Generating the JSON to be sent as a POST Response
@@ -282,14 +298,16 @@ class User {
                 // // Redirecting towards the login page.
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
-                // Preparing the header for the JSON
-                header("Content-Type: application/json");
-                // Message to be encoded and sent
-                $message = array(
-                    "message" => $this->Renderer->userRegisterTooYoung()
-                );
-                // Sending the JSON
-                echo json_encode($message);
+                // Printing Message
+                echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterTooYoung());
+                // // Preparing the header for the JSON
+                // header("Content-Type: application/json");
+                // // Message to be encoded and sent
+                // $message = array(
+                //     "message" => $this->Renderer->userRegisterTooYoung()
+                // );
+                // // Sending the JSON
+                // echo json_encode($message);
                 // // Encoding the JSON to be sent to the client
                 // $url = $this->domain . "/StormySystems2/Register/index.php";
                 // // Generating the JSON to be sent as a POST Response
@@ -312,14 +330,16 @@ class User {
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
             }
         } else {
-            // Preparing the header for the JSON
-            header("Content-Type: application/json");
-            // Message to be encoded and sent
-            $message = array(
-                "message" => $this->Renderer->userRegisterUsernameExists()
-            );
-            // Sending the JSON
-            echo json_encode($message);
+            // Printing Message
+            echo $this->Renderer->reactScriptMaker($this->Renderer->userRegisterUsernameExists());
+            // // Preparing the header for the JSON
+            // header("Content-Type: application/json");
+            // // Message to be encoded and sent
+            // $message = array(
+            //     "message" => $this->Renderer->userRegisterUsernameExists()
+            // );
+            // // Sending the JSON
+            // echo json_encode($message);
             // // Encoding the JSON to be sent to the client
             // $url = $this->domain . "/StormySystems2/Register/index.php";
             // // Generating the JSON to be sent as a POST Response

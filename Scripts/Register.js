@@ -180,32 +180,6 @@ class Main extends React.Component {
         );
     }
 }
-// Server Rendering class
-class ServerRendering extends React.Component {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            message: "",
-        };
-    }
-    // Register method
-    register() {
-        // Retrieving the JSON response from the Back-End
-        $.get("./index.php", function (json) {
-            // Decoding the JSON
-            const userRegisterJSON = JSON.parse(json);
-            // Storing the message in a state
-            this.setState({
-                [message]: userRegisterJSON.message,
-            });
-        });
-    }
-    // Render class
-    render() {
-        return <div id="serverRendering">{this.state.message}</div>;
-    }
-}
 // Footer class
 class Footer extends React.Component {
     // Render method
