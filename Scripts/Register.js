@@ -39,8 +39,8 @@ class ServerRendering extends React.Component {
             data: "",
         };
     }
-    // Register method
-    register() {
+    // Componenet Did Mount method
+    componentDidMount() {
         // Calling useEffect() to update the data from the Back-end
         useEffect(() => {
             // Calling fetch() to retrieve the data returned by the Back-end
