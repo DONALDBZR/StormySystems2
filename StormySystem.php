@@ -57,7 +57,7 @@ class API {
 class Renderer {
     // React Script Maker method
     public function reactScriptMaker($message) {
-        return "<script>
+        return "<script type='text/babel'>
             // Server Rendering class
             class ServerRendering extends React.Component {
                 // Render method
