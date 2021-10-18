@@ -15,7 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body id="app">
-        <script type="text/babel" src="../Scripts/Register.js"></script>
+        <script async type="text/babel" src="../Scripts/Register.js"></script>
         <?php
         // Importing User.php
         require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
