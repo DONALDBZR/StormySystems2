@@ -46,7 +46,7 @@ class ServerRendering extends React.Component {
             .then((response) => response.text())
             .then((response) =>
                 this.setState({
-                    [this.state.data]: response,
+                    data: response,
                 })
             );
     }
