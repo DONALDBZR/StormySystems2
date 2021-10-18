@@ -256,7 +256,7 @@ class User {
                 // // Printing the message
                 // echo $this->Renderer->userRegisterSuccess();
                 // Preparing the header for the JSON
-                header("Content-Type: application/json");
+                header('Content-Type: application/json; charset=utf-8');
                 // Message to be encoded and sent
                 $message = array(
                     "success" => true,
@@ -288,7 +288,7 @@ class User {
                 // // Printing Message
                 // echo $this->Renderer->userRegisterTooYoung();
                 // Preparing the header for the JSON
-                header("Content-Type: application/json");
+                header('Content-Type: application/json; charset=utf-8');
                 // Message to be encoded and sent
                 $message = array(
                     "success" => false,
@@ -321,7 +321,7 @@ class User {
             // // Printing Message
             // echo $this->Renderer->userRegisterUsernameExists();
             // Preparing the header for the JSON
-            header("Content-Type: application/json");
+            header('Content-Type: application/json; charset=utf-8');
             // Message to be encoded and sent
             $message = array(
                 "success" => false,
