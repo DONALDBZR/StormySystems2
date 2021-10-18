@@ -41,17 +41,14 @@ class ServerRendering extends React.Component {
     }
     // Componenet Did Mount method
     componentDidMount() {
-        // Calling useEffect() to update the data from the Back-end
-        useEffect(() => {
-            // Calling fetch() to retrieve the data returned by the Back-end
-            fetch("./index.php")
-                .then((response) => response.text())
-                .then((response) =>
-                    this.setState({
-                        [this.state.data]: response,
-                    })
-                );
-        }, []);
+        // Calling fetch() to retrieve the data returned by the Back-end
+        fetch("./index.php")
+            .then((response) => response.text())
+            .then((response) =>
+                this.setState({
+                    [this.state.data]: response,
+                })
+            );
     }
     // Render method
     render() {
