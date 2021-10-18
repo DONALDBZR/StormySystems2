@@ -36,7 +36,7 @@ class ServerRendering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: "",
+            data: null,
         };
     }
     // Component Did Mount method
