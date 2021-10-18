@@ -7,8 +7,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/StormySystems2/PHPMailer/src/SMTP.php
 class API {
     // Class variables
     private $dataSourceName = "mysql:dbname=StormySystem;host=stormysystem.ddns.net:3306";
-    private $username = "username1";
-    private $password = "password1";
+    private $username = "Darkness4869";
+    private $password = "Aegis4869";
     private $databaseHandler;
     private $statement;
     // Constructor method
@@ -242,9 +242,9 @@ class User {
                 // Ensuring that PHPMailer is called from a .html file.
                 $this->PHPMailer->IsHTML(true);
                 // Sender's mail address.
-                $this->PHPMailer->Username = "username2";
+                $this->PHPMailer->Username = "stormysystems@gmail.com";
                 // Sender's password
-                $this->PHPMailer->Password = "password1";
+                $this->PHPMailer->Password = "Aegis4869";
                 // Assigning sender as a parameter in the sender's zone.
                 $this->PHPMailer->setFrom($this->PHPMailer->Username);
                 // Assinging the receiver mail's address which is retrieved from the User class.
@@ -254,7 +254,7 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Preparing the header for the JSON
-                header("Content-Type: text/json");
+                header("Content-Type: application/json");
                 // Message to be encoded and sent
                 $message = array(
                     "message" => $this->Renderer->userRegisterSuccess()
@@ -283,7 +283,7 @@ class User {
                 // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
             } else {
                 // Preparing the header for the JSON
-                header("Content-Type: text/json");
+                header("Content-Type: application/json");
                 // Message to be encoded and sent
                 $message = array(
                     "message" => $this->Renderer->userRegisterTooYoung()
@@ -313,7 +313,7 @@ class User {
             }
         } else {
             // Preparing the header for the JSON
-            header("Content-Type: text/json");
+            header("Content-Type: application/json");
             // Message to be encoded and sent
             $message = array(
                 "message" => $this->Renderer->userRegisterUsernameExists()
@@ -488,9 +488,9 @@ class User {
                 // Assuring that the mail is sent from HTML mode
                 $this->Mail->IsHTML(true);
                 // Setting the sender's mail address
-                $this->Mail->Username = "username2";
+                $this->Mail->Username = "stormysystems@gmail.com";
                 // Setting the sender's password
-                $this->Mail->Password = "password1";
+                $this->Mail->Password = "Aegis4869";
                 // Assigning the sender's mail address from PHPMailer::Username
                 $this->Mail->setFrom($this->Mail->Username);
                 // Assigning the recipient address from User::getMailAddress()
@@ -564,9 +564,9 @@ class User {
         // Assuring that the mail is sent from HTML mode
         $this->Mail->IsHTML(true);
         // Setting the sender's mail address
-        $this->Mail->Username = "username2";
+        $this->Mail->Username = "stormysystems@gmail.com";
         // Setting the sender's password
-        $this->Mail->Password = "password1";
+        $this->Mail->Password = "Aegis4869";
         // Assigning the sender's mail address from PHPMailer::Username
         $this->Mail->setFrom($this->Mail->Username);
         // Assigning the recipient address from User::getMailAddress()
