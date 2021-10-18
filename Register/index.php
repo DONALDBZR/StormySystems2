@@ -17,7 +17,6 @@
     <body id="app">
         <script async type="text/babel" src="../Scripts/Register.js"></script>
         <?php
-        header('Content-Type: application/json');
         // Importing User.php
         require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
         // Instantiation User
