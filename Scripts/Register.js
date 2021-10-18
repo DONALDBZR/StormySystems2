@@ -30,6 +30,34 @@ class Header extends React.Component {
         );
     }
 }
+// Server Rendering class
+class ServerRendering extends React.Component {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: "",
+        };
+    }
+    // Register method
+    register() {
+        // Calling useEffect() to update the data from the Back-end
+        useEffect(() => {
+            // Calling fetch() to retrieve the data returned by the Back-end
+            fetch("./index.php")
+                .then((response) => response.text())
+                .then((response) =>
+                    this.setState({
+                        [this.state.data]: response,
+                    })
+                );
+        }, []);
+    }
+    // Render method
+    render() {
+        return <div id="serverRendering">{this.props.data}</div>;
+    }
+}
 // Main class
 class Main extends React.Component {
     // Constructor method
@@ -174,7 +202,7 @@ class Main extends React.Component {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering"></div>
+                    <ServerRendering />
                 </form>
             </main>
         );
