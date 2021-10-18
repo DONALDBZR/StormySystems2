@@ -44,7 +44,7 @@ class ServerRendering extends React.Component {
     // Component Did Mount method
     componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
-        fetch("./index.php")
+        fetch("../StormySystem.php")
             .then((response) => response.json())
             .then((response) => JSON.parse(response))
             .then((response) =>
@@ -99,7 +99,7 @@ class Main extends React.Component {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("../StormySystem.php", {
+        fetch("./index.php", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
