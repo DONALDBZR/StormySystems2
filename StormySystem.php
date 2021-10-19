@@ -263,7 +263,7 @@ class User {
                 // Sending the JSON
                 echo json_encode($message);
                 // Redirecting towards the login page.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
             } else {
                 // Message to be encoded and sent
                 $message = array(
@@ -275,7 +275,7 @@ class User {
                 // Sending the JSON
                 echo json_encode($message);
                 // Redirecting towards the homepage.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2", true, 301);
             }
         } else {
             // Message to be encoded and sent
@@ -288,7 +288,7 @@ class User {
             // Sending the JSON
             echo json_encode($message);
             // Redirecting towards the Login page.
-            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
         }
     }
     // Generate Password method
