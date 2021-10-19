@@ -82,14 +82,18 @@ class Main extends Register {
     }
     // Component Did Mount method
     componentDidMount() {
-        fetch("./Register.php")
-            .then((response) => response.json())
-            .then((response) =>
-                setState({
-                    success: response.success,
-                    message: response.message,
-                })
-            );
+        // Retrieving the response by using fetch()
+        const response = await fetch("./Register.php", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+            },
+        });
+        const data = await response.json();
+        setState({
+            success: data.success,
+            message: data.message,
+        });
     }
     // Render method
     render() {
