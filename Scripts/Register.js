@@ -40,8 +40,8 @@ class ServerRendering extends React.Component {
             message: "",
         };
     }
-    // Component Did Mount method
-    componentDidMount() {
+    // Component Did Mount asynchronous method
+    async componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./Register.php")
             .then((response) => response.json())

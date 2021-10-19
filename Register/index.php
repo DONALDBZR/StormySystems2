@@ -16,9 +16,5 @@
     </head>
     <body id="app">
         <script async type="text/babel" src="../Scripts/Register.js"></script>
-        <?php
-        // Importing Register.php
-        require "./Register.php";
-        ?>
     </body>
 </html>
