@@ -224,7 +224,7 @@ class ServerRendering extends Main {
                 })
             );
     }
-    // Component did Update method
+    // Component Did Update method
     componentDidUpdate() {
         // Calling ServerRendering.registered()
         this.registered();
