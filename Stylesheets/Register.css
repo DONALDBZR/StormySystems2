@@ -141,10 +141,10 @@ main form #serverRendering {
     padding-bottom: calc(var(--vertical) * 0.025);
     width: var(--horizontal);
 }
-main form #serverRendering #false {
+main form #serverRendering #failure {
     color: var(--color4);
 }
-main form #serverRendering #true {
+main form #serverRendering #success {
     color: var(--color6);
 }
 footer {
