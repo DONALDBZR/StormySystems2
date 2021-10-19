@@ -200,34 +200,6 @@ class Footer extends Register {
         );
     }
 }
-// User Register Success class
-class UserRegisterSuccess extends ServerRendering {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            message = super.state.message
-        };
-    }
-    // Render method
-    render() {
-        return <h1 id="userRegisterSuccess">{this.state.message}</h1>;
-    }
-}
-// User Register Failure class
-class UserRegisterFailure extends ServerRendering {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            message = super.state.message
-        };
-    }
-    // Render method
-    render() {
-        return <h1 id="userRegisterFailure">{this.state.message}</h1>;
-    }
-}
 // Server Rendering class
 class ServerRendering extends Main {
     // Constructor method
@@ -263,6 +235,34 @@ class ServerRendering extends Main {
             message = <UserRegisterFailure />;
         }
         return <div id="serverRendering">{message}</div>;
+    }
+}
+// User Register Success class
+class UserRegisterSuccess extends ServerRendering {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: super.state.message
+        };
+    }
+    // Render method
+    render() {
+        return <h1 id="userRegisterSuccess">{this.state.message}</h1>;
+    }
+}
+// User Register Failure class
+class UserRegisterFailure extends ServerRendering {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: super.state.message
+        };
+    }
+    // Render method
+    render() {
+        return <h1 id="userRegisterFailure">{this.state.message}</h1>;
     }
 }
 // Rendering ./Register
