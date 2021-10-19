@@ -72,6 +72,7 @@ class ServerRendering extends React.Component {
         } else {
             message = <this.userRegisterFailure />;
         }
+        return (<div id="serverRendering">{message}</div>);
     }
 }
 // Main class
