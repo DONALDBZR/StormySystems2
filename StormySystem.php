@@ -257,7 +257,7 @@ class User {
                 // echo $this->Renderer->userRegisterSuccess();
                 // Message to be encoded and sent
                 $message = array(
-                    "success" => true,
+                    "success" => "success",
                     "message" => $this->Renderer->userRegisterSuccess()
                 );
                 // Preparing the header for the JSON
@@ -271,7 +271,7 @@ class User {
                 // echo $this->Renderer->userRegisterTooYoung();
                 // Message to be encoded and sent
                 $message = array(
-                    "success" => false,
+                    "success" => "failure",
                     "message" => $this->Renderer->userRegisterTooYoung()
                 );
                 // Preparing the header for the JSON
@@ -286,7 +286,7 @@ class User {
             // echo $this->Renderer->userRegisterUsernameExists();
             // Message to be encoded and sent
             $message = array(
-                "success" => false,
+                "success" => "failure",
                 "message" => $this->Renderer->userRegisterUsernameExists()
             );
             // Preparing the header for the JSON
