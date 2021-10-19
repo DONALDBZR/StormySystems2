@@ -1,5 +1,12 @@
+// AboutUs class
+class AboutUs extends React.Component {
+    // Render method
+    render() {
+        return [<Header />, <Main />, <Footer />];
+    }
+}
 // Header Class
-class Header extends React.Component {
+class Header extends AboutUs {
     // Render method
     render() {
         return (
@@ -31,17 +38,17 @@ class Header extends React.Component {
     }
 }
 // Main Class
-class Main extends React.Component {
+class Main extends AboutUs {
     // Render method
     render() {
         return (
             <main>
                 <div id="team">
-                    It is basically a team of developers which works on projects on
-                    low prices as well as on projects that will contribute to any
-                    kind of communities along with that the projects done by them
-                    are generally open-source projects given that there are also
-                    corporate projects.
+                    It is basically a team of developers which works on projects
+                    on low prices as well as on projects that will contribute to
+                    any kind of communities along with that the projects done by
+                    them are generally open-source projects given that there are
+                    also corporate projects.
                 </div>
                 <div id="teamHeader">Team Members:</div>
                 <div id="member">
@@ -54,7 +61,7 @@ class Main extends React.Component {
     }
 }
 // Footer Class
-class Footer extends React.Component {
+class Footer extends AboutUs {
     // Render method
     render() {
         return (
@@ -64,13 +71,6 @@ class Footer extends React.Component {
                 </a>
             </footer>
         );
-    }
-}
-// AboutUs class
-class AboutUs extends React.Component {
-    // Render method
-    render() {
-        return [<Header />, <Main />, <Footer />];
     }
 }
 // Rendering ./AboutUs

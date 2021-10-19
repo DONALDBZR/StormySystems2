@@ -1,5 +1,12 @@
+// Homepage class
+class Homepage extends React.Component {
+    // Render method
+    render() {
+        return [<Header />, <Main />, <Footer />];
+    }
+}
 // Header Class
-class Header extends React.Component {
+class Header extends Homepage {
     // Render method
     render() {
         return (
@@ -31,7 +38,7 @@ class Header extends React.Component {
     }
 }
 // Main Class
-class Main extends React.Component {
+class Main extends Homepage {
     // Render method
     render() {
         return (
@@ -43,7 +50,7 @@ class Main extends React.Component {
     }
 }
 // Footer Class
-class Footer extends React.Component {
+class Footer extends Homepage {
     // Render method
     render() {
         return (
@@ -51,13 +58,6 @@ class Footer extends React.Component {
                 <h1>Stormy Systems</h1>
             </footer>
         );
-    }
-}
-// Homepage class
-class Homepage extends React.Component {
-    // Render method
-    render() {
-        return [<Header />, <Main />, <Footer />];
     }
 }
 // Rendering ./

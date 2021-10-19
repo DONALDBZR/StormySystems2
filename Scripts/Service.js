@@ -1,5 +1,12 @@
+// Service class
+class Service extends React.Component {
+    // Render method
+    render() {
+        return [<Header />, <Main />, <Footer />];
+    }
+}
 // Header Class
-class Header extends React.Component {
+class Header extends Service {
     // Render method
     render() {
         return (
@@ -31,7 +38,7 @@ class Header extends React.Component {
     }
 }
 // Main Class
-class Main extends React.Component {
+class Main extends Service {
     // Render method
     render() {
         return (
@@ -44,7 +51,7 @@ class Main extends React.Component {
     }
 }
 // Footer Class
-class Footer extends React.Component {
+class Footer extends Service {
     // Render method
     render() {
         return (
@@ -55,13 +62,6 @@ class Footer extends React.Component {
                 </a>
             </footer>
         );
-    }
-}
-// Service class
-class Service extends React.Component {
-    // Render method
-    render() {
-        return [<Header />, <Main />, <Footer />];
     }
 }
 // Rendering ./Service
