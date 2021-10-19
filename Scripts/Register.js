@@ -208,10 +208,18 @@ class ServerRendering extends Main {
             message: "",
         };
     }
-    // Component Did Mount asynchronous method
-    async componentDidMount() {
+    // Component Did Mount method
+    componentDidMount() {
         // Retrieving the POST response from the Back-end by using fetch()
-        fetch("./index.php")
+        fetch("./index.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title: "Back-end's response",
+            }),
+        })
             .then((response) => response.json())
             .then((result) =>
                 setState({

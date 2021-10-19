@@ -141,10 +141,10 @@ main form #serverRendering {
     padding-bottom: calc(var(--vertical) * 0.025);
     width: var(--horizontal);
 }
-main form #serverRendering #userRegisterFailure {
+main form #serverRendering #false {
     color: var(--color4);
 }
-main form #serverRendering #userRegisterSuccess {
+main form #serverRendering #true {
     color: var(--color6);
 }
 footer {
