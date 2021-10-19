@@ -76,7 +76,9 @@ class Main extends Register {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => response.json());
+        })
+            .then((response) => response.json())
+            .then(() => ServerRendering.componentDidMount());
     }
     // Render method
     render() {
@@ -181,7 +183,7 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering"></div>
+                    <ServerRendering />
                 </form>
             </main>
         );
@@ -213,12 +215,7 @@ class ServerRendering extends Main {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./Register.php")
             .then((response) => response.json())
-            .then((response) =>
-                this.setState({
-                    success: response.success,
-                    message: response.message,
-                })
-            );
+            .then((response) => console.log(response));
     }
     // Render method
     render() {
