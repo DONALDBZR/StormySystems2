@@ -66,7 +66,7 @@ class Main extends Register {
         // Preventing default submission
         event.preventDefault();
         // Generating a POST request
-        fetch("./Register.php", {
+        fetch("./index.php", {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
