@@ -69,29 +69,23 @@ class Renderer {
     }
     // User Login User Does Not Exist method
     public function userLoginUserDoesNotExist($user) {
-        return "<h1 id='userLoginUserDoesNotExist'>{$user} does not exist!</h1>";
+        return "{$user} does not exist!";
     }
     // User Login Incorrect Password method
     public function userLoginIncorrectPassword() {
-        return "
-        <div id='userLoginIncorrectPassword'>
-            <h1>Incorrect Password!</h1>
-            <form method='post'>
-                <input type='submit' value='Reset Password' name='resetPassword' />
-            </form>
-        </div>";
+        return "Incorrect Password!";
     }
     // User Check Session Banned User method
     public function userCheckSessionBannedUser() {
-        return "<h1 id='userCheckSessionBannedUser'>You have been banned!  Please consider into contacting an administrator!</h1>";
+        return "You have been banned!  Please consider into contacting an administrator!";
     }
     // User Check Session Cannot Verify Type method
     public function userCheckSessionCannotVerifyType() {
-        return "<h1 id='userCheckSessionCannotVerifyType'>There is an issue with the system.  Please try again later!</h1>";
+        return "There is an issue with the system.  Please try again later!";
     }
     // User Check Session User Does Not Exist method
     public function userCheckSessionUserDoesNotExist($user) {
-        return "<h1 id='userCheckSessionUserDoesNotExist'>{$user} does not exist!</h1>";
+        return "{$user} does not exist!";
     }
     // User Reset Password Password Changed method
     public function userResetPasswordPasswordChanged() {
@@ -300,10 +294,12 @@ class User {
     }
     // Login method
     public function login() {
+        // Retrieving the JSON from the client
+        $userJSON = json_decode(file_get_contents('php://input'));
         // Preparing the query to verify if the username entered exists in the database.
         $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
         // Binding the value returned by the page for security purposes.
-        $this->API->bind(":UserUsername", $_POST['usernameOrMailAddress']);
+        $this->API->bind(":UserUsername", $userJSON->usernameOrMailAddress);
         // Executing the query.
         $this->API->execute();
         // Verifying whether the username exists and in case that it exists, the system will search whether the combination of the username and password is correct but in case that it does not exist, the system will verify whether the mail address exists.
@@ -311,7 +307,7 @@ class User {
             // Storing the data needed in the class variables for further processing
             $this->setUsername($this->API->resultSet()[0]['UserUsername']);
             // If-statement to verify whether the password is the same from the form in the database
-            if ($_POST['password'] == $this->API->resultSet()[0]['UserPassword']) {
+            if ($userJSON->password == $this->API->resultSet()[0]['UserPassword']) {
                 // Verifying whether the profile picture of the user exists
                 if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
                     // Storing the data retrieved from the database in the class variables
@@ -350,8 +346,16 @@ class User {
                 // Setting the class variables
                 $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
                 $this->setUsername($this->API->resultSet()[0]['UserUsername']);
-                // Printing the message
-                echo $this->Renderer->userLoginIncorrectPassword();
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "failure",
+                    "url" => $this->domain . "/StormySystems2/Login",
+                    "message" => $this->Renderer->userLoginIncorrectPassword()
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
             }
         } else {
             // Preparing the query to verify if the mail address entered exists in the database.
@@ -404,14 +408,30 @@ class User {
                     // Setting the class variables
                     $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
                     $this->setUsername($this->API->resultSet()[0]['UserUsername']);
-                    // Printing the message
-                    echo $this->Renderer->userLoginIncorrectPassword();
+                    // Message to be encoded and sent
+                    $message = array(
+                        "success" => "failure",
+                        "url" => $this->domain . "/StormySystems2/Login",
+                        "message" => $this->Renderer->userLoginIncorrectPassword()
+                    );
+                    // Preparing the header for the JSON
+                    header('Content-Type: application/json');
+                    // Sending the JSON
+                    echo json_encode($message);
                 }
             } else {
-                // Printing the message
-                echo $this->Renderer->userLoginUserDoesNotExist($_POST['usernameOrMailAddress']);
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "failure",
+                    "url" => $this->domain . "/StormySystems2/Login",
+                    "message" => $this->Renderer->userLoginUserDoesNotExist($userJSON->usernameOrMailAddress)
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Refreshing the page
-                header('refresh:1.6; url=' . $this->domain . '/StormySystems2/Login');
+                header('refresh:5.48; url=' . $this->domain . '/StormySystems2/Login');
             }
         }
     }
@@ -421,8 +441,16 @@ class User {
         if ($_SESSION["username"] == $this->getUsername()) {
             // If-statement to verify the Type of the User
             if ($this->getType() == 0) {
-                // Printing message
-                echo $this->Renderer->userCheckSessionBannedUser();
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "failure",
+                    "url" => $this->domain . "/StormySystems2",
+                    "message" => $this->Renderer->userCheckSessionBannedUser()
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Calling PHPMailer::IsSMTP()
                 $this->Mail->IsSMTP();
                 // Setting the charset to be UTF-8
@@ -454,30 +482,86 @@ class User {
                 // Sending the mail
                 $this->Mail->send();
                 // Redirecting the user towards the Main Portal
-                header('refresh:7.2; url=' . $this->domain . '/StormySystems2');
+                header('refresh:5.48; url=' . $this->domain . '/StormySystems2');
             } else if ($this->getType() == 1) {
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "",
+                    "url" => $this->domain . "/StormySystems2/Public",
+                    "message" => ""
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Redirecting the user towards the Public portal
                 header('Location:' . $this->domain . '/StormySystems2/Public');
             } else if ($this->getType() == 2) {
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "",
+                    "url" => $this->domain . "/StormySystems2/Member",
+                    "message" => ""
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Redirecting the user towards the Member Portal
                 header('Location:' . $this->domain . '/StormySystems2/Member');
             } else if ($this->getType() == 3) {
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "",
+                    "url" => $this->domain . "/StormySystems2/Workplace",
+                    "message" => ""
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Redirecting the user towards the Workplace Portal
                 header('Location:' . $this->domain . '/StormySystems2/Workplace');
             } else if ($this->getType() == 4) {
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "",
+                    "url" => $this->domain . "/StormySystems2/Admin",
+                    "message" => ""
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Redirecting the user towards the Admin Portal
                 header('Location:' . $this->domain . '/StormySystems2/Admin');
             } else {
-                // Printing the message
-                echo $this->Renderer->userCheckSessionCannotVerifyType();
+                // Message to be encoded and sent
+                $message = array(
+                    "success" => "failure",
+                    "url" => $this->domain . "/StormySystems2/Login",
+                    "message" => $this->Renderer->userCheckSessionCannotVerifyType()
+                );
+                // Preparing the header for the JSON
+                header('Content-Type: application/json');
+                // Sending the JSON
+                echo json_encode($message);
                 // Refreshing the page
-                header('refresh:4.2;');
+                header('refresh:5.48;');
             }
         } else {
-            // Printing the message
-            echo $this->Renderer->userCheckSessionUserDoesNotExist($this->getUsername());
+            // Message to be encoded and sent
+            $message = array(
+                "success" => "failure",
+                "url" => $this->domain . "/StormySystems2",
+                "message" => $this->Renderer->userCheckSessionUserDoesNotExist($this->getUsername())
+            );
+            // Preparing the header for the JSON
+            header('Content-Type: application/json');
+            // Sending the JSON
+            echo json_encode($message);
             // Redirecting the user towards the homepage
-            header('refresh:4.2; url=' . $this->domain . '/StormySystems2');
+            header('refresh:5.48; url=' . $this->domain . '/StormySystems2');
         }
     }
     // Reset Password method

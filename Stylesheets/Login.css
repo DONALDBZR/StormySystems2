@@ -169,13 +169,10 @@ main #formContainer #serverRendering {
     margin-top: calc(var(--vertical) * 0.025);
     padding-bottom: calc(var(--vertical) * 0.025);
 }
-main #formContainer #serverRendering #userLoginUserDoesNotExist,
-main #formContainer #serverRendering #userLoginIncorrectPassword h1,
-main #formContainer #serverRendering #userCheckSessionBannedUser,
-main #formContainer #serverRendering #userCheckSessionCannotVerifyType {
+main #formContainer #serverRendering #failure {
     color: var(--color4);
 }
-main #formContainer #serverRendering #userLoginSuccess {
+main #formContainer #serverRendering #success {
     color: var(--color6);
 }
 footer {

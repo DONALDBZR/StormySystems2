@@ -39,11 +39,59 @@ class Header extends Login {
 }
 // Main class
 class Main extends Login {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            usernameOrMailAddress: "",
+            password: "",
+            success: "",
+            message: "",
+            url: "",
+        };
+    }
+    // Change handler method
+    handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value,
+        });
+    }
+    // Submit handler method
+    handleSubmit(event) {
+        // Prevent default submission
+        event.preventDefault();
+        // Generating a POST request
+        fetch("./Login.php", {
+            method: "POST",
+            body: JSON.stringify({
+                usernameOrMailAddress: this.state.usernameOrMailAddress,
+                password: this.state.password,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) =>
+                this.setState({
+                    success: data.success,
+                    message: data.message,
+                    url: data.url,
+                })
+            )
+            .then(() => {
+                window.location.href = this.state.url;
+            });
+    }
+    // Render method
     render() {
         return (
             <main>
                 <div id="formContainer">
-                    <form method="post">
+                    <form method="post" onSubmit={this.handleSubmit.bind(this)}>
                         <div id="label">Login Form</div>
                         <div id="formContainerInsideAForm">
                             <div id="usernameOrMailAddress">
@@ -54,6 +102,8 @@ class Main extends Login {
                                         name="usernameOrMailAddress"
                                         id="usernameOrMailAddress"
                                         placeholder="Username or Mail Address"
+                                        value={this.state.usernameOrMailAddress}
+                                        onChange={this.handleChange.bind(this)}
                                         required
                                     />
                                 </div>
@@ -70,6 +120,8 @@ class Main extends Login {
                                         name="password"
                                         id="password"
                                         placeholder="Password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange.bind(this)}
                                         required
                                     />
                                 </div>
@@ -83,22 +135,21 @@ class Main extends Login {
                                 </div>
                             </div>
                             <div id="loginButton">
-                                <input
-                                    type="submit"
-                                    value="Login"
-                                    name="login"
-                                />
+                                <button>Login</button>
                             </div>
                         </div>
                     </form>
-                    <div id="serverRendering"></div>
+                    <div id="serverRendering">
+                        <h1 id={this.state.success}>{this.state.message}</h1>
+                    </div>
                 </div>
             </main>
         );
     }
 }
 // Footer class
-class Footer extends React.Component {
+class Footer extends Login {
+    // Render method
     render() {
         return (
             <footer>
