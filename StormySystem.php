@@ -259,7 +259,7 @@ class User {
                     "message" => $this->Renderer->userRegisterSuccess()
                 );
                 // Preparing the header for the JSON
-                header('Content-Type: application/json; charset=utf-8');
+                header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
                 // // Redirecting towards the login page.
@@ -271,7 +271,7 @@ class User {
                     "message" => $this->Renderer->userRegisterTooYoung()
                 );
                 // Preparing the header for the JSON
-                header('Content-Type: application/json; charset=utf-8');
+                header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
                 // // Redirecting towards the homepage.
@@ -284,7 +284,7 @@ class User {
                 "message" => $this->Renderer->userRegisterUsernameExists()
             );
             // Preparing the header for the JSON
-            header('Content-Type: application/json; charset=utf-8');
+            header('Content-Type: application/json');
             // Sending the JSON
             echo json_encode($message);
             // // Redirecting towards the Login page.
