@@ -214,7 +214,6 @@ class ServerRendering extends Main {
         fetch("./Register.php", {
             headers: {
                 "Content-Type": "application/json",
-                Accept: "application/json",
             },
         })
             .then((response) => response.json())
