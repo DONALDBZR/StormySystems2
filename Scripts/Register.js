@@ -231,7 +231,7 @@ class ServerRendering extends Main {
                 <h1 id={this.state.success}>{this.state.message}</h1>
             </div>
         );
-    
+    }
     // Component Did Update method
     componentDidUpdate() {
         // Calling ServerRendering.registered()
