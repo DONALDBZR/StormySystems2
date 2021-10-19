@@ -76,9 +76,7 @@ class Main extends Register {
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((response) => response.json())
-            .then(() => ServerRendering.componentDidMount());
+        }).then((response) => response.json());
     }
     // Render method
     render() {
@@ -213,9 +211,19 @@ class ServerRendering extends Main {
     // Component Did Mount method
     componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
-        fetch("./Register.php")
+        fetch("./Register.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
             .then((response) => response.json())
-            .then((response) => console.log(response));
+            .then((response) =>
+                setState({
+                    success: response.success,
+                    message: response.message,
+                })
+            );
     }
     // Render method
     render() {
