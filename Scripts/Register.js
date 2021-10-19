@@ -53,21 +53,24 @@ class ServerRendering extends React.Component {
                 })
             );
     }
+    // User Register Success method
+    userRegisterSuccess() {
+        return <h1 id="userRegisterSuccess">{this.state.message}</h1>;
+    }
+    // User Register Failure method
+    userRegisterFailure() {
+        return <h1 id="userRegisterFailure">{this.state.message}</h1>;
+    }
     // Render method
     render() {
+        // Method variables
+        const success = this.state.success;
+        const message;
         // If-statement to verify whether the message is a success registration
-        if (this.state.success) {
-            return (
-                <div id="serverRendering">
-                    <h1 id="userRegisterSuccess">{this.state.message}</h1>
-                </div>
-            );
+        if (success) {
+            message = <this.userRegisterSuccess />;
         } else {
-            return (
-                <div id="serverRendering">
-                    <h1 id="userRegisterFailure">{this.state.message}</h1>
-                </div>
-            );
+            message = <this.userRegisterFailure />;
         }
     }
 }
