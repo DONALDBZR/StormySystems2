@@ -92,8 +92,8 @@ class Main extends Register {
         fetch(this.state.url, {
             method: "POST",
             redirect: "follow",
-        }).then((response) => {
-            window.location.href = response.url;
+        }).then(() => {
+            window.location.href = this.state.url;
         });
     }
     // Render method
