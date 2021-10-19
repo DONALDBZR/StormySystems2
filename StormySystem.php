@@ -253,8 +253,6 @@ class User {
                 $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
                 // Sending the mail.
                 $this->PHPMailer->send();
-                // // Printing the message
-                // echo $this->Renderer->userRegisterSuccess();
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "success",
@@ -265,10 +263,8 @@ class User {
                 // Sending the JSON
                 echo json_encode($message);
                 // // Redirecting towards the login page.
-                // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             } else {
-                // // Printing Message
-                // echo $this->Renderer->userRegisterTooYoung();
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "failure",
@@ -279,11 +275,9 @@ class User {
                 // Sending the JSON
                 echo json_encode($message);
                 // // Redirecting towards the homepage.
-                // header("refresh:6.27; url = " . $this->domain . "/StormySystems2");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
             }
         } else {
-            // // Printing Message
-            // echo $this->Renderer->userRegisterUsernameExists();
             // Message to be encoded and sent
             $message = array(
                 "success" => "failure",
@@ -294,7 +288,7 @@ class User {
             // Sending the JSON
             echo json_encode($message);
             // // Redirecting towards the Login page.
-            // header("refresh:6.27; url = " . $this->domain . "/StormySystems2/Login");
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
         }
     }
     // Generate Password method
