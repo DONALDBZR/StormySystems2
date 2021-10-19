@@ -80,8 +80,8 @@ class Main extends Register {
             },
         }).then((response) => response.json());
     }
-    // Component Did Mount method
-    componentDidMount() {
+    // Component Did Mount asynchronous method
+    async componentDidMount() {
         // Retrieving the response by using fetch()
         const response = await fetch("./Register.php", {
             method: "GET",
