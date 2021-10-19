@@ -83,26 +83,13 @@ class Main extends Register {
     // Component Did Mount method
     componentDidMount() {
         fetch("./Register.php", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
         })
-            .then((response) => response.json())
-            .then((json) =>
-                setState({
-                    success: json.success,
-                    message: json.message,
-                })
-            );
-    }
-    // Component Did Update method
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.message != prevState.message) {
-            console.log("The JSON can be rendered!");
-        } else {
-            console.log("ERROR: The JSON is null");
-        }
+            .then((response) => response.text())
+            .then((json) => console.log(json));
     }
     // Render method
     render() {
