@@ -82,7 +82,7 @@ class Main extends Register {
             .then((response) => response.json())
             .then(
                 fetch("./Register.php", {
-                    method: "POST",
+                    method: "GET",
                     headers: { "Content-Type": "application/json" },
                 })
                     .then((response) => response.json())
