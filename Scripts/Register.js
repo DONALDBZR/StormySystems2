@@ -208,8 +208,8 @@ class ServerRendering extends Main {
             message: "",
         };
     }
-    // Registered method
-    registered() {
+    // Component Did Mount method
+    componentDidMount() {
         // Retrieving data that is sent as response by using fetch()
         fetch("./Register.php", {
             headers: {
