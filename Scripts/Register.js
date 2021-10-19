@@ -40,8 +40,8 @@ class ServerRendering extends React.Component {
             message: "",
         };
     }
-    // Component Did Mount asynchronous method
-    async componentDidMount() {
+    // Component Did Mount method
+    componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./Register.php")
             .then((response) => response.json())
@@ -51,7 +51,8 @@ class ServerRendering extends React.Component {
                     success: data.success,
                     message: data.message,
                 })
-            );
+            )
+            .then((test) => console.log(test));
     }
     // Render method
     render() {
