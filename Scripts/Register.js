@@ -48,6 +48,8 @@ class Main extends Register {
             firstName: "",
             lastName: "",
             dateOfBirth: "",
+            success: false,
+            message: "",
         };
     }
     // Change handler method
@@ -76,7 +78,21 @@ class Main extends Register {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => response.json());
+        })
+            .then((response) => response.json())
+            .then(
+                fetch("./Register.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                })
+                    .then((response) => response.json())
+                    .then((response) =>
+                        setState({
+                            success: response.success,
+                            message: response.message,
+                        })
+                    )
+            );
     }
     // Render method
     render() {
@@ -181,7 +197,9 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <ServerRendering />
+                    <div id="serverRendering">
+                        <h1 id={this.state.success}>{this.state.message}</h1>
+                    </div>
                 </form>
             </main>
         );
@@ -198,42 +216,42 @@ class Footer extends Register {
         );
     }
 }
-// Server Rendering class
-class ServerRendering extends Main {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            success: false,
-            message: "",
-        };
-    }
-    // Component Did Mount method
-    componentDidMount() {
-        // Calling fetch() to retrieve the data returned by the Back-end
-        fetch("./Register.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((response) =>
-                setState({
-                    success: response.success,
-                    message: response.message,
-                })
-            );
-    }
-    // Render method
-    render() {
-        return (
-            <div id="serverRendering">
-                <h1 id={this.state.success}>{this.state.message}</h1>
-            </div>
-        );
-    }
-}
+// // Server Rendering class
+// class ServerRendering extends Main {
+//     // Constructor method
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             success: false,
+//             message: "",
+//         };
+//     }
+//     // Component Did Mount method
+//     componentDidMount() {
+//         // Calling fetch() to retrieve the data returned by the Back-end
+//         fetch("./Register.php", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//         })
+//             .then((response) => response.json())
+//             .then((response) =>
+//                 setState({
+//                     success: response.success,
+//                     message: response.message,
+//                 })
+//             );
+//     }
+//     // Render method
+//     render() {
+//         return (
+//             <div id="serverRendering">
+//                 <h1 id={this.state.success}>{this.state.message}</h1>
+//             </div>
+//         );
+//     }
+// }
 // // User Register Success class
 // class UserRegisterSuccess extends ServerRendering {
 //     // Constructor method
