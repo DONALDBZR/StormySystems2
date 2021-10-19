@@ -204,7 +204,7 @@ class ServerRendering extends Main {
     constructor(props) {
         super(props);
         this.state = {
-            success: false,
+            success: "",
             message: "",
         };
     }
