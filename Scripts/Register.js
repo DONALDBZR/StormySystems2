@@ -87,14 +87,10 @@ class Main extends Register {
                     message: data.message,
                     url: data.url,
                 })
-            );
-        // Generating another POST request to redirect after rendering the page by using fetch()
-        fetch(this.state.url, {
-            method: "POST",
-            redirect: "follow",
-        }).then(() => {
-            window.location.href = this.state.url;
-        });
+            )
+            .then(() => {
+                window.location.href = this.state.url;
+            });
     }
     // Render method
     render() {
