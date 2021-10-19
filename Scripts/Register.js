@@ -224,11 +224,6 @@ class ServerRendering extends Main {
                 })
             );
     }
-    // Component Did Update method
-    componentDidUpdate() {
-        // Calling ServerRendering.registered()
-        this.registered();
-    }
     // Render method
     render() {
         return (
@@ -236,6 +231,11 @@ class ServerRendering extends Main {
                 <h1 id={this.state.success}>{this.state.message}</h1>
             </div>
         );
+    
+    // Component Did Update method
+    componentDidUpdate() {
+        // Calling ServerRendering.registered()
+        this.registered();
     }
 }
 // Rendering ./Register
