@@ -86,6 +86,7 @@ class Main extends Register {
                     message: data.message,
                 })
             );
+        event.returnValue = true;
     }
     // Render method
     render() {
