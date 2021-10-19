@@ -78,18 +78,14 @@ class Main extends Register {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => response.json());
-    }
-    // Component Did Mount method
-    componentDidMount() {
-        fetch("./Register.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
         })
-            .then((response) => response.text())
-            .then((json) => console.log(json));
+            .then((response) => response.json())
+            .then((data) =>
+                this.setState({
+                    success: data.success,
+                    message: data.message,
+                })
+            );
     }
     // Render method
     render() {
