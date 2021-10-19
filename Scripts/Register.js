@@ -76,9 +76,7 @@ class Main extends Register {
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((response) => response.json())
-            .then(() => ServerRendering.componentDidMount());
+        }).then((response) => response.json());
     }
     // Render method
     render() {
