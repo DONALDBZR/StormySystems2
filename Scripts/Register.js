@@ -210,21 +210,13 @@ class ServerRendering extends Main {
     }
     // Component Did Mount method
     componentDidMount() {
-        // Retrieving the POST response from the Back-end by using fetch()
-        fetch("./Register.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                title: "Back-end's response",
-            }),
-        })
+        // Calling fetch() to retrieve the data returned by the Back-end
+        fetch("./Register.php")
             .then((response) => response.json())
-            .then((result) =>
-                setState({
-                    success: result.success,
-                    message: result.message,
+            .then((response) =>
+                this.setState({
+                    success: response.success,
+                    message: response.message,
                 })
             );
     }
