@@ -38,7 +38,6 @@ class ServerRendering extends React.Component {
         this.state = {
             success: false,
             message: "",
-            object: "",
         };
     }
     // Component Did Mount method
