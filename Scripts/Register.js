@@ -211,7 +211,7 @@ class ServerRendering extends Main {
     // Component Did Mount method
     componentDidMount() {
         // Retrieving the POST response from the Back-end by using fetch()
-        fetch("./index.php", {
+        fetch("./Register.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -232,7 +232,7 @@ class ServerRendering extends Main {
     render() {
         return (
             <div id="serverRendering">
-                <h1>{this.state.message}</h1>
+                <h1 id={this.state.success}>{this.state.message}</h1>
             </div>
         );
     }
