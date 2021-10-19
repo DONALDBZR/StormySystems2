@@ -227,7 +227,7 @@ class ServerRendering extends Main {
     render() {
         // Method variables
         const success = this.state.success;
-        let message;
+        let message = "";
         // If-statement to verify whether the message is a success registration
         if (success) {
             message = <UserRegisterSuccess />;
