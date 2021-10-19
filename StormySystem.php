@@ -110,7 +110,7 @@ class User {
     private string $profilePicture;
     private string $password;
     // public string $domain = "http://stormy-systems.herokuapp.com/";
-    public string $domain = "http://stormysystem.ddns.net/";
+    public string $domain = "http://stormysystem.ddns.net";
     protected $PHPMailer;
     protected $API;
     protected $Renderer;
@@ -254,10 +254,11 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Redirecting towards the login page.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "success",
+                    "url" => $this->domain . "/StormySystems2/Login",
                     "message" => $this->Renderer->userRegisterSuccess()
                 );
                 // Preparing the header for the JSON
@@ -266,10 +267,11 @@ class User {
                 echo json_encode($message);
             } else {
                 // Redirecting towards the homepage.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2", true, 301);
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "failure",
+                    "url" => $this->domain . "/StormySystems2",
                     "message" => $this->Renderer->userRegisterTooYoung()
                 );
                 // Preparing the header for the JSON
@@ -279,10 +281,11 @@ class User {
             }
         } else {
             // Redirecting towards the Login page.
-            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             // Message to be encoded and sent
             $message = array(
                 "success" => "failure",
+                "url" => $this->domain . "/StormySystems2/Login",
                 "message" => $this->Renderer->userRegisterUsernameExists()
             );
             // Preparing the header for the JSON
