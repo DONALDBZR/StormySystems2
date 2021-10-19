@@ -78,7 +78,7 @@ class Main extends Register {
             },
         })
             .then((response) => response.json())
-            .then(() => ServerRendering.register());
+            .then(() => ServerRendering.componentDidMount());
     }
     // Render method
     render() {
@@ -210,8 +210,8 @@ class ServerRendering extends Main {
             message: null,
         };
     }
-    // Register method
-    register() {
+    // Component Did Mount method
+    componentDidMount() {
         // Calling fetch() to retrieve the data returned by the Back-end
         fetch("./Register.php")
             .then((response) => response.json())
@@ -227,7 +227,7 @@ class ServerRendering extends Main {
     render() {
         // Method variables
         const success = this.state.success;
-        const message;
+        const message = "";
         // If-statement to verify whether the message is a success registration
         if (success) {
             message = <UserRegisterSuccess />;
@@ -243,7 +243,7 @@ class UserRegisterSuccess extends ServerRendering {
     constructor(props) {
         super(props);
         this.state = {
-            message: super.state.message
+            message: super.state.message,
         };
     }
     // Render method
@@ -257,7 +257,7 @@ class UserRegisterFailure extends ServerRendering {
     constructor(props) {
         super(props);
         this.state = {
-            message: super.state.message
+            message: super.state.message,
         };
     }
     // Render method
