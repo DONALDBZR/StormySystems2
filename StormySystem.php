@@ -253,6 +253,8 @@ class User {
                 $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
                 // Sending the mail.
                 $this->PHPMailer->send();
+                // Redirecting towards the login page.
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "success",
@@ -262,9 +264,9 @@ class User {
                 header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
-                // Redirecting towards the login page.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             } else {
+                // Redirecting towards the homepage.
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "failure",
@@ -274,10 +276,10 @@ class User {
                 header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
-                // Redirecting towards the homepage.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
             }
         } else {
+            // Redirecting towards the Login page.
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             // Message to be encoded and sent
             $message = array(
                 "success" => "failure",
@@ -287,8 +289,6 @@ class User {
             header('Content-Type: application/json');
             // Sending the JSON
             echo json_encode($message);
-            // Redirecting towards the Login page.
-            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
         }
     }
     // Generate Password method
