@@ -89,7 +89,7 @@ class Main extends Register {
                 })
             )
             .then(() => {
-                window.location.href = this.state.url;
+                setTimeout((window.location.href = this.state.url), 3867);
             });
     }
     // Render method
