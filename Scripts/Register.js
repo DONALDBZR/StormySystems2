@@ -181,7 +181,7 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <ServerRendering />
+                    <div id="serverRendering"></div>
                 </form>
             </main>
         );
@@ -209,10 +209,24 @@ class ServerRendering extends Main {
         };
     }
     // Component Did Mount asynchronous method
-    async componentDidMount() {}
+    async componentDidMount() {
+        // Retrieving the POST response from the Back-end by using fetch()
+        fetch("./index.php")
+            .then((response) => response.json())
+            .then((result) =>
+                setState({
+                    success: result.success,
+                    message: result.message,
+                })
+            );
+    }
     // Render method
     render() {
-        return <div id="serverRendering">{message}</div>;
+        return (
+            <div id="serverRendering">
+                <h1>{this.state.message}</h1>
+            </div>
+        );
     }
 }
 // // User Register Success class
