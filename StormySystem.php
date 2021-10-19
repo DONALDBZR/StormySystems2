@@ -262,8 +262,9 @@ class User {
                 header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
+                echo "<br />";
                 // Redirecting towards the login page.
-                echo "<script type='text/javascript'> document.location = '{$this->domain}/StormySystems2/Login'; </script>";
+                echo "<script type='text/javascript'> document.location = '{$this->domain}StormySystems2/Login'; </script>";
             } else {
                 // Message to be encoded and sent
                 $message = array(
@@ -274,8 +275,9 @@ class User {
                 header('Content-Type: application/json');
                 // Sending the JSON
                 echo json_encode($message);
+                echo "<br />";
                 // Redirecting towards the homepage.
-                echo "<script type='text/javascript'> document.location = '{$this->domain}/StormySystems2'; </script>";
+                echo "<script type='text/javascript'> document.location = '{$this->domain}StormySystems2'; </script>";
             }
         } else {
             // Message to be encoded and sent
@@ -287,8 +289,9 @@ class User {
             header('Content-Type: application/json');
             // Sending the JSON
             echo json_encode($message);
+            echo "<br />";
             // Redirecting towards the Login page.
-            echo "<script type='text/javascript'> document.location = '{$this->domain}/StormySystems2/Login'; </script>";
+            echo "<script type='text/javascript'> document.location = '{$this->domain}StormySystems2/Login'; </script>";
         }
     }
     // Generate Password method
