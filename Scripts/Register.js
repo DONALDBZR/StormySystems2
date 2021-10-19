@@ -217,7 +217,12 @@ class ServerRendering extends Main {
             },
         })
             .then((response) => response.json())
-            .then((message) => console.log(message));
+            .then((message) =>
+                setState({
+                    success: message.success,
+                    message: message.message,
+                })
+            );
     }
     // Render method
     render() {
