@@ -254,7 +254,7 @@ class User {
                 // Sending the mail.
                 $this->PHPMailer->send();
                 // Redirecting towards the login page.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "success",
@@ -266,7 +266,7 @@ class User {
                 echo json_encode($message);
             } else {
                 // Redirecting towards the homepage.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2", true, 301);
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "failure",
@@ -279,7 +279,7 @@ class User {
             }
         } else {
             // Redirecting towards the Login page.
-            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login", true, 301);
             // Message to be encoded and sent
             $message = array(
                 "success" => "failure",
