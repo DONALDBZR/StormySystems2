@@ -206,8 +206,8 @@ class ServerRendering extends Main {
     constructor(props) {
         super(props);
         this.state = {
-            success: null,
-            message: null,
+            success: "",
+            message: "",
         };
     }
     // Component Did Mount method
