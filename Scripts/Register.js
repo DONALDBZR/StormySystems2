@@ -51,8 +51,7 @@ class ServerRendering extends React.Component {
                     success: data.success,
                     message: data.message,
                 })
-            )
-            .then((test) => console.log(test));
+            );
     }
     // Render method
     render() {
