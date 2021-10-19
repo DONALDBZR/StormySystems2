@@ -233,9 +233,11 @@ class ServerRendering extends Main {
         );
     }
     // Component Did Update method
-    componentDidUpdate() {
-        // Calling ServerRendering.registered()
-        this.registered();
+    componentDidUpdate(previousProperties) {
+        if (this.props.message !== previousProperties.message) {
+            // Calling ServerRendering.registered()
+            this.registered.bind(this);
+        }
     }
 }
 // Rendering ./Register
