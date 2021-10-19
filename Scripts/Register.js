@@ -217,12 +217,7 @@ class ServerRendering extends Main {
             },
         })
             .then((response) => response.json())
-            .then((message) =>
-                setState({
-                    success: message.success,
-                    message: message.message,
-                })
-            );
+            .then((message) => console.log(message));
     }
     // Render method
     render() {
@@ -233,10 +228,12 @@ class ServerRendering extends Main {
         );
     }
     // Component Did Update method
-    componentDidUpdate(previousProperties) {
-        if (this.props.message !== previousProperties.message) {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.message !== prevState.message) {
             // Calling ServerRendering.registered()
-            this.registered.bind(this);
+            console.log("The data can be rendered");
+        } else {
+            console.log("ERROR: The data are null");
         }
     }
 }
