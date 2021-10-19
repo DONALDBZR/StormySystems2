@@ -87,9 +87,10 @@ class Main extends Register {
                     message: data.message,
                     url: data.url,
                 })
-            );
-        // Redirecting after 3.867 seconds
-        setTimeout((window.location.href = this.state.url), 3867);
+            )
+            .then(() => {
+                window.location.href = this.state.url;
+            });
     }
     // Render method
     render() {
