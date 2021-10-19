@@ -181,7 +181,7 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering"></div>
+                    <ServerRendering />
                 </form>
             </main>
         );
@@ -198,43 +198,23 @@ class Footer extends Register {
         );
     }
 }
-// // Server Rendering class
-// class ServerRendering extends Main {
-//     // Constructor method
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             success: false,
-//             message: "",
-//         };
-//     }
-//     // Component Did Mount asynchronous method
-//     async componentDidMount() {
-//         // Calling fetch() to retrieve the data returned by the Back-end
-//         fetch("./Register.php")
-//             .then((response) => response.json())
-//             .then((json) => JSON.parse(json))
-//             .then((data) =>
-//                 this.setState({
-//                     success: data.success,
-//                     message: data.message,
-//                 })
-//             );
-//     }
-//     // Render method
-//     render() {
-//         // Method variables
-//         const success = this.state.success;
-//         let message = "";
-//         // If-statement to verify whether the message is a success registration
-//         if (success) {
-//             message = <UserRegisterSuccess />;
-//         } else {
-//             message = <UserRegisterFailure />;
-//         }
-//         return <div id="serverRendering">{message}</div>;
-//     }
-// }
+// Server Rendering class
+class ServerRendering extends Main {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: false,
+            message: "",
+        };
+    }
+    // Component Did Mount asynchronous method
+    async componentDidMount() {}
+    // Render method
+    render() {
+        return <div id="serverRendering">{message}</div>;
+    }
+}
 // // User Register Success class
 // class UserRegisterSuccess extends ServerRendering {
 //     // Constructor method
