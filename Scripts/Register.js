@@ -48,6 +48,8 @@ class Main extends Register {
             firstName: "",
             lastName: "",
             dateOfBirth: "",
+            success: "",
+            message: "",
         };
     }
     // Change handler method
@@ -77,6 +79,30 @@ class Main extends Register {
                 "Content-Type": "application/json",
             },
         }).then((response) => response.json());
+    }
+    // Component Did Mount method
+    componentDidMount() {
+        fetch("./Register.php", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((json) =>
+                setState({
+                    success: json.success,
+                    message: json.message,
+                })
+            );
+    }
+    // Component Did Update method
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.message != prevState.message) {
+            console.log("The JSON can be rendered!");
+        } else {
+            console.log("ERROR: The JSON is null");
+        }
     }
     // Render method
     render() {
@@ -181,7 +207,9 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <ServerRendering />
+                    <div id="serverRendering">
+                        <h1 id={this.state.success}>{this.state.message}</h1>
+                    </div>
                 </form>
             </main>
         );
@@ -196,50 +224,6 @@ class Footer extends Register {
                 <h1>Stormy Systems</h1>
             </footer>
         );
-    }
-}
-// Server Rendering class
-class ServerRendering extends Main {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            success: "",
-            message: "",
-        };
-    }
-    // Component Did Mount method
-    componentDidMount() {
-        // Retrieving data that is sent as response by using fetch()
-        fetch("./Register.php", {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((message) =>
-                setState({
-                    success: message.success,
-                    message: message.message,
-                })
-            );
-    }
-    // Render method
-    render() {
-        return (
-            <div id="serverRendering">
-                <h1 id={this.state.success}>{this.state.message}</h1>
-            </div>
-        );
-    }
-    // Component Did Update method
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.message !== prevState.message) {
-            // Calling ServerRendering.registered()
-            console.log("The data can be rendered");
-        } else {
-            console.log("ERROR: The data are null");
-        }
     }
 }
 // Rendering ./Register
