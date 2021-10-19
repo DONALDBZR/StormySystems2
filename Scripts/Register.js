@@ -48,8 +48,6 @@ class Main extends Register {
             firstName: "",
             lastName: "",
             dateOfBirth: "",
-            success: false,
-            message: "",
         };
     }
     // Change handler method
@@ -79,21 +77,6 @@ class Main extends Register {
                 "Content-Type": "application/json",
             },
         }).then((response) => response.json());
-    }
-    // Component Did Mount asynchronous method
-    async componentDidMount() {
-        // Retrieving the response by using fetch()
-        const response = await fetch("./Register.php", {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-            },
-        });
-        const data = await response.json();
-        setState({
-            success: data.success,
-            message: data.message,
-        });
     }
     // Render method
     render() {
@@ -198,9 +181,7 @@ class Main extends Register {
                             <button>Register</button>
                         </div>
                     </div>
-                    <div id="serverRendering">
-                        <h1 id={this.state.success}>{this.state.message}</h1>
-                    </div>
+                    <ServerRendering />
                 </form>
             </main>
         );
@@ -214,6 +195,47 @@ class Footer extends Register {
             <footer>
                 <h1>Stormy Systems</h1>
             </footer>
+        );
+    }
+}
+// Server Rendering class
+class ServerRendering extends Main {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: false,
+            message: "",
+        };
+    }
+    // Registered method
+    registered() {
+        // Retrieving data that is sent as response by using fetch()
+        fetch("./Register.php", {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((message) =>
+                setState({
+                    success: message.success,
+                    message: message.message,
+                })
+            );
+    }
+    // Component did Update method
+    componentDidUpdate() {
+        // Calling ServerRendering.registered()
+        this.registered();
+    }
+    // Render method
+    render() {
+        return (
+            <div id="serverRendering">
+                <h1 id={this.state.success}>{this.state.message}</h1>
+            </div>
         );
     }
 }
