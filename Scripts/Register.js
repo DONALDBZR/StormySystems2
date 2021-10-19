@@ -1,5 +1,12 @@
+// Register class
+class Register extends React.Component {
+    // Render method
+    render() {
+        return [<Header />, <Main />, <Footer />];
+    }
+}
 // Header class
-class Header extends React.Component {
+class Header extends Register {
     // Render method
     render() {
         return (
@@ -30,53 +37,8 @@ class Header extends React.Component {
         );
     }
 }
-// Server Rendering class
-class ServerRendering extends React.Component {
-    // Constructor method
-    constructor(props) {
-        super(props);
-        this.state = {
-            success: false,
-            message: "",
-        };
-    }
-    // Component Did Mount method
-    componentDidMount() {
-        // Calling fetch() to retrieve the data returned by the Back-end
-        fetch("./Register.php")
-            .then((response) => response.json())
-            .then((json) => JSON.parse(json))
-            .then((data) =>
-                this.setState({
-                    success: data.success,
-                    message: data.message,
-                })
-            );
-    }
-    // User Register Success method
-    userRegisterSuccess() {
-        return <h1 id="userRegisterSuccess">{this.state.message}</h1>;
-    }
-    // User Register Failure method
-    userRegisterFailure() {
-        return <h1 id="userRegisterFailure">{this.state.message}</h1>;
-    }
-    // Render method
-    render() {
-        // Method variables
-        const success = this.state.success;
-        const message;
-        // If-statement to verify whether the message is a success registration
-        if (success) {
-            message = <this.userRegisterSuccess />;
-        } else {
-            message = <this.userRegisterFailure />;
-        }
-        return <div id="serverRendering">{message}</div>;
-    }
-}
 // Main class
-class Main extends React.Component {
+class Main extends Register {
     // Constructor method
     constructor(props) {
         super(props);
@@ -114,7 +76,9 @@ class Main extends React.Component {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((response) => response.json());
+        })
+            .then((response) => response.json())
+            .then(() => ServerRendering.register());
     }
     // Render method
     render() {
@@ -226,7 +190,7 @@ class Main extends React.Component {
     }
 }
 // Footer class
-class Footer extends React.Component {
+class Footer extends Register {
     // Render method
     render() {
         return (
@@ -236,11 +200,69 @@ class Footer extends React.Component {
         );
     }
 }
-// Register class
-class Register extends React.Component {
+// User Register Success class
+class UserRegisterSuccess extends ServerRendering {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            message = super.state.message
+        };
+    }
     // Render method
     render() {
-        return [<Header />, <Main />, <Footer />];
+        return <h1 id="userRegisterSuccess">{this.state.message}</h1>;
+    }
+}
+// User Register Failure class
+class UserRegisterFailure extends ServerRendering {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            message = super.state.message
+        };
+    }
+    // Render method
+    render() {
+        return <h1 id="userRegisterFailure">{this.state.message}</h1>;
+    }
+}
+// Server Rendering class
+class ServerRendering extends Main {
+    // Constructor method
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: null,
+            message: null,
+        };
+    }
+    // Register method
+    register() {
+        // Calling fetch() to retrieve the data returned by the Back-end
+        fetch("./Register.php")
+            .then((response) => response.json())
+            .then((json) => JSON.parse(json))
+            .then((data) =>
+                this.setState({
+                    success: data.success,
+                    message: data.message,
+                })
+            );
+    }
+    // Render method
+    render() {
+        // Method variables
+        const success = this.state.success;
+        const message;
+        // If-statement to verify whether the message is a success registration
+        if (success) {
+            message = <UserRegisterSuccess />;
+        } else {
+            message = <UserRegisterFailure />;
+        }
+        return <div id="serverRendering">{message}</div>;
     }
 }
 // Rendering ./Register
