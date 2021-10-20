@@ -125,12 +125,7 @@ main #formContainer form #formContainerInsideAForm #password #guidelines {
 main #formContainer form #formContainerInsideAForm #loginButton {
     text-align: center;
 }
-main
-    #formContainer
-    form
-    #formContainerInsideAForm
-    #loginButton
-    input[type="submit"],
+main #formContainer form #formContainerInsideAForm #loginButton button,
 main
     #formContainer
     #serverRendering
@@ -145,12 +140,7 @@ main
     padding: calc(var(--vertical) * 0.025) calc(var(--horizontal) * 0.05);
     border: none;
 }
-main
-    #formContainer
-    form
-    #formContainerInsideAForm
-    #loginButton
-    input[type="submit"]:hover,
+main #formContainer form #formContainerInsideAForm #loginButton button:hover,
 main
     #formContainer
     #serverRendering

@@ -247,8 +247,6 @@ class User {
                 $this->PHPMailer->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
                 // Sending the mail.
                 $this->PHPMailer->send();
-                // Redirecting towards the login page.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "success",
@@ -257,11 +255,11 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
+                // Redirecting towards the login page.
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
                 // Sending the JSON
                 echo json_encode($message);
             } else {
-                // Redirecting towards the homepage.
-                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "failure",
@@ -270,12 +268,12 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
+                // Redirecting towards the homepage.
+                header("refresh:3.87; url = " . $this->domain . "/StormySystems2");
                 // Sending the JSON
                 echo json_encode($message);
             }
         } else {
-            // Redirecting towards the Login page.
-            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             // Message to be encoded and sent
             $message = array(
                 "success" => "failure",
@@ -284,6 +282,8 @@ class User {
             );
             // Preparing the header for the JSON
             header('Content-Type: application/json');
+            // Redirecting towards the Login page.
+            header("refresh:3.87; url = " . $this->domain . "/StormySystems2/Login");
             // Sending the JSON
             echo json_encode($message);
         }
@@ -361,7 +361,7 @@ class User {
             // Preparing the query to verify if the mail address entered exists in the database.
             $this->API->query("SELECT * FROM StormySystem.User WHERE UserMailAddress = :UserMailAddress");
             // Binding the value returned by the page for security purposes.
-            $this->API->bind(":UserMailAddress", $_POST['usernameOrMailAddress']);
+            $this->API->bind(":UserMailAddress", $userJSON->usernameOrMailAddress);
             // Executing the query.
             $this->API->execute();
             // Verifying whether the mail address exists and in case that it exists, the system will search whether the combination of the mail address and password is correct but in case that it does not exist, the system will refresh.
@@ -369,7 +369,7 @@ class User {
                 // Storing the data needed in the class variables for further processing
                 $this->setMailAddress($this->API->resultSet()[0]['UserMailAddress']);
                 // If-statement to verify whether the password is the same as the password saved in the database
-                if ($_POST['password'] == $this->API->resultSet()[0]['UserPassword']) {
+                if ($userJSON->password == $this->API->resultSet()[0]['UserPassword']) {
                     // Verifying whether the profile picture of the user exists
                     if ($this->API->resultSet()[0]['UserProfilePicture'] != null) {
                         // Storing the data retrieved from the database in the class variables
@@ -428,10 +428,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
+                // Refreshing the page
+                header('refresh:4.2; url=' . $this->domain . '/StormySystems2/Login');
                 // Sending the JSON
                 echo json_encode($message);
-                // Refreshing the page
-                header('refresh:5.48; url=' . $this->domain . '/StormySystems2/Login');
             }
         }
     }
@@ -449,40 +449,40 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
+                // Redirecting the user towards the Main Portal
+                header('refresh:4.2; url=' . $this->domain . '/StormySystems2');
                 // Sending the JSON
                 echo json_encode($message);
                 // Calling PHPMailer::IsSMTP()
-                $this->Mail->IsSMTP();
+                $this->PHPMailer->IsSMTP();
                 // Setting the charset to be UTF-8
-                $this->Mail->CharSet = "UTF-8";
+                $this->PHPMailer->CharSet = "UTF-8";
                 // Setting the host according to the Mail service provider
-                $this->Mail->Host = "ssl://smtp.gmail.com";
+                $this->PHPMailer->Host = "ssl://smtp.gmail.com";
                 // Setting the SMTP Debugging mode to off
-                $this->Mail->SMTPDebug = 0;
+                $this->PHPMailer->SMTPDebug = 0;
                 // Setting the port of the mail service provider to TCP 465 port
-                $this->Mail->Port = 465;
+                $this->PHPMailer->Port = 465;
                 // Setting the SMTP Secure mode to SSL connection
-                $this->Mail->SMTPSecure = 'ssl';
+                $this->PHPMailer->SMTPSecure = 'ssl';
                 // Enablig the SMTP Authorization mode
-                $this->Mail->SMTPAuth = true;
+                $this->PHPMailer->SMTPAuth = true;
                 // Assuring that the mail is sent from HTML mode
-                $this->Mail->IsHTML(true);
+                $this->PHPMailer->IsHTML(true);
                 // Setting the sender's mail address
-                $this->Mail->Username = "username2";
+                $this->PHPMailer->Username = "username2";
                 // Setting the sender's password
-                $this->Mail->Password = "password2";
+                $this->PHPMailer->Password = "password2";
                 // Assigning the sender's mail address from PHPMailer::Username
-                $this->Mail->setFrom($this->Mail->Username);
+                $this->PHPMailer->setFrom($this->Mail->Username);
                 // Assigning the recipient address from User::getMailAddress()
-                $this->Mail->addAddress($this->getMailAddress());
+                $this->PHPMailer->addAddress($this->getMailAddress());
                 // Setting the subject
-                $this->Mail->Subject = "Stormy System: Ban Notification";
+                $this->PHPMailer->Subject = "Stormy System: Ban Notification";
                 // Setting the body
-                $this->Mail->Body = "You are currently banned from the system!  Before, you can actually get accessed to the system once again, you will have to get it unban by contacting an administrator.";
+                $this->PHPMailer->Body = "You are currently banned from the system!  Before, you can actually get accessed to the system once again, you will have to get it unban by contacting an administrator.";
                 // Sending the mail
-                $this->Mail->send();
-                // Redirecting the user towards the Main Portal
-                header('refresh:5.48; url=' . $this->domain . '/StormySystems2');
+                $this->PHPMailer->send();
             } else if ($this->getType() == 1) {
                 // Message to be encoded and sent
                 $message = array(
@@ -492,10 +492,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
-                // Sending the JSON
-                echo json_encode($message);
                 // Redirecting the user towards the Public portal
                 header('Location:' . $this->domain . '/StormySystems2/Public');
+                // Sending the JSON
+                echo json_encode($message);
             } else if ($this->getType() == 2) {
                 // Message to be encoded and sent
                 $message = array(
@@ -505,10 +505,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
-                // Sending the JSON
-                echo json_encode($message);
                 // Redirecting the user towards the Member Portal
                 header('Location:' . $this->domain . '/StormySystems2/Member');
+                // Sending the JSON
+                echo json_encode($message);
             } else if ($this->getType() == 3) {
                 // Message to be encoded and sent
                 $message = array(
@@ -518,10 +518,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
-                // Sending the JSON
-                echo json_encode($message);
                 // Redirecting the user towards the Workplace Portal
                 header('Location:' . $this->domain . '/StormySystems2/Workplace');
+                // Sending the JSON
+                echo json_encode($message);
             } else if ($this->getType() == 4) {
                 // Message to be encoded and sent
                 $message = array(
@@ -531,10 +531,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
-                // Sending the JSON
-                echo json_encode($message);
                 // Redirecting the user towards the Admin Portal
                 header('Location:' . $this->domain . '/StormySystems2/Admin');
+                // Sending the JSON
+                echo json_encode($message);
             } else {
                 // Message to be encoded and sent
                 $message = array(
@@ -544,10 +544,10 @@ class User {
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
+                // Refreshing the page
+                header('refresh:4.2;');
                 // Sending the JSON
                 echo json_encode($message);
-                // Refreshing the page
-                header('refresh:5.48;');
             }
         } else {
             // Message to be encoded and sent
@@ -558,63 +558,142 @@ class User {
             );
             // Preparing the header for the JSON
             header('Content-Type: application/json');
+            // Redirecting the user towards the homepage
+            header('refresh:4.2; url=' . $this->domain . '/StormySystems2');
             // Sending the JSON
             echo json_encode($message);
-            // Redirecting the user towards the homepage
-            header('refresh:5.48; url=' . $this->domain . '/StormySystems2');
         }
     }
-    // Reset Password method
-    public function resetPassword() {
+    // // Reset Password method
+    // public function resetPassword() {
+    //     // Preparing the query
+    //     $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
+    //     // Binding the value
+    //     $this->API->bind(":UserUsername", $this->getUsername());
+    //     // Executing the query
+    //     $this->API->execute();
+    //     // Changing the password
+    //     $this->setPassword($this->generatePassword());
+    //     // Preparing the query
+    //     $this->API->query("UPDATE StormySystem.User SET UserPassword = :UserPassword WHERE UserMailAddress = :UserMailAddress");
+    //     // Binding the values
+    //     $this->API->bind(":UserPassword", $this->getPassword());
+    //     $this->API->bind(":UserMailAddress", $this->API->resultSet()[0]['UserMailAddress']);
+    //     // Executing the query
+    //     $this->API->execute();
+    //     // Printing message
+    //     echo $this->Renderer->userResetPasswordPasswordChanged();
+    //     // Calling PHPMailer::IsSMTP()
+    //     $this->Mail->IsSMTP();
+    //     // Setting the charset to be UTF-8
+    //     $this->Mail->CharSet = "UTF-8";
+    //     // Setting the host according to the Mail service provider
+    //     $this->Mail->Host = "ssl://smtp.gmail.com";
+    //     // Setting the SMTP Debugging mode to off
+    //     $this->Mail->SMTPDebug = 0;
+    //     // Setting the port of the mail service provider to TCP 465 port
+    //     $this->Mail->Port = 465;
+    //     // Setting the SMTP Secure mode to SSL connection
+    //     $this->Mail->SMTPSecure = 'ssl';
+    //     // Enablig the SMTP Authorization mode
+    //     $this->Mail->SMTPAuth = true;
+    //     // Assuring that the mail is sent from HTML mode
+    //     $this->Mail->IsHTML(true);
+    //     // Setting the sender's mail address
+    //     $this->Mail->Username = "username2";
+    //     // Setting the sender's password
+    //     $this->Mail->Password = "password2";
+    //     // Assigning the sender's mail address from PHPMailer::Username
+    //     $this->Mail->setFrom($this->Mail->Username);
+    //     // Assigning the recipient address from User::getMailAddress()
+    //     $this->Mail->addAddress($this->getMailAddress());
+    //     // Setting the subject
+    //     $this->Mail->Subject = "Stormy System: Reset Password";
+    //     // Setting the body
+    //     $this->Mail->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
+    //     // Sending the mail
+    //     $this->Mail->send();
+    //     // Redirecting the user towards the Main Portal
+    //     header('refresh:5; url=' . $this->domain . '/StormySystems2/Login');
+    // }
+}
+// Login class
+class Login extends User {
+    // Class varaibles
+    private int $id;
+    private string $username;
+    private string $date;
+    protected $User;
+    // Constructor method
+    public function __construct() {
+        // Instantiating User
+        $this->User = new User();
+        // Instantiating API
+        $this->User->API = new API();
+    }
+    // Id accessor method
+    public function getId() {
+        return $this->id;
+    }
+    // Username accessor method
+    public function getUsername() {
+        return $this->username;
+    }
+    // Date accessor method
+    public function getDate() {
+        return $this->date;
+    }
+    // Id mutator method
+    public function setId($id) {
+        $this->id = $id;
+    }
+    // Username mutator method
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+    // Date mutator method
+    public function setDate() {
+        // Setting the default Timezone to UTC + 4
+        date_default_timezone_set("Indian/Mauritius");
+        $this->date = date("Y-m-d H:i:s");
+    }
+    // Track method
+    public function track() {
+        // Retrieving the JSON from the client
+        $userJSON = json_decode(file_get_contents('php://input'));
         // Preparing the query
-        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername");
-        // Binding the value
-        $this->API->bind(":UserUsername", $this->getUsername());
+        $this->User->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername OR UserMailAddress = :UserMailAddress");
+        // Binding the data for security reasons
+        $this->User->API->bind(":UserUsername", $userJSON->usernameOrMailAddress);
+        $this->User->API->bind(":UserMailAddress", $userJSON->usernameOrMailAddress);
         // Executing the query
-        $this->API->execute();
-        // Changing the password
-        $this->setPassword($this->generatePassword());
-        // Preparing the query
-        $this->API->query("UPDATE StormySystem.User SET UserPassword = :UserPassword WHERE UserMailAddress = :UserMailAddress");
-        // Binding the values
-        $this->API->bind(":UserPassword", $this->getPassword());
-        $this->API->bind(":UserMailAddress", $this->API->resultSet()[0]['UserMailAddress']);
-        // Executing the query
-        $this->API->execute();
-        // Printing message
-        echo $this->Renderer->userResetPasswordPasswordChanged();
-        // Calling PHPMailer::IsSMTP()
-        $this->Mail->IsSMTP();
-        // Setting the charset to be UTF-8
-        $this->Mail->CharSet = "UTF-8";
-        // Setting the host according to the Mail service provider
-        $this->Mail->Host = "ssl://smtp.gmail.com";
-        // Setting the SMTP Debugging mode to off
-        $this->Mail->SMTPDebug = 0;
-        // Setting the port of the mail service provider to TCP 465 port
-        $this->Mail->Port = 465;
-        // Setting the SMTP Secure mode to SSL connection
-        $this->Mail->SMTPSecure = 'ssl';
-        // Enablig the SMTP Authorization mode
-        $this->Mail->SMTPAuth = true;
-        // Assuring that the mail is sent from HTML mode
-        $this->Mail->IsHTML(true);
-        // Setting the sender's mail address
-        $this->Mail->Username = "username2";
-        // Setting the sender's password
-        $this->Mail->Password = "password2";
-        // Assigning the sender's mail address from PHPMailer::Username
-        $this->Mail->setFrom($this->Mail->Username);
-        // Assigning the recipient address from User::getMailAddress()
-        $this->Mail->addAddress($this->getMailAddress());
-        // Setting the subject
-        $this->Mail->Subject = "Stormy System: Reset Password";
-        // Setting the body
-        $this->Mail->Body = "Your password is " . $this->getPassword() . ".  Please consider to change your password after logging in!";
-        // Sending the mail
-        $this->Mail->send();
-        // Redirecting the user towards the Main Portal
-        header('refresh:5; url=' . $this->domain . '/StormySystems2/Login');
+        $this->User->API->execute();
+        // If-statement to retrieve to the required data
+        if ($this->User->API->resultSet()[0]['UserUsername'] == $userJSON->usernameOrMailAddress) {
+            // Calling Login::setUsername()
+            $this->setUsername($this->User->API->resultSet()[0]['UserUsername']);
+            // Calling Login::setDate()
+            $this->setDate();
+            // Preparing the query
+            $this->User->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
+            // Binding the data for security purposes
+            $this->User->API->bind(":LoginUser", $this->getUsername());
+            $this->User->API->bind(":LoginDate", $this->getDate());
+            // Executing the query
+            $this->User->API->execute();
+        } else {
+            // Calling Login::setUsername()
+            $this->setUsername($this->User->API->resultSet()[0]['UserUsername']);
+            // Calling Login::setDate()
+            $this->setDate();
+            // Preparing the query
+            $this->User->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
+            // Binding the data for security purposes
+            $this->User->API->bind(":LoginUser", $this->getUsername());
+            $this->User->API->bind(":LoginDate", $this->getDate());
+            // Executing the query
+            $this->User->API->execute();
+        }
     }
 }
 // Music Class
