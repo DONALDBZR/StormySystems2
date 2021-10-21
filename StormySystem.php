@@ -55,6 +55,8 @@ class API {
 }
 // Renderer Class
 class Renderer {
+    // // Constructor method
+    // public function __construct() {}
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
         return "You already have an account on the system!  You will be redirected to the login page!";
@@ -66,6 +68,10 @@ class Renderer {
     // User Register Success method
     public function userRegisterSuccess() {
         return "You have been registered into the system, you will be redirected to the login page.";
+    }
+    // User Register Form Wrongly Filled method
+    public function userRegisterFormWronglyFilled() {
+        return "The form is not filled correctly!";
     }
     // User Login User Does Not Exist method
     public function userLoginUserDoesNotExist($user) {
