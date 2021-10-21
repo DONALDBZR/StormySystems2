@@ -55,8 +55,6 @@ class API {
 }
 // Renderer Class
 class Renderer {
-    // // Constructor method
-    // public function __construct() {}
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
         return "You already have an account on the system!  You will be redirected to the login page!";
@@ -80,6 +78,10 @@ class Renderer {
     // User Login Incorrect Password method
     public function userLoginIncorrectPassword() {
         return "Incorrect Password!";
+    }
+    // User Login Form Wrongly Filled method
+    public function userLoginFormWronglyFilled() {
+        return "The form is not filled correctly!";
     }
     // User Check Session Banned User method
     public function userCheckSessionBannedUser() {
