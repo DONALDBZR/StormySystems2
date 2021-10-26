@@ -1,12 +1,12 @@
 <?php
-// Importing StormySystem.php
+// Importing Stormy System
 require $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
 // Instantiating User
 $User = new User();
-// Instantiating Login
-$Login = new Login();
 // Instantiating Renderer
 $Renderer = new Renderer();
+// Instantiating Login
+$Login = new Login();
 // If-Statement to verify whether there is a JSON
 if (json_decode(file_get_contents("php://input")) != null) {
     // If-statement to verify whether the JSON does not have any null value

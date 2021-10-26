@@ -1,5 +1,5 @@
 <?php
-// Importing StormySystem.php
+// Importing Stormy System
 require $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/StormySystem.php';
 // Instantiating User
 $User = new User();
