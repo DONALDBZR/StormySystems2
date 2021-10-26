@@ -40,9 +40,9 @@ class UserController extends User {
                 // Ensuring that PHPMailer is called from a .html file.
                 $this->PHPMailer->IsHTML(true);
                 // Sender's mail address.
-                $this->PHPMailer->Username = "stormysystems@gmail.com";
+                $this->PHPMailer->Username = "username2";
                 // Sender's password
-                $this->PHPMailer->Password = "Aegis4869_050200";
+                $this->PHPMailer->Password = "password2";
                 // Assigning sender as a parameter in the sender's zone.
                 $this->PHPMailer->setFrom($this->PHPMailer->Username);
                 // Assinging the receiver mail's address which is retrieved from the User class.
