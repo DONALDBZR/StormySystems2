@@ -7,8 +7,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/StormySystems2/PHPMailer/src/SMTP.php
 class API {
     // Class variables
     private $dataSourceName = "mysql:dbname=StormySystem;host=stormysystem.ddns.net:3306";
-    private $username = "username1";
-    private $password = "password1";
+    private $username = "usernameDBH";
+    private $password = "passwordDBH";
     private $databaseHandler;
     private $statement;
     // Constructor method
@@ -16,8 +16,8 @@ class API {
         $options = array(PDO::ATTR_PERSISTENT=>true, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
         try {
             $this->databaseHandler = new PDO($this->dataSourceName, $this->username, $this->password, $options);
-        } catch (PDOException $e) {
-            echo "Connection Failed: " . $e->getMessage();
+        } catch (PDOException $error) {
+            echo "Connection Failed: " . $error->getMessage();
         }
     }
     // Bind method
@@ -55,6 +55,14 @@ class API {
 }
 // Renderer Class
 class Renderer {
+    // User Register Success method
+    public function userRegisterSuccess() {
+        return "You have been successfully registered into the system!";
+    }
+    // User Register Too Young method
+    public function userRegisterTooYoung() {
+        return "You are too young to be able to use this system!";
+    }
     // User Register Username Exists method
     public function userRegisterUsernameExists() {
         return "You already have an account on the system!  You will be redirected to the login page!";
@@ -82,10 +90,6 @@ class Renderer {
     // User Check Session User Does Not Exist method
     public function userCheckSessionUserDoesNotExist($user) {
         return "{$user} does not exist!";
-    }
-    // User Reset Password Password Changed method
-    public function userResetPasswordPasswordChanged() {
-        return "<h1 id='userResetPasswordPasswordChanged'>Your password has been changed!</h1>";
     }
 }
 // User Class
@@ -482,26 +486,13 @@ class User {
                 // Message to be encoded and sent
                 $message = array(
                     "success" => "",
-                    "url" => $this->domain . "/StormySystems2/Public",
-                    "message" => ""
-                );
-                // Preparing the header for the JSON
-                header('Content-Type: application/json');
-                // Redirecting the user towards the Public portal
-                header('Location:' . $this->domain . '/StormySystems2/Public');
-                // Sending the JSON
-                echo json_encode($message);
-            } else if ($this->getType() == 2) {
-                // Message to be encoded and sent
-                $message = array(
-                    "success" => "",
                     "url" => $this->domain . "/StormySystems2/Admin",
                     "message" => ""
                 );
                 // Preparing the header for the JSON
                 header('Content-Type: application/json');
-                // Redirecting the user towards the Member Portal
-                header('Location:' . $this->domain . '/StormySystems2/Member');
+                // Redirecting the user towards the Public portal
+                header('Location:' . $this->domain . '/StormySystems2/Admin');
                 // Sending the JSON
                 echo json_encode($message);
             } else {
@@ -538,23 +529,20 @@ class User {
 class Login extends User {
     // Class varaibles
     private int $id;
-    private string $username;
+    private string $user;
     private string $date;
-    protected $User;
     // Constructor method
     public function __construct() {
-        // Instantiating User
-        $this->User = new User();
         // Instantiating API
-        $this->User->API = new API();
+        $this->API = new API();
     }
     // Id accessor method
     public function getId() {
         return $this->id;
     }
-    // Username accessor method
-    public function getUsername() {
-        return $this->username;
+    // User accessor method
+    public function getUser() {
+        return $this->user;
     }
     // Date accessor method
     public function getDate() {
@@ -564,9 +552,9 @@ class Login extends User {
     public function setId($id) {
         $this->id = $id;
     }
-    // Username mutator method
-    public function setUsername($username) {
-        $this->username = $username;
+    // User mutator method
+    public function setUser($user) {
+        $this->user = $user;
     }
     // Date mutator method
     public function setDate() {
@@ -579,37 +567,37 @@ class Login extends User {
         // Retrieving the JSON from the client
         $userJSON = json_decode(file_get_contents('php://input'));
         // Preparing the query
-        $this->User->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername OR UserMailAddress = :UserMailAddress");
+        $this->API->query("SELECT * FROM StormySystem.User WHERE UserUsername = :UserUsername OR UserMailAddress = :UserMailAddress");
         // Binding the data for security reasons
-        $this->User->API->bind(":UserUsername", $userJSON->usernameOrMailAddress);
-        $this->User->API->bind(":UserMailAddress", $userJSON->usernameOrMailAddress);
+        $this->API->bind(":UserUsername", $userJSON->usernameOrMailAddress);
+        $this->API->bind(":UserMailAddress", $userJSON->usernameOrMailAddress);
         // Executing the query
-        $this->User->API->execute();
+        $this->API->execute();
         // If-statement to retrieve to the required data
-        if ($this->User->API->resultSet()[0]['UserUsername'] == $userJSON->usernameOrMailAddress) {
-            // Calling Login::setUsername()
-            $this->setUsername($this->User->API->resultSet()[0]['UserUsername']);
+        if ($this->API->resultSet()[0]['UserUsername'] == $userJSON->usernameOrMailAddress) {
+            // Calling Login::setUser()
+            $this->setUser($this->API->resultSet()[0]['UserUsername']);
             // Calling Login::setDate()
             $this->setDate();
             // Preparing the query
-            $this->User->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
+            $this->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
             // Binding the data for security purposes
-            $this->User->API->bind(":LoginUser", $this->getUsername());
-            $this->User->API->bind(":LoginDate", $this->getDate());
+            $this->API->bind(":LoginUser", $this->getUser());
+            $this->API->bind(":LoginDate", $this->getDate());
             // Executing the query
-            $this->User->API->execute();
+            $this->API->execute();
         } else {
-            // Calling Login::setUsername()
-            $this->setUsername($this->User->API->resultSet()[0]['UserUsername']);
+            // Calling Login::setUser()
+            $this->setUser($this->API->resultSet()[0]['UserUsername']);
             // Calling Login::setDate()
             $this->setDate();
             // Preparing the query
-            $this->User->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
+            $this->API->query("INSERT INTO StormySystem.Login (LoginUser, LoginDate) VALUES (:LoginUser, :LoginDate)");
             // Binding the data for security purposes
-            $this->User->API->bind(":LoginUser", $this->getUsername());
-            $this->User->API->bind(":LoginDate", $this->getDate());
+            $this->API->bind(":LoginUser", $this->getUser());
+            $this->API->bind(":LoginDate", $this->getDate());
             // Executing the query
-            $this->User->API->execute();
+            $this->API->execute();
         }
     }
 }
