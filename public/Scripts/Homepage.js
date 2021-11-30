@@ -6,31 +6,34 @@ class Homepage extends React.Component {
     }
 }
 // Header Class
-class Header extends Homepage {
+class Header extends React.Component {
     // Render method
     render() {
         return (
             <header>
                 <nav>
                     <div>
-                        <a href="./">
-                            <img src="./Images/Logo.png" alt="System Logo" />
+                        <a href="/StormySystems2/">
+                            <img
+                                src="./public/Images/Logo.png"
+                                alt="System Logo"
+                            />
                         </a>
                     </div>
                     <div>
-                        <a href="./AboutUs">About Us</a>
+                        <a href="/StormySystems2/AboutUs">About Us</a>
                     </div>
                     <div>
-                        <a href="./Service">Services Offered</a>
+                        <a href="/StormySystems2/Service">Services Offered</a>
                     </div>
                     <div>
-                        <a href="./Projects">Projects</a>
+                        <a href="/StormySystems2/Projects">Projects</a>
                     </div>
                     <div>
-                        <a href="./Login">Login</a>
+                        <a href="/StormySystems2/Login">Login</a>
                     </div>
                     <div>
-                        <a href="./Register">Register</a>
+                        <a href="/StormySystems2/Register">Register</a>
                     </div>
                 </nav>
             </header>
@@ -38,19 +41,19 @@ class Header extends Homepage {
     }
 }
 // Main Class
-class Main extends Homepage {
+class Main extends React.Component {
     // Render method
     render() {
         return (
             <main>
                 <h1>Welcome to</h1>
-                <img src="./Images/Logo.png" alt="System Logo" />
+                <img src="./public/Images/Logo.png" alt="System Logo" />
             </main>
         );
     }
 }
 // Footer Class
-class Footer extends Homepage {
+class Footer extends React.Component {
     // Render method
     render() {
         return (

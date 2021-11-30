@@ -16,12 +16,10 @@ if (json_decode(file_get_contents("php://input")) != null) {
         $message = array(
             "success" => "failure",
             "url" => $User->domain . "/StormySystems2/Register",
-            "message" => $Renderer->userRegisterFormWronglyFilled()
+            "message" => $Renderer->userLoginFormWronglyFilled()
         );
         // Preparing the header for the JSON
         header('Content-Type: application/json');
-        // Redirecting towards the Login page.
-        header("refresh:3.87; url = " . $User->domain . "/StormySystems2/Register");
         // Sending the JSON
         echo json_encode($message);
     }

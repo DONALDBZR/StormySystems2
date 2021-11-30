@@ -61,6 +61,8 @@ class Main extends Login {
     }
     // Submit handler method
     handleSubmit(event) {
+        // Local variables
+        const delay = 4200;
         // Prevent default submission
         event.preventDefault();
         // Generating a POST request
@@ -82,9 +84,13 @@ class Main extends Login {
                     url: data.url,
                 })
             )
-            .then(() => {
-                window.location.href = this.state.url;
-            });
+            .then(() => this.redirector(delay));
+    }
+    // Redirector method
+    redirector(delay) {
+        setTimeout(() => {
+            window.location.href = this.state.url;
+        }, delay);
     }
     // Render method
     render() {
