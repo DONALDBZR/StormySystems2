@@ -13,7 +13,7 @@ class Header extends React.Component {
             <header>
                 <nav>
                     <div>
-                        <a href="/StormySystems2/">
+                        <a href="./">
                             <img
                                 src="./public/Images/Logo.png"
                                 alt="System Logo"
@@ -21,19 +21,19 @@ class Header extends React.Component {
                         </a>
                     </div>
                     <div>
-                        <a href="/StormySystems2/AboutUs">About Us</a>
+                        <a href="./AboutUs">About Us</a>
                     </div>
                     <div>
-                        <a href="/StormySystems2/Service">Services Offered</a>
+                        <a href="./Service">Services Offered</a>
                     </div>
                     <div>
-                        <a href="/StormySystems2/Projects">Projects</a>
+                        <a href="./Projects">Projects</a>
                     </div>
                     <div>
-                        <a href="/StormySystems2/Login">Login</a>
+                        <a href="./Login">Login</a>
                     </div>
                     <div>
-                        <a href="/StormySystems2/Register">Register</a>
+                        <a href="./Register">Register</a>
                     </div>
                 </nav>
             </header>
