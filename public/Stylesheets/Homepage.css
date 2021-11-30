@@ -74,13 +74,25 @@ footer h1 {
         font-size: calc(var(--fontSize) * 2);
     }
     footer {
-        margin-top: calc(var(--vertical) * 0.161051);
+        margin-top: calc(var(--vertical) * 0.2);
     }
     footer h1 {
         font-size: var(--fontSize);
     }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
+    }
+    main h1 {
+        font-size: calc(var(--fontSize) * 2 * var(--tablet));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1.03);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
 }
 @media screen and (max-width: 767px) {
 }
