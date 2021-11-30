@@ -1,4 +1,3 @@
 <?php
-// Importing Login.html
-require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/Pages/Login.html';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/StormySystems2/public/Pages/Login.html';
 ?>

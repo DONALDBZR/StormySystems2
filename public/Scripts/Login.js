@@ -14,7 +14,10 @@ class Header extends Login {
                 <nav>
                     <div>
                         <a href="../">
-                            <img src="../Images/Logo.png" alt="System Logo" />
+                            <img
+                                src="../public/Images/Logo.png"
+                                alt="System Logo"
+                            />
                         </a>
                     </div>
                     <div>
