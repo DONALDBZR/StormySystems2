@@ -14,7 +14,7 @@
     --horizontalHD: 1920px;
     --verticalHD: 1080px;
     --opacity: 100%;
-    --tablet: 0.729;
+    --tablet: 0.59049;
     --mobile: 0.531441;
     background-color: var(--color1);
     color: var(--color2);
@@ -41,10 +41,6 @@ header nav a {
     font-weight: bold;
     text-decoration: none;
 }
-header nav a img {
-    height: calc(var(--verticalHD) * 0.0531441);
-    width: auto;
-}
 header nav a img:hover {
     opacity: calc(var(--opacity) * 0.5);
 }
@@ -70,6 +66,10 @@ footer h1 {
     header nav a {
         font-size: calc(var(--fontSize) * 1.8);
     }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
     main h1 {
         font-size: calc(var(--fontSize) * 2);
     }
@@ -84,6 +84,10 @@ footer h1 {
     header nav a {
         font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
     }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
     main h1 {
         font-size: calc(var(--fontSize) * 2 * var(--tablet));
     }
@@ -95,4 +99,20 @@ footer h1 {
     }
 }
 @media screen and (max-width: 767px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main h1 {
+        font-size: calc(var(--fontSize) * 2 * var(--mobile));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1.6);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
 }
