@@ -18,6 +18,8 @@
     --horizontalHD: 1920px;
     --verticalHD: 1080px;
     --opacity: 100%;
+    --tablet: 0.59049;
+    --mobile: 0.531441;
     background-color: var(--color1);
     color: var(--color2);
     font-size: var(--fontSize);
@@ -39,14 +41,9 @@ header nav div {
 }
 header nav a {
     color: var(--color2);
-    font-size: calc(var(--fontSize) * 1.8);
     font-family: var(--proximaNova);
     font-weight: bold;
     text-decoration: none;
-}
-header nav a img {
-    height: calc(var(--verticalHD) * 0.0531441);
-    width: auto;
 }
 header nav a img:hover {
     opacity: calc(var(--opacity) * 0.5);
@@ -57,19 +54,12 @@ header nav a:hover {
 main #formContainer {
     background-color: var(--color2);
     color: var(--color1);
-    margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
-    padding-top: calc(var(--vertical) * 0.05);
-    padding-left: calc(var(--horizontal) * 0.05);
-    padding-right: calc(var(--horizontal) * 0.05);
-    padding-bottom: calc(var(--vertical) * 0);
-    width: calc(var(--horizontal) / 2);
 }
 main #formContainer form #label {
     text-align: center;
-    font-size: calc(var(--fontSize) * 2);
     font-family: var(--proximaNova);
     font-weight: bold;
-    padding-bottom: calc(var(--vertical) * 0.025937424);
+    padding-bottom: calc(var(--vertical) * 0.01);
 }
 main #formContainer form #formContainerInsideAForm #usernameOrMailAddress,
 main #formContainer form #formContainerInsideAForm #password {
@@ -94,8 +84,6 @@ main
     input,
 main #formContainer form #formContainerInsideAForm #password #input input {
     margin: calc(var(--vertical) * 0);
-    width: calc(var(--horizontal) * 0.7);
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
 main
@@ -106,8 +94,6 @@ main
     #input
     div,
 main #formContainer form #formContainerInsideAForm #password #input div {
-    width: calc(var(--horizontal) * 0.3);
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     color: var(--color4);
@@ -119,7 +105,6 @@ main
     #usernameOrMailAddress
     #guidelines,
 main #formContainer form #formContainerInsideAForm #password #guidelines {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
 main #formContainer form #formContainerInsideAForm #loginButton {
@@ -132,7 +117,6 @@ main
     #userLoginIncorrectPassword
     form
     input[type="submit"] {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     background-color: var(--color1);
@@ -152,7 +136,6 @@ main
     cursor: pointer;
 }
 main #formContainer #serverRendering {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     text-align: center;
@@ -167,9 +150,199 @@ main #formContainer #serverRendering #success {
 }
 footer {
     text-align: center;
-    margin-top: calc(var(--vertical) * 0.045949729);
 }
 footer h1 {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
+}
+@media screen and (min-width: 1024px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8);
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main #formContainer {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.56);
+    }
+    main #formContainer form #label {
+        font-size: calc(var(--fontSize) * 2);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        input,
+    main #formContainer form #formContainerInsideAForm #password #input input {
+        font-size: var(--fontSize);
+        width: calc(var(--horizontal) * 0.7);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        div,
+    main #formContainer form #formContainerInsideAForm #password #input div {
+        font-size: var(--fontSize);
+        width: calc(var(--horizontal) * 0.3);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #guidelines,
+    main #formContainer form #formContainerInsideAForm #password #guidelines {
+        font-size: var(--fontSize);
+    }
+    main #formContainer form #formContainerInsideAForm #loginButton button,
+    main
+        #formContainer
+        #serverRendering
+        #userLoginIncorrectPassword
+        form
+        input[type="submit"] {
+        font-size: var(--fontSize);
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 0.17);
+    }
+    footer h1 {
+        font-size: var(--fontSize);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main #formContainer {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.56);
+    }
+    main #formContainer form #label {
+        font-size: calc(var(--fontSize) * 2 * var(--tablet));
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        input,
+    main #formContainer form #formContainerInsideAForm #password #input input {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        div,
+    main #formContainer form #formContainerInsideAForm #password #input div {
+        font-size: calc(var(--fontSize) * var(--tablet));
+        width: calc(var(--horizontal) * 0.7);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #guidelines,
+    main #formContainer form #formContainerInsideAForm #password #guidelines {
+        font-size: calc(var(--fontSize) * var(--tablet));
+        width: calc(var(--horizontal) * 0.3);
+    }
+    main #formContainer form #formContainerInsideAForm #loginButton button,
+    main
+        #formContainer
+        #serverRendering
+        #userLoginIncorrectPassword
+        form
+        input[type="submit"] {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 0.99);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+}
+@media screen and (max-width: 767px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main #formContainer {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.05);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.86);
+    }
+    main #formContainer form #label {
+        font-size: calc(var(--fontSize) * 2 * var(--mobile));
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        input,
+    main #formContainer form #formContainerInsideAForm #password #input input {
+        font-size: calc(var(--fontSize) * var(--mobile));
+        width: calc(var(--horizontal) * 0.6);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #input
+        div,
+    main #formContainer form #formContainerInsideAForm #password #input div {
+        font-size: calc(var(--fontSize) * var(--mobile));
+        width: calc(var(--horizontal) * 0.4);
+    }
+    main
+        #formContainer
+        form
+        #formContainerInsideAForm
+        #usernameOrMailAddress
+        #guidelines,
+    main #formContainer form #formContainerInsideAForm #password #guidelines {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    main #formContainer form #formContainerInsideAForm #loginButton button,
+    main
+        #formContainer
+        #serverRendering
+        #userLoginIncorrectPassword
+        form
+        input[type="submit"] {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1.26);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
 }
