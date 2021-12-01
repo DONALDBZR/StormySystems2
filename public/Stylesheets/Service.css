@@ -61,8 +61,6 @@ main #header {
 }
 main #service {
     font-family: var(--proximaNova);
-    width: calc(var(--horizontal) / 3);
-    margin: calc(var(--vertical) * 0) calc(var(--horizontal) / 3);
     text-align: center;
 }
 main #service:hover {
@@ -145,7 +143,7 @@ footer a .faMail:hover {
         font-size: calc(var(--fontSize) * 1.18098 * var(--mobile));
     }
     footer {
-        margin-top: calc(var(--vertical) * 1.53);
+        margin-top: calc(var(--vertical) * 1.63);
     }
     footer div {
         font-size: calc(var(--fontSize) * var(--mobile));
