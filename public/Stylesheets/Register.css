@@ -18,6 +18,8 @@
     --horizontalHD: 1920px;
     --verticalHD: 1080px;
     --opacity: 100%;
+    --tablet: 0.59049;
+    --mobile: 0.531441;
     background-color: var(--color1);
     color: var(--color2);
     font-size: var(--fontSize);
@@ -39,13 +41,12 @@ header nav div {
 }
 header nav a {
     color: var(--color2);
-    font-size: calc(var(--fontSize) * 1.8);
     font-family: var(--proximaNova);
     font-weight: bold;
     text-decoration: none;
 }
 header nav a img {
-    height: calc(var(--verticalHD) * 0.0531441);
+    height: calc(var(--verticalHD) * (35 / 1080));
     width: auto;
 }
 header nav a img:hover {
@@ -57,19 +58,12 @@ header nav a:hover {
 main form {
     background-color: var(--color2);
     color: var(--color1);
-    margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
-    padding-top: calc(var(--vertical) * 0.05);
-    padding-left: calc(var(--horizontal) * 0.05);
-    padding-right: calc(var(--horizontal) * 0.05);
-    padding-bottom: calc(var(--vertical) * 0);
-    width: calc(var(--horizontal) / 2);
 }
 main form #label {
     text-align: center;
-    font-size: calc(var(--fontSize) * 2);
     font-family: var(--proximaNova);
     font-weight: bold;
-    padding-bottom: calc(var(--vertical) * 0.025937424);
+    padding-bottom: calc(var(--vertical) * 0.01);
 }
 main form #formContainer #username,
 main form #formContainer #firstName,
@@ -92,8 +86,6 @@ main form #formContainer #lastName #input input,
 main form #formContainer #dateOfBirth #input input,
 main form #formContainer #mailAddress #input input {
     margin: calc(var(--vertical) * 0);
-    width: calc(var(--horizontal) * 0.8);
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
 main form #formContainer #username #input div,
@@ -101,8 +93,6 @@ main form #formContainer #firstName #input div,
 main form #formContainer #lastName #input div,
 main form #formContainer #dateOfBirth #input div,
 main form #formContainer #mailAddress #input div {
-    width: calc(var(--horizontal) * 0.2);
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     color: var(--color4);
@@ -112,14 +102,12 @@ main form #formContainer #firstName #guidelines,
 main form #formContainer #lastName #guidelines,
 main form #formContainer #dateOfBirth #guidelines,
 main form #formContainer #mailAddress #guidelines {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
 }
 main form #formContainer #registrationButton {
     text-align: center;
 }
 main form #formContainer #registrationButton button {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
     font-weight: bold;
     background-color: var(--color1);
@@ -149,9 +137,154 @@ main form #serverRendering #success {
 }
 footer {
     text-align: center;
-    margin-top: calc(var(--vertical) * 0.045949729);
 }
 footer h1 {
-    font-size: var(--fontSize);
     font-family: var(--proximaNova);
+}
+@media screen and (min-width: 1024px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8);
+    }
+    main form {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.56);
+    }
+    main form #label {
+        font-size: calc(var(--fontSize) * 2);
+    }
+    main form #formContainer #username #input input,
+    main form #formContainer #firstName #input input,
+    main form #formContainer #lastName #input input,
+    main form #formContainer #dateOfBirth #input input,
+    main form #formContainer #mailAddress #input input {
+        width: calc(var(--horizontal) * 0.8);
+        font-size: var(--fontSize);
+    }
+    main form #formContainer #username #input div,
+    main form #formContainer #firstName #input div,
+    main form #formContainer #lastName #input div,
+    main form #formContainer #dateOfBirth #input div,
+    main form #formContainer #mailAddress #input div {
+        width: calc(var(--horizontal) * 0.2);
+        font-size: var(--fontSize);
+    }
+    main form #formContainer #username #guidelines,
+    main form #formContainer #firstName #guidelines,
+    main form #formContainer #lastName #guidelines,
+    main form #formContainer #dateOfBirth #guidelines,
+    main form #formContainer #mailAddress #guidelines {
+        font-size: var(--fontSize);
+    }
+    main form #formContainer #registrationButton button {
+        font-size: var(--fontSize);
+    }
+    main form #serverRendering {
+        font-size: var(--fontSize);
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 0.05);
+    }
+    footer h1 {
+        font-size: var(--fontSize);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
+    }
+    main form {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.2);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.56);
+    }
+    main form #label {
+        font-size: calc(var(--fontSize) * 2 * var(--tablet));
+    }
+    main form #formContainer #username #input input,
+    main form #formContainer #firstName #input input,
+    main form #formContainer #lastName #input input,
+    main form #formContainer #dateOfBirth #input input,
+    main form #formContainer #mailAddress #input input {
+        width: calc(var(--horizontal) * 0.8);
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    main form #formContainer #username #input div,
+    main form #formContainer #firstName #input div,
+    main form #formContainer #lastName #input div,
+    main form #formContainer #dateOfBirth #input div,
+    main form #formContainer #mailAddress #input div {
+        width: calc(var(--horizontal) * 0.2);
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    main form #formContainer #username #guidelines,
+    main form #formContainer #firstName #guidelines,
+    main form #formContainer #lastName #guidelines,
+    main form #formContainer #dateOfBirth #guidelines,
+    main form #formContainer #mailAddress #guidelines {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    main form #formContainer #registrationButton button {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    main form #serverRendering {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 0.86);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--tablet));
+    }
+}
+@media screen and (max-width: 767px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
+    }
+    main form {
+        margin: calc(var(--vertical) * 0.01) calc(var(--horizontal) * 0.05);
+        padding: calc(var(--vertical) * 0.02) calc(var(--horizontal) * 0.02)
+            calc(var(--vertical) * 0) calc(var(--horizontal) * 0.02);
+        width: calc(var(--horizontal) * 0.86);
+    }
+    main form #label {
+        font-size: calc(var(--fontSize) * 2 * var(--mobile));
+    }
+    main form #formContainer #username #input input,
+    main form #formContainer #firstName #input input,
+    main form #formContainer #lastName #input input,
+    main form #formContainer #dateOfBirth #input input,
+    main form #formContainer #mailAddress #input input {
+        width: calc(var(--horizontal) * 0.76);
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    main form #formContainer #username #input div,
+    main form #formContainer #firstName #input div,
+    main form #formContainer #lastName #input div,
+    main form #formContainer #dateOfBirth #input div,
+    main form #formContainer #mailAddress #input div {
+        width: calc(var(--horizontal) * 0.24);
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    main form #formContainer #username #guidelines,
+    main form #formContainer #firstName #guidelines,
+    main form #formContainer #lastName #guidelines,
+    main form #formContainer #dateOfBirth #guidelines,
+    main form #formContainer #mailAddress #guidelines {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    main form #formContainer #registrationButton button {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    main form #serverRendering {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1);
+    }
+    footer h1 {
+        font-size: calc(var(--fontSize) * var(--mobile));
+    }
 }
