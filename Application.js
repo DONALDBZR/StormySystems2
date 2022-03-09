@@ -31,6 +31,11 @@ class Application {
             response.sendFile(__dirname + "/public/Pages/Homepage.html");
             console.log(`Application: /\nMethod: GET`);
         });
+        // Mapping the about page
+        this.application.get("/About", (request, response) => {
+            response.sendFile(__dirname + "/public/Pages/About.html");
+            console.log(`Application: /About\nMethod: GET`);
+        });
     }
 }
 // Instanting the application
