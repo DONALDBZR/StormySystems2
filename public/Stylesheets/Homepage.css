@@ -32,7 +32,7 @@ header nav {
     display: flex;
 }
 header nav div {
-    width: calc(var(--horizontal) / 6);
+    width: calc(var(--horizontal) / 5);
     text-align: center;
 }
 header nav a {
@@ -46,6 +46,9 @@ header nav a img:hover {
 }
 header nav a:hover {
     text-decoration: underline;
+}
+main {
+    margin-top: calc(var(--vertical) * 0.1);
 }
 main h1 {
     text-align: center;
