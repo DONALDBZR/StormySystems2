@@ -14,26 +14,20 @@ class Header extends React.Component {
                 <nav>
                     <div>
                         <a href="./">
-                            <img
-                                src="./public/Images/Logo.png"
-                                alt="System Logo"
-                            />
+                            <img src="/Images/Logo.png" alt="System Logo" />
                         </a>
                     </div>
                     <div>
-                        <a href="./AboutUs">About Us</a>
+                        <a href="./About">About Me</a>
                     </div>
                     <div>
                         <a href="./Service">Services Offered</a>
                     </div>
                     <div>
-                        <a href="./Projects">Projects</a>
+                        <a href="./Project">Projects</a>
                     </div>
                     <div>
-                        <a href="./Login">Login</a>
-                    </div>
-                    <div>
-                        <a href="./Register">Register</a>
+                        <a href="./Contact">Contact</a>
                     </div>
                 </nav>
             </header>
@@ -47,7 +41,7 @@ class Main extends React.Component {
         return (
             <main>
                 <h1>Welcome to</h1>
-                <img src="./public/Images/Logo.png" alt="System Logo" />
+                <img src="/Images/Logo.png" alt="System Logo" />
             </main>
         );
     }
@@ -56,11 +50,7 @@ class Main extends React.Component {
 class Footer extends React.Component {
     // Render method
     render() {
-        return (
-            <footer>
-                <h1>Stormy Systems</h1>
-            </footer>
-        );
+        return <footer></footer>;
     }
 }
 // Rendering ./
