@@ -56,6 +56,11 @@ class Application {
             response.sendFile(__dirname + "/public/Pages/Hobby.html");
             console.log(`Application: /About/Hobby\nMethod: GET`);
         });
+        // /About/Skill
+        this.application.get("/About/Skill", (request, response) => {
+            response.sendFile(__dirname + "/public/Pages/Skill.html");
+            console.log(`Application: /About/Skill\nMethod: GET`);
+        });
     }
 }
 // Instanting the application
