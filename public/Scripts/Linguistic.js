@@ -1,12 +1,12 @@
-// Professional class
-class Professional extends React.Component {
+// Linguistic class
+class Linguistic extends React.Component {
     // Render method
     render() {
         return <Footer />;
     }
 }
 // Footer class
-class Footer extends Professional {
+class Footer extends Linguistic {
     // Component Did Mount method
     componentDidMount() {
         this.proficiencyChecker();
@@ -51,5 +51,5 @@ class Footer extends Professional {
         );
     }
 }
-// Rendering ./About/Professional
-ReactDOM.render(<Professional />, document.getElementById("footer"));
+// Rendering ./About/Linguistic
+ReactDOM.render(<Linguistic />, document.getElementById("footer"));

@@ -1,12 +1,12 @@
-// Professional class
-class Professional extends React.Component {
+// Academical class
+class Academical extends React.Component {
     // Render method
     render() {
         return <Footer />;
     }
 }
 // Footer class
-class Footer extends Professional {
+class Footer extends Academical {
     // Render method
     render() {
         return (
@@ -35,5 +35,5 @@ class Footer extends Professional {
         );
     }
 }
-// Rendering ./About/Professional
-ReactDOM.render(<Professional />, document.getElementById("footer"));
+// Rendering ./About/Academical
+ReactDOM.render(<Academical />, document.getElementById("footer"));
