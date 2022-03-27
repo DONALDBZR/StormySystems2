@@ -26,19 +26,24 @@ class Application {
     }
     // Request handler method
     handleRequest() {
-        // Mapping the homepage
+        // /
         this.application.get("/", (request, response) => {
             response.sendFile(__dirname + "/public/Pages/Homepage.html");
             console.log(`Application: /\nMethod: GET`);
         });
-        // Mapping the about page
+        // /About
         this.application.get("/About", (request, response) => {
             response.sendFile(__dirname + "/public/Pages/About.html");
             console.log(`Application: /About\nMethod: GET`);
         });
-        // Mapping the about page
+        // /About/Professional
         this.application.get("/About/Professional", (request, response) => {
             response.sendFile(__dirname + "/public/Pages/Professional.html");
+            console.log(`Application: /About/Professional\nMethod: GET`);
+        });
+        // /About/Academical
+        this.application.get("/About/Academical", (request, response) => {
+            response.sendFile(__dirname + "/public/Pages/Academical.html");
             console.log(`Application: /About/Professional\nMethod: GET`);
         });
     }
