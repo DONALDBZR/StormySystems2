@@ -23,9 +23,6 @@ class Header extends About {
                     <div>
                         <a href="/Service">Services Offered</a>
                     </div>
-                    <div>
-                        <a href="/Project">Projects</a>
-                    </div>
                 </nav>
             </header>
         );

@@ -43,7 +43,7 @@ header nav {
     display: flex;
 }
 header nav div {
-    width: calc(var(--horizontal) / 4);
+    width: calc(var(--horizontal) / 3);
     display: flex;
     justify-content: center;
 }
