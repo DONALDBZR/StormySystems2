@@ -1,16 +1,24 @@
-/* Proxima Nova */
 @font-face {
     font-family: "Proxima Nova";
     src: url("../Fonts/Proxima Nova.otf");
     src: url("../Fonts/Proxima Nova - Alternate.otf");
 }
+@font-face {
+    font-family: "KG Red Hands";
+    src: url("../Fonts/KG Red Hands.ttf");
+}
 :root {
     --proximaNova: "Proxima Nova";
-    --color1: rgb(0, 0, 0);
+    --kgRedHands: "KG Red Hands";
+    --color1: rgb(64, 64, 64);
     --color2: rgb(255, 255, 255);
-    --color3: rgb(0, 0, 128);
-    --color4: rgb(255, 0, 0);
-    --color5: rgb(0, 255, 255);
+    --color3: rgb(74, 137, 243);
+    --color4: rgb(255, 128, 0);
+    --color5: rgb(0, 114, 198);
+    --color6: rgb(40, 103, 178);
+    --color7: rgb(23, 120, 242);
+    --color8: rgb(193, 53, 132);
+    --color9: rgb(0, 0, 0);
     --horizontal: 100%;
     --vertical: 100%;
     --fontSize: 100%;
@@ -18,7 +26,7 @@
     --verticalHD: 1080px;
     --opacity: 100%;
     --tablet: 0.59049;
-    --mobile: 0.531441;
+    --mobile: 0.43046721;
     background-color: var(--color1);
     color: var(--color2);
     font-size: var(--fontSize);
@@ -35,8 +43,9 @@ header nav {
     display: flex;
 }
 header nav div {
-    width: calc(var(--horizontal) / 6);
-    text-align: center;
+    width: calc(var(--horizontal) / 3);
+    display: flex;
+    justify-content: center;
 }
 header nav a {
     color: var(--color2);
@@ -45,46 +54,29 @@ header nav a {
     text-decoration: none;
 }
 header nav a img:hover {
-    opacity: calc(var(--opacity) * 0.5);
+    content: url("../Images/(1545).png");
 }
 header nav a:hover {
-    text-decoration: underline;
+    color: var(--color9);
 }
 main {
     padding: calc(var(--vertical) * 0.01);
 }
-main #header {
-    font-family: var(--proximaNova);
-    padding-bottom: calc(var(--vertical) * 0.01);
+main #header, main #service {
     text-align: center;
     font-weight: bold;
 }
+main #header {
+    font-family: var(--kgRedHands);
+}
 main #service {
     font-family: var(--proximaNova);
-    text-align: center;
-}
-main #service:hover {
-    text-shadow: calc(var(--horizontalHD) * 0) calc(var(--horizontalHD) * 0)
-        calc(var(--horizontalHD) / 135) var(--color5);
-    cursor: pointer;
-}
-footer {
-    text-align: center;
-}
-footer div {
-    font-family: var(--proximaNova);
-}
-footer a .faMail {
-    color: var(--color2);
-}
-footer a .faMail:hover {
-    color: var(--color5);
 }
 @media screen and (min-width: 1024px) {
-    header nav a {
+    header nav div a {
         font-size: calc(var(--fontSize) * 1.8);
     }
-    header nav a img {
+    header nav div a img {
         height: calc(var(--verticalHD) * (35 / 1080));
         width: auto;
     }
@@ -92,16 +84,7 @@ footer a .faMail:hover {
         font-size: calc(var(--fontSize) * 2);
     }
     main #service {
-        font-size: calc(var(--fontSize) * 1.18098);
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 0.3);
-    }
-    footer div {
-        font-size: var(--fontSize);
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2);
+        font-size: calc(var(--fontSize) * 1.8);
     }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -116,16 +99,7 @@ footer a .faMail:hover {
         font-size: calc(var(--fontSize) * 2 * var(--tablet));
     }
     main #service {
-        font-size: calc(var(--fontSize) * 1.18098 * var(--tablet));
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 1.15);
-    }
-    footer div {
-        font-size: calc(var(--fontSize) * var(--tablet));
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2 * var(--tablet));
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
     }
 }
 @media screen and (max-width: 767px) {
@@ -140,15 +114,6 @@ footer a .faMail:hover {
         font-size: calc(var(--fontSize) * 2 * var(--mobile));
     }
     main #service {
-        font-size: calc(var(--fontSize) * 1.18098 * var(--mobile));
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 1.63);
-    }
-    footer div {
-        font-size: calc(var(--fontSize) * var(--mobile));
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2 * var(--mobile));
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
     }
 }

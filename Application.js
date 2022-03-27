@@ -66,6 +66,11 @@ class Application {
             response.sendFile(__dirname + "/public/Pages/Project.html");
             console.log(`Application: /About/Project\nMethod: GET`);
         });
+        // /Service
+        this.application.get("/Service", (request, response) => {
+            response.sendFile(__dirname + "/public/Pages/Service.html");
+            console.log(`Application: /About/Service\nMethod: GET`);
+        });
     }
 }
 // Instanting the application
