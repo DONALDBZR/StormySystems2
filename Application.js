@@ -44,7 +44,12 @@ class Application {
         // /About/Academical
         this.application.get("/About/Academical", (request, response) => {
             response.sendFile(__dirname + "/public/Pages/Academical.html");
-            console.log(`Application: /About/Professional\nMethod: GET`);
+            console.log(`Application: /About/Academical\nMethod: GET`);
+        });
+        // /About/Linguistic
+        this.application.get("/About/Linguistic", (request, response) => {
+            response.sendFile(__dirname + "/public/Pages/Linguistic.html");
+            console.log(`Application: /About/Linguistic\nMethod: GET`);
         });
     }
 }
