@@ -1,0 +1,249 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../Fonts/Proxima Nova.otf");
+    src: url("../Fonts/Proxima Nova - Alternate.otf");
+}
+@font-face {
+    font-family: "KG Red Hands";
+    src: url("../Fonts/KG Red Hands.ttf");
+}
+:root {
+    --proximaNova: "Proxima Nova";
+    --kgRedHands: "KG Red Hands";
+    --color1: rgb(64, 64, 64);
+    --color2: rgb(255, 255, 255);
+    --color3: rgb(74, 137, 243);
+    --color4: rgb(255, 128, 0);
+    --color5: rgb(0, 114, 198);
+    --color6: rgb(40, 103, 178);
+    --color7: rgb(23, 120, 242);
+    --color8: rgb(193, 53, 132);
+    --color9: rgb(0, 0, 0);
+    --horizontal: 100%;
+    --vertical: 100%;
+    --fontSize: 100%;
+    --horizontalHD: 1920px;
+    --verticalHD: 1080px;
+    --opacity: 100%;
+    --tablet: 0.59049;
+    --mobile: 0.43046721;
+    background-color: var(--color1);
+    color: var(--color2);
+    font-size: var(--fontSize);
+    width: var(--horizontal);
+    height: var(--vertical);
+    margin: calc(var(--vertical) * 0);
+    font-family: sans-serif;
+}
+body {
+    margin: calc(var(--vertical) * 0);
+}
+header nav {
+    width: var(--horizontal);
+    display: flex;
+}
+header nav div {
+    width: calc(var(--horizontal) / 4);
+    display: flex;
+    justify-content: center;
+}
+header nav a {
+    color: var(--color2);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+    text-decoration: none;
+}
+header nav a img:hover {
+    content: url("../Images/(1545).png");
+}
+header nav a:hover {
+    color: var(--color9);
+}
+main {
+    padding: calc(var(--vertical) * 0.01);
+}
+main div {
+    display: flex;
+}
+main div #personalDetails {
+    width: calc(var(--horizontal) / 2);
+    display: block;
+}
+main div #personalDetails div {
+    display: flex;
+}
+main div #personalDetails div .label {
+    font-family: var(--proximaNova);
+}
+main div #personalDetails div div {
+    font-family: var(--kgRedHands);
+}
+main div #personalDetails div div a {
+    text-decoration: none;
+    color: var(--color2);
+    font-family: var(--kgRedHands);
+}
+main div #personalDetails div div a .faLocation:hover {
+    color: var(--color3);
+}
+main div #personalDetails div div a .faPhone:hover {
+    color: var(--color4);
+}
+main div #personalDetails div div a .faMail:hover {
+    color: var(--color5);
+}
+main div #personalDetails div div a .faLinkedIn:hover {
+    color: var(--color6);
+}
+main div #personalDetails div div a .faFacebook:hover {
+    color: var(--color7);
+}
+main div #personalDetails div div a .faInstagram:hover {
+    color: var(--color8);
+}
+main div #profilePicture {
+    width: calc(var(--horizontal) / 2);
+    display: flex;
+}
+main div #profilePicture div {
+    align-items: center;
+    justify-content: center;
+}
+main div #profilePicture div img {
+    height: auto;
+}
+main #description {
+    display: block;
+    font-weight: bold;
+    font-family: var(--kgRedHands);
+    text-align: center;
+}
+main nav {
+    display: flex;
+    margin-top: calc(var(--vertical) * 0.02);
+}
+main nav div {
+    display: flex;
+    width: calc(var(--horizontal) / 6);
+    justify-content: center;
+}
+main nav div a {
+    color: var(--color2);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: var(--proximaNova);
+}
+main nav div a:hover {
+    color: var(--color9);
+}
+footer {
+    text-align: center;
+}
+footer a .faMail {
+    color: var(--color2);
+}
+footer a .faMail:hover {
+    color: var(--color5);
+}
+@media screen and (min-width: 1024px) {
+    header nav div a {
+        font-size: calc(var(--fontSize) * 1.8);
+    }
+    header nav div a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main div #personalDetails div div,
+    main div #personalDetails div div a {
+        font-size: calc(var(--fontSize) * 1.331);
+    }
+    main div #personalDetails div .label {
+        width: calc(var(--horizontal) * 0.204695016);
+    }
+    main div #personalDetails div div {
+        width: calc(var(--horizontal) * 0.795314983);
+    }
+    main div #profilePicture div img {
+        width: calc(var(--horizontal) * 0.34867844);
+        height: auto;
+    }
+    main #description {
+        font-size: calc(var(--fontSize) * 1.61051);
+        margin-top: calc(var(--vertical) * 0.01);
+    }
+    main nav div a {
+        font-size: calc(var(--fontSize) * 1.3122);
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 0.28);
+    }
+    footer a {
+        font-size: calc(var(--fontSize) * 2);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main div #personalDetails div .label {
+        font-size: calc(var(--fontSize) * var(--tablet));
+        width: calc(var(--horizontal) * 0.2657205);
+    }
+    main div #personalDetails div div {
+        font-size: calc(var(--fontSize) * var(--tablet));
+        width: calc(var(--horizontal) * 0.7342795);
+    }
+    main div #profilePicture div img {
+        width: calc(var(--horizontal) * 0.254186582);
+    }
+    main #description {
+        font-size: calc(var(--fontSize) * 1.61051 * var(--tablet));
+        margin-top: calc(var(--vertical) * 0.01);
+    }
+    main nav div a {
+        font-size: calc(var(--fontSize) * 1.3122 * var(--tablet));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1.13);
+    }
+    footer a {
+        font-size: calc(var(--fontSize) * 2 * var(--tablet));
+    }
+}
+@media screen and (max-width: 767px) {
+    header nav a {
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
+    }
+    header nav a img {
+        height: calc(var(--verticalHD) * (35 / 1080));
+        width: auto;
+    }
+    main div #personalDetails div .label {
+        font-size: calc(var(--fontSize) * var(--mobile));
+        width: calc(var(--horizontal) * 0.295245);
+    }
+    main div #personalDetails div div {
+        font-size: calc(var(--fontSize) * var(--mobile));
+        width: calc(var(--horizontal) * 0.704755);
+    }
+    main div #profilePicture div img {
+        width: calc(var(--horizontal) * 0.43046721);
+    }
+    main #description {
+        font-size: calc(var(--fontSize) * 1.61051 * var(--mobile));
+        margin-top: calc(var(--vertical) * 0.01);
+    }
+    main nav div a {
+        font-size: calc(var(--fontSize) * 1.3122 * var(--mobile));
+    }
+    footer {
+        margin-top: calc(var(--vertical) * 1.49);
+    }
+    footer a {
+        font-size: calc(var(--fontSize) * 2 * var(--mobile));
+    }
+}
