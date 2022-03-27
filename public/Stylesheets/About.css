@@ -136,15 +136,6 @@ main nav div a {
 main nav div a:hover {
     color: var(--color9);
 }
-footer {
-    text-align: center;
-}
-footer a .faMail {
-    color: var(--color2);
-}
-footer a .faMail:hover {
-    color: var(--color5);
-}
 @media screen and (min-width: 1024px) {
     header nav div a {
         font-size: calc(var(--fontSize) * 1.8);
@@ -174,12 +165,6 @@ footer a .faMail:hover {
     main nav div a {
         font-size: calc(var(--fontSize) * 1.3122);
     }
-    footer {
-        margin-top: calc(var(--vertical) * 0.28);
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2);
-    }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     header nav a {
@@ -207,12 +192,6 @@ footer a .faMail:hover {
     main nav div a {
         font-size: calc(var(--fontSize) * 1.3122 * var(--tablet));
     }
-    footer {
-        margin-top: calc(var(--vertical) * 1.13);
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2 * var(--tablet));
-    }
 }
 @media screen and (max-width: 767px) {
     header nav a {
@@ -239,11 +218,5 @@ footer a .faMail:hover {
     }
     main nav div a {
         font-size: calc(var(--fontSize) * 1.3122 * var(--mobile));
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 1.49);
-    }
-    footer a {
-        font-size: calc(var(--fontSize) * 2 * var(--mobile));
     }
 }

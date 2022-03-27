@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../Fonts/Proxima Nova.otf");
+    src: url("../Fonts/Proxima Nova - Alternate.otf");
+}
+@font-face {
+    font-family: "KG Red Hands";
+    src: url("../Fonts/KG Red Hands.ttf");
+}
+:root {
+    --proximaNova: "Proxima Nova";
+    --kgRedHands: "KG Red Hands";
+    --color1: rgb(64, 64, 64);
+    --color2: rgb(255, 255, 255);
+    --color3: rgb(74, 137, 243);
+    --color4: rgb(255, 128, 0);
+    --color5: rgb(0, 114, 198);
+    --color6: rgb(40, 103, 178);
+    --color7: rgb(23, 120, 242);
+    --color8: rgb(193, 53, 132);
+    --color9: rgb(0, 0, 0);
+    --horizontal: 100%;
+    --vertical: 100%;
+    --fontSize: 100%;
+    --horizontalHD: 1920px;
+    --verticalHD: 1080px;
+    --opacity: 100%;
+    --tablet: 0.59049;
+    --mobile: 0.43046721;
+    background-color: var(--color1);
+    color: var(--color2);
+    font-size: var(--fontSize);
+    width: var(--horizontal);
+    height: var(--vertical);
+    margin: calc(var(--vertical) * 0);
+    font-family: sans-serif;
+}
+body {
+    margin: calc(var(--vertical) * 0);
+}
+footer {
+    margin-top: calc(var(--vertical) * 0.02);
+    padding: calc(var(--vertical) * 0.01);
+}
+footer .job {
+    margin-top: calc(var(--vertical) * 0.01);
+    font-family: var(--proximaNova);
+    font-weight: bold;
+}
+footer .job .position {
+    font-family: var(--kgRedHands);
+    color: var(--color9);
+}
+@media screen and (min-width: 1024px) {
+    footer .job .position {
+        font-size: calc(var(--fontSize) * 1.8);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    footer .job .position {
+        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
+    }
+}
+@media screen and (max-width: 767px) {
+    footer .job .position {
+        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
+    }
+}
