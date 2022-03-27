@@ -5,7 +5,7 @@
 }
 :root {
     --proximaNova: "Proxima Nova";
-    --color1: rgb(0, 0, 0);
+    --color1: rgb(64, 64, 64);
     --color2: rgb(255, 255, 255);
     --color3: rgb(0, 0, 128);
     --horizontal: 100%;
@@ -16,6 +16,8 @@
     --opacity: 100%;
     --tablet: 0.59049;
     --mobile: 0.531441;
+}
+* {
     background-color: var(--color1);
     color: var(--color2);
     font-size: var(--fontSize);
@@ -24,98 +26,27 @@
     margin: calc(var(--vertical) * 0);
     font-family: sans-serif;
 }
-* {
-    margin: calc(var(--vertical) * 0);
-}
-header nav {
-    width: var(--horizontal);
-    display: flex;
-}
-header nav div {
-    width: calc(var(--horizontal) / 5);
-    text-align: center;
-}
-header nav a {
-    color: var(--color2);
-    font-family: var(--proximaNova);
-    font-weight: bold;
-    text-decoration: none;
-}
-header nav a img:hover {
-    opacity: calc(var(--opacity) * 0.5);
-}
-header nav a:hover {
-    text-decoration: underline;
-}
 main {
-    margin-top: calc(var(--vertical) * 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-main h1 {
-    text-align: center;
-    font-family: var(--proximaNova);
-    text-shadow: calc(var(--horizontalHD) * 0) calc(var(--horizontalHD) * 0)
-        calc(var(--horizontalHD) / 135) var(--color3);
+main a {
+    width: calc(var(--horizontal) * 0.2187);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-main img {
-    width: calc(var(--horizontal) / 3);
-    padding: calc(var(--vertical) * 0) calc(var(--horizontal) / 3);
+main a img {
+    width: var(--horizontal);
     height: auto;
 }
-footer h1 {
-    font-family: var(--proximaNova);
-    text-align: center;
+main a img:hover {
+    content: url("../Images/\(1545\).png");
 }
 @media screen and (min-width: 1024px) {
-    header nav a {
-        font-size: calc(var(--fontSize) * 1.8);
-    }
-    header nav a img {
-        height: calc(var(--verticalHD) * (35 / 1080));
-        width: auto;
-    }
-    main h1 {
-        font-size: calc(var(--fontSize) * 2);
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 0.2);
-    }
-    footer h1 {
-        font-size: var(--fontSize);
-    }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    header nav a {
-        font-size: calc(var(--fontSize) * 1.8 * var(--tablet));
-    }
-    header nav a img {
-        height: calc(var(--verticalHD) * (35 / 1080));
-        width: auto;
-    }
-    main h1 {
-        font-size: calc(var(--fontSize) * 2 * var(--tablet));
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 1.03);
-    }
-    footer h1 {
-        font-size: calc(var(--fontSize) * var(--tablet));
-    }
 }
 @media screen and (max-width: 767px) {
-    header nav a {
-        font-size: calc(var(--fontSize) * 1.8 * var(--mobile));
-    }
-    header nav a img {
-        height: calc(var(--verticalHD) * (35 / 1080));
-        width: auto;
-    }
-    main h1 {
-        font-size: calc(var(--fontSize) * 2 * var(--mobile));
-    }
-    footer {
-        margin-top: calc(var(--vertical) * 1.6);
-    }
-    footer h1 {
-        font-size: calc(var(--fontSize) * var(--mobile));
-    }
 }

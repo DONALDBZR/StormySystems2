@@ -2,36 +2,7 @@
 class Homepage extends React.Component {
     // Render method
     render() {
-        return [<Header />, <Main />, <Footer />];
-    }
-}
-// Header Class
-class Header extends Homepage {
-    // Render method
-    render() {
-        return (
-            <header>
-                <nav>
-                    <div>
-                        <a href="./">
-                            <img src="/Images/Logo.png" alt="System Logo" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="./About">About Me</a>
-                    </div>
-                    <div>
-                        <a href="./Service">Services Offered</a>
-                    </div>
-                    <div>
-                        <a href="./Project">Projects</a>
-                    </div>
-                    <div>
-                        <a href="./Contact">Contact</a>
-                    </div>
-                </nav>
-            </header>
-        );
+        return [<Main />];
     }
 }
 // Main Class
@@ -40,17 +11,11 @@ class Main extends Homepage {
     render() {
         return (
             <main>
-                <h1>Welcome to</h1>
-                <img src="/Images/Logo.png" alt="System Logo" />
+                <a href="/About">
+                    <img src="/Images/(1544).png" alt="System Logo" />
+                </a>
             </main>
         );
-    }
-}
-// Footer Class
-class Footer extends Homepage {
-    // Render method
-    render() {
-        return <footer></footer>;
     }
 }
 // Rendering ./
