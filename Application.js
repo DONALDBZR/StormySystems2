@@ -14,7 +14,9 @@ class Application {
     // Initiator method
     initiator() {
         // Listening for any connection
-        this.application.listen(this.port, () => this.listener());
+        this.application.listen(process.env.PORT || this.port, () =>
+            this.listener()
+        );
         // Using the static directory for the static files
         this.application.use(this.express.static(__dirname + "/public"));
         // Handling all the request that are made to the application
