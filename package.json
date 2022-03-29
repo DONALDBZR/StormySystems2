@@ -1,0 +1,27 @@
+{
+    "name": "darkness4869",
+    "version": "1.8.0",
+    "description": "My portfolio",
+    "main": "Application.js",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "node Application"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DONALDBZR/StormySystems2.git"
+    },
+    "keywords": [
+        "Node.js",
+        "Express.js"
+    ],
+    "author": "Darkness4869",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/DONALDBZR/StormySystems2/issues"
+    },
+    "homepage": "https://github.com/DONALDBZR/StormySystems2#readme"
+}
