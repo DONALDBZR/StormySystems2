@@ -41,13 +41,17 @@ class Footer extends Project {
                 </div>
                 <div class="project">
                     <div class="name">
-                        <a href="https://github.com/DONALDBZR/StormySystems2">Portfolio</a>
+                        <a href="https://darkness4869.herokuapp.com/">
+                            Portfolio
+                        </a>
                     </div>
-                    <div class="status">In development</div>
+                    <div class="status">Complete</div>
                 </div>
                 <div class="project">
                     <div class="name">
-                        <a href="http://rakatooassociatesltd.com/">Rakatoo Associates</a>
+                        <a href="http://rakatooassociatesltd.com/">
+                            Rakatoo Associates
+                        </a>
                     </div>
                     <div class="status">Complete</div>
                 </div>
@@ -57,13 +61,17 @@ class Footer extends Project {
                 </div>
                 <div class="project">
                     <div class="name">
-                        <a href="https://github.com/DONALDBZR/LMS">Library Management System</a>
+                        <a href="https://github.com/DONALDBZR/LMS">
+                            Library Management System
+                        </a>
                     </div>
                     <div class="status">Complete</div>
                 </div>
                 <div class="project">
                     <div class="name">
-                        <a href="https://github.com/DONALDBZR/Grand-Ground">Grand Ground</a>
+                        <a href="https://github.com/DONALDBZR/Grand-Ground">
+                            Grand Ground
+                        </a>
                     </div>
                     <div class="status">In development</div>
                 </div>

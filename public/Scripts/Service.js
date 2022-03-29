@@ -14,14 +14,11 @@ class Header extends Service {
                 <nav>
                     <div>
                         <a href="/">
-                            <img
-                                src="../Images/(1544).png"
-                                alt="System Logo"
-                            />
+                            <img src="../Images/(1544).png" alt="System Logo" />
                         </a>
                     </div>
                     <div>
-                        <a href="/About">About Us</a>
+                        <a href="/About">About Me</a>
                     </div>
                     <div>
                         <a href="/Service">Services Offered</a>
