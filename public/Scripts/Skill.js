@@ -111,6 +111,14 @@ class Footer extends Skill {
                     <div class="type">UML 2.5</div>
                     <div class="level">5</div>
                 </div>
+                <div class="skill">
+                    <div class="type">Git</div>
+                    <div class="level">8</div>
+                </div>
+                <div class="skill">
+                    <div class="type">Heroku</div>
+                    <div class="level">10</div>
+                </div>
             </footer>
         );
     }
