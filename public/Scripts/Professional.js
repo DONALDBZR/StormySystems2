@@ -12,6 +12,11 @@ class Footer extends Professional {
         return (
             <footer>
                 <div class="job">
+                    <div class="position">Associate Software Engineer</div>
+                    <div class="company">AGILEUM</div>
+                    <div class="period">20/06/2022 - 19/08/2022</div>
+                </div>
+                <div class="job">
                     <div class="position">Junior Software Developer</div>
                     <div class="company">RT Knits</div>
                     <div class="period">06/12/2021 - 15/03/2022</div>
