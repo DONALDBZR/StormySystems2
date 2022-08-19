@@ -14,7 +14,7 @@ class Footer extends Academical {
                 <div class="level">
                     <div class="type">BSc Software Engineering</div>
                     <div class="school">Université Des Mascareignes</div>
-                    <div class="period">10/2021 - 10/2022</div>
+                    <div class="period">10/2021 - 10/2023</div>
                 </div>
                 <div class="level">
                     <div class="type">Diploma in Software Engineering</div>
