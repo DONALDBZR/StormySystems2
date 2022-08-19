@@ -47,7 +47,7 @@ class Footer extends Project {
                         </a>
                     </div>
                     <div class="status">Complete</div>
-                    <div class="version">2.17</div>
+                    <div class="version">2.18</div>
                 </div>
                 <div class="project">
                     <div class="name">
