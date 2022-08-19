@@ -123,6 +123,10 @@ class Footer extends Skill {
                     <div class="type">Drupal</div>
                     <div class="level">1</div>
                 </div>
+                <div class="skill">
+                    <div class="type">React Native</div>
+                    <div class="level">1</div>
+                </div>
             </footer>
         );
     }
