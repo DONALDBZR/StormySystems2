@@ -38,6 +38,7 @@ class Footer extends Project {
                 <div class="project">
                     <div class="header">Name</div>
                     <div class="header">Status</div>
+                    <div class="header">Version</div>
                 </div>
                 <div class="project">
                     <div class="name">
