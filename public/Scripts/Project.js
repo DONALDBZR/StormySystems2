@@ -46,6 +46,7 @@ class Footer extends Project {
                         </a>
                     </div>
                     <div class="status">Complete</div>
+                    <div class="version">2.12</div>
                 </div>
                 <div class="project">
                     <div class="name">
@@ -54,10 +55,7 @@ class Footer extends Project {
                         </a>
                     </div>
                     <div class="status">Complete</div>
-                </div>
-                <div class="project">
-                    <div class="name">Cash Dodo</div>
-                    <div class="status">In development</div>
+                    <div class="version">2.79</div>
                 </div>
                 <div class="project">
                     <div class="name">
@@ -66,14 +64,16 @@ class Footer extends Project {
                         </a>
                     </div>
                     <div class="status">Complete</div>
+                    <div class="version">1.112</div>
                 </div>
                 <div class="project">
                     <div class="name">
-                        <a href="https://github.com/DONALDBZR/Grand-Ground">
-                            Grand Ground
+                        <a href="https://github.com/DONALDBZR/chat">
+                            Chat
                         </a>
                     </div>
                     <div class="status">In development</div>
+                    <div class="version">0.42</div>
                 </div>
             </footer>
         );
