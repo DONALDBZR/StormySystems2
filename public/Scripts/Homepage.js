@@ -1,22 +1,20 @@
-// Homepage class
-class Homepage extends React.Component {
-    // Render method
+class Application extends React.Component {
     render() {
         return [<Main />];
     }
 }
-// Main Class
-class Main extends Homepage {
-    // Render method
+class Main extends Application {
     render() {
         return (
             <main>
-                <a href="/About">
-                    <img src="/Images/(1544).png" alt="System Logo" />
-                </a>
+                <div id="persona">
+                    <div id="name"></div>
+                    <div id="image"></div>
+                </div>
+                <div class="continue"></div>
             </main>
         );
     }
 }
 // Rendering ./
-ReactDOM.render(<Homepage />, document.getElementById("app"));
+ReactDOM.render(<Application />, document.body);
