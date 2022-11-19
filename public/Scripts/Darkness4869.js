@@ -19,10 +19,10 @@ class Darkness4869 {
          * @type {string[]}
          */
         this._stylesheets = [
-            "/Public/Stylesheets/darkness4869.css",
-            "/Public/Stylesheets/desktop.css",
-            "/Public/Stylesheets/mobile.css",
-            "/Public/Stylesheets/tablet.css"
+            "/Stylesheets/darkness4869.css",
+            "/Stylesheets/desktop.css",
+            "/Stylesheets/mobile.css",
+            "/Stylesheets/tablet.css"
         ];
         /**
          * Relationship of the object
