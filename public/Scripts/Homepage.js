@@ -8,8 +8,13 @@ class Main extends Application {
         return (
             <main>
                 <div id="persona">
-                    <div id="name"></div>
-                    <div id="image"></div>
+                    <header>
+                        <div id="name">Andy Ewen Gaspard</div>
+                        <div id="role">Full-Stack Web Developer</div>
+                    </header>
+                    <div id="image">
+                        <img src="/Images/(33).png" />
+                    </div>
                 </div>
                 <div class="continue"></div>
             </main>
