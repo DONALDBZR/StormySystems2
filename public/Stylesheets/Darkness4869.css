@@ -76,6 +76,9 @@ body {
     text-align: center;
     font-family: var(--kgRedHands);
 }
+#Homepage main .continue {
+    text-align: center;
+}
 #Homepage main .continue a {
     background: linear-gradient(
         -30deg,
