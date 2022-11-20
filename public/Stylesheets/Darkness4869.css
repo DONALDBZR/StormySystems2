@@ -40,6 +40,11 @@
         calc(var(--percentage) * 0.828125),
         calc(var(--percentage) * 0.96484375)
     );
+    --color8: rgb(
+        calc(var(--percentage) * 0.51953125),
+        calc(var(--percentage) * 0.51953125),
+        calc(var(--percentage) * 0.67578125)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -65,4 +70,9 @@ body {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+}
+#Homepage main .continue a::before {
+    content: "";
+    background-color: var(--color8);
+    opacity: calc(var(--percentage) * 0);
 }
