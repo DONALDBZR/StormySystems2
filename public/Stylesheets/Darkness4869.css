@@ -25,6 +25,21 @@
         calc(var(--percentage) / 2)
     );
     --kgRedHands: "KG Red Hands";
+    --color4: rgb(
+        calc(var(--percentage) * 0.04296875),
+        calc(var(--percentage) * 0.04296875),
+        calc(var(--percentage) * 0.23828125)
+    );
+    --color5: rgb(
+        calc(var(--percentage) / 32),
+        calc(var(--percentage) / 32),
+        calc(var(--percentage) * 0.16796875)
+    );
+    --color6: rgb(
+        calc(var(--percentage) * 0.828125),
+        calc(var(--percentage) * 0.828125),
+        calc(var(--percentage) * 0.96484375)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -39,4 +54,15 @@ body {
 #Homepage main #persona header {
     text-align: center;
     font-family: var(--kgRedHands);
+}
+#Homepage main .continue a {
+    background: linear-gradient(
+        -30deg,
+        var(--color4) calc(var(--percentage) / 2),
+        var(--color5) calc(var(--percentage) / 2)
+    );
+    color: var(--color6);
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
 }

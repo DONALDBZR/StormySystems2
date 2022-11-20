@@ -3,6 +3,12 @@
     --percentage: 100%;
     --pixelate: 1080px;
     --textSize: var(--percentage);
+    --color7: rgba(
+        calc(var(--percentage) * 0),
+        calc(var(--percentage) * 0),
+        calc(var(--percentage) * 0),
+        calc(var(--percentage) / 2)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -33,4 +39,24 @@ body {
 #Homepage main #persona header #role {
     font-size: calc(var(--textSize) * 1.458);
     margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
+}
+#Homepage main .continue a {
+    padding: calc(var(--pixelate) / 54) calc(var(--pixelate) / 27);
+    margin: calc(var(--pixelate) / 90);
+    display: inline-block;
+    -webkit-transform: translate(
+        calc(var(--percentage) * 0),
+        calc(var(--percentage) * 0)
+    );
+    transform: translate(
+        calc(var(--percentage) * 0),
+        calc(var(--percentage) * 0)
+    );
+    overflow: hidden;
+    font-size: calc(var(--textSize) * 2);
+    letter-spacing: calc(var(--pixelate) / 540);
+    -webkit-box-shadow: 0 calc(var(--pixelate) / 54)
+        calc(var(--pixelate) * 0.0462962962962962962962962962963) var(--color7);
+    box-shadow: 0 calc(var(--pixelate) / 54)
+        calc(var(--pixelate) * 0.0462962962962962962962962962963) var(--color7);
 }

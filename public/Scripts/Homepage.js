@@ -16,7 +16,15 @@ class Main extends Application {
                         <img src="/Images/(33).png" />
                     </div>
                 </div>
-                <div class="continue"></div>
+                <div class="continue">
+                    <a href="/About" class="animatedButton">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Continue
+                    </a>
+                </div>
             </main>
         );
     }
