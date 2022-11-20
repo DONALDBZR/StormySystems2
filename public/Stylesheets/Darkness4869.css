@@ -88,3 +88,6 @@ body {
 #Homepage main .continue a span:nth-child(2) {
     background: linear-gradient(to top, var(--color9), var(--color10));
 }
+#Homepage main .continue a span:nth-child(3) {
+    background: linear-gradient(to right, var(--color9), var(--color10));
+}
