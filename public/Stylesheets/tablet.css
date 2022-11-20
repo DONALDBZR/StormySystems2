@@ -1,0 +1,37 @@
+/* Variables */
+:root {
+    --percentage: 100%;
+    --pixelate: 1080px;
+    --tabletCoefficient: 0.729;
+    --textSize: calc(var(--percentage) * var(--tabletCoefficient) * 1.61051);
+}
+/* Styling that applies for all pages */
+body {
+    font-size: var(--textSize);
+    width: var(--percentage);
+    margin: calc(var(--percentage) * 0);
+}
+/* / */
+#Homepage main #persona {
+    display: flex;
+    width: var(--percentage);
+}
+#Homepage main #persona header,
+#Homepage main #persona #image {
+    width: calc(var(--percentage) / 2);
+}
+#Homepage main #persona header {
+    margin: calc(var(--percentage) / 9) calc(var(--percentage) * 0);
+}
+#Homepage main #persona #image {
+    display: flex;
+    justify-content: center;
+}
+#Homepage main #persona header #name {
+    font-size: calc(var(--textSize) * 2);
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
+}
+#Homepage main #persona header #role {
+    font-size: calc(var(--textSize) * 1.458);
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
+}
