@@ -83,7 +83,7 @@ body {
 }
 #Homepage main .continue a span:nth-child(2) {
     top: calc(var(--pixelate) * 0);
-    left: calc(var(--pixelate) * 0);
+    right: calc(var(--pixelate) * 0);
     height: var(--percentage);
     width: calc(var(--pixelate) / 540);
     animation: calc(var(--time) * 2) animateRight linear infinite;
