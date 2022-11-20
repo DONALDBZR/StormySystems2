@@ -111,3 +111,18 @@ body {
         transform: translateX(var(--percentage));
     }
 }
+#Homepage main .continue a span:nth-child(4) {
+    top: calc(var(--pixelate) * 0);
+    left: calc(var(--pixelate) * 0);
+    height: var(--percentage);
+    width: calc(var(--pixelate) / 540);
+    animation: calc(var(--time) * 2) animateLeft linear infinite;
+}
+@keyframes animateLeft {
+    0% {
+        transform: translateY(calc(var(--percentage) * -1));
+    }
+    100% {
+        transform: translateY(var(--percentage));
+    }
+}
