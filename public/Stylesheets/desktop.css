@@ -96,7 +96,7 @@ body {
         transform: translateY(calc(var(--percentage) * -1));
     }
 }
-#Homepage main .continue a span:nth-child(2) {
+#Homepage main .continue a span:nth-child(3) {
     bottom: calc(var(--pixelate) * 0);
     left: calc(var(--pixelate) * 0);
     width: var(--percentage);
