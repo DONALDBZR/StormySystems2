@@ -83,5 +83,12 @@ body {
     opacity: calc(var(--percentage) * 0);
 }
 #Homepage main .continue a span:nth-child(1) {
+    background: -webkit-gradient(
+        linear,
+        right top,
+        left top,
+        from(var(--color9)),
+        to(var(--color10))
+    );
     background: linear-gradient(to left, var(--color9), var(--color10));
 }
