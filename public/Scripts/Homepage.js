@@ -1,6 +1,6 @@
 class Application extends React.Component {
     render() {
-        return [<Main />];
+        return <Main />;
     }
 }
 class Main extends Application {
@@ -17,7 +17,7 @@ class Main extends Application {
                     </div>
                 </div>
                 <div class="continue">
-                    <a href="/About" class="animatedButton">
+                    <a href="/About">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -29,5 +29,4 @@ class Main extends Application {
         );
     }
 }
-// Rendering ./
 ReactDOM.render(<Application />, document.body);

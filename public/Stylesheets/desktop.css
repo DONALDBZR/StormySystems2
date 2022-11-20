@@ -41,7 +41,8 @@ body {
     font-size: calc(var(--textSize) * 1.458);
     margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
 }
-#Homepage main .continue a {
+#Homepage main .continue a,
+#About main .continue a {
     padding: calc(var(--pixelate) / 54) calc(var(--pixelate) / 27);
     margin: calc(var(--pixelate) / 90);
     display: inline-block;
@@ -55,7 +56,8 @@ body {
     box-shadow: 0 calc(var(--pixelate) / 54) calc(var(--pixelate) / 21.6)
         var(--color7);
 }
-#Homepage main .continue a::before {
+#Homepage main .continue a::before,
+#About main .continue a::before {
     position: absolute;
     top: calc(var(--pixelate) * 0);
     left: calc(var(--pixelate) * 0);
@@ -63,10 +65,12 @@ body {
     height: var(--percentage);
     transition: calc(var(--time) / 5) opacity ease-in-out;
 }
-#Homepage main .continue a span {
+#Homepage main .continue a span,
+#About main .continue a span {
     position: absolute;
 }
-#Homepage main .continue a span:nth-child(1) {
+#Homepage main .continue a span:nth-child(1),
+#About main .continue a span:nth-child(1) {
     top: calc(var(--pixelate) * 0);
     left: calc(var(--pixelate) * 0);
     width: var(--percentage);
@@ -81,7 +85,8 @@ body {
         transform: translateX(calc(var(--percentage) * -1));
     }
 }
-#Homepage main .continue a span:nth-child(2) {
+#Homepage main .continue a span:nth-child(2),
+#About main .continue a span:nth-child(2) {
     top: calc(var(--pixelate) * 0);
     right: calc(var(--pixelate) * 0);
     height: var(--percentage);
@@ -96,7 +101,8 @@ body {
         transform: translateY(calc(var(--percentage) * -1));
     }
 }
-#Homepage main .continue a span:nth-child(3) {
+#Homepage main .continue a span:nth-child(3),
+#About main .continue a span:nth-child(3) {
     bottom: calc(var(--pixelate) * 0);
     left: calc(var(--pixelate) * 0);
     width: var(--percentage);
@@ -111,7 +117,8 @@ body {
         transform: translateX(var(--percentage));
     }
 }
-#Homepage main .continue a span:nth-child(4) {
+#Homepage main .continue a span:nth-child(4),
+#About main .continue a span:nth-child(4) {
     top: calc(var(--pixelate) * 0);
     left: calc(var(--pixelate) * 0);
     height: var(--percentage);
@@ -125,4 +132,29 @@ body {
     100% {
         transform: translateY(var(--percentage));
     }
+}
+/* /About */
+#About main #person {
+    display: flex;
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
+}
+#About main #person #introduction,
+#About main #person #image {
+    width: calc(var(--percentage) / 2);
+}
+#About main #person #image {
+    display: flex;
+    justify-content: center;
+}
+#About main #person #introduction h1 {
+    font-size: calc(var(--textSize) * 2);
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
+}
+#About main #person #introduction p {
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) / 50);
+    font-size: calc(var(--textSize) * 1.1);
+}
+#About main #person #image img {
+    width: calc(var(--percentage) / 3);
+    height: auto;
 }

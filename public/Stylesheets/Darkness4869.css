@@ -61,6 +61,42 @@
         calc(var(--percentage) / 64),
         calc(var(--percentage) * 0.083984375)
     );
+    --color13: rgb(
+        var(--percentage),
+        calc(var(--percentage) * 0.765625),
+        calc(var(--percentage) / 2)
+    );
+    --color14: rgb(
+        calc(var(--percentage) * 0.23828125),
+        calc(var(--percentage) * 0.140625),
+        calc(var(--percentage) * 0.04296875)
+    );
+    --color15: rgb(
+        calc(var(--percentage) * 0.16796875),
+        calc(var(--percentage) * 0.1015625),
+        calc(var(--percentage) / 32)
+    );
+    --color16: rgb(
+        calc(var(--percentage) * 0.96484375),
+        calc(var(--percentage) * 0.8984375),
+        calc(var(--percentage) * 0.828125)
+    );
+    --color17: var(--color15);
+    --color18: rgb(
+        calc(var(--percentage) * 0.84765625),
+        calc(var(--percentage) / 2),
+        calc(var(--percentage) * 0.1484375)
+    );
+    --color19: rgb(
+        calc(var(--percentage) * 0.119140625),
+        calc(var(--percentage) * 0.0703125),
+        calc(var(--percentage) * 0.021484375)
+    );
+    --color20: rgb(
+        calc(var(--percentage) * 0.083984375),
+        calc(var(--percentage) * 0.05078125),
+        calc(var(--percentage) / 64)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -113,4 +149,53 @@ body {
 }
 #Homepage main .continue a span:nth-child(4) {
     background: linear-gradient(to bottom, var(--color9), var(--color10));
+}
+/* /About */
+#About {
+    background-color: var(--color13);
+}
+#About main #person #introduction h1 {
+    font-family: var(--kgRedHands);
+    text-align: center;
+}
+#About main #person #introduction p {
+    font-family: var(--proximaNova);
+}
+#About main .continue {
+    text-align: center;
+}
+#About main .continue a {
+    background: linear-gradient(
+        -30deg,
+        var(--color14) calc(var(--percentage) / 2),
+        var(--color15) calc(var(--percentage) / 2)
+    );
+    color: var(--color16);
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+#About main .continue a::before {
+    content: "";
+    background-color: var(--color8);
+    opacity: calc(var(--percentage) * 0);
+}
+#About main .continue a:hover {
+    background: linear-gradient(
+        -30deg,
+        var(--color19) calc(var(--percentage) / 2),
+        var(--color20) calc(var(--percentage) / 2)
+    );
+}
+#About main .continue a span:nth-child(1) {
+    background: linear-gradient(to left, var(--color17), var(--color18));
+}
+#About main .continue a span:nth-child(2) {
+    background: linear-gradient(to top, var(--color17), var(--color18));
+}
+#About main .continue a span:nth-child(3) {
+    background: linear-gradient(to right, var(--color17), var(--color18));
+}
+#About main .continue a span:nth-child(4) {
+    background: linear-gradient(to bottom, var(--color17), var(--color18));
 }
