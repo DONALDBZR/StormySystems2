@@ -81,3 +81,18 @@ body {
         transform: translateX(calc(var(--percentage) * -1));
     }
 }
+#Homepage main .continue a span:nth-child(2) {
+    top: calc(var(--pixelate) * 0);
+    left: calc(var(--pixelate) * 0);
+    height: var(--percentage);
+    width: calc(var(--pixelate) / 540);
+    animation: calc(var(--time) * 2) animateRight linear infinite;
+}
+@keyframes animateRight {
+    0% {
+        transform: translateY(var(--percentage));
+    }
+    100% {
+        transform: translateY(calc(var(--percentage) * -1));
+    }
+}
