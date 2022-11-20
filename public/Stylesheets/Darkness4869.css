@@ -45,6 +45,12 @@
         calc(var(--percentage) * 0.51953125),
         calc(var(--percentage) * 0.67578125)
     );
+    --color9: var(--color5);
+    --color10: rgb(
+        calc(var(--percentage) * 0.1484375),
+        calc(var(--percentage) * 0.1484375),
+        calc(var(--percentage) * 0.84765625)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -75,4 +81,7 @@ body {
     content: "";
     background-color: var(--color8);
     opacity: calc(var(--percentage) * 0);
+}
+#Homepage main .continue a span:nth-child(1) {
+    background: linear-gradient(to left, var(--color9), var(--color10));
 }

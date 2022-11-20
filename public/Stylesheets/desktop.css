@@ -45,10 +45,6 @@ body {
     padding: calc(var(--pixelate) / 54) calc(var(--pixelate) / 27);
     margin: calc(var(--pixelate) / 90);
     display: inline-block;
-    -webkit-transform: translate(
-        calc(var(--percentage) * 0),
-        calc(var(--percentage) * 0)
-    );
     transform: translate(
         calc(var(--percentage) * 0),
         calc(var(--percentage) * 0)
@@ -56,8 +52,6 @@ body {
     overflow: hidden;
     font-size: calc(var(--textSize) * 2);
     letter-spacing: calc(var(--pixelate) / 540);
-    -webkit-box-shadow: 0 calc(var(--pixelate) / 54)
-        calc(var(--pixelate) * 0.0462962962962962962962962962963) var(--color7);
     box-shadow: 0 calc(var(--pixelate) / 54)
         calc(var(--pixelate) * 0.0462962962962962962962962962963) var(--color7);
 }
@@ -67,6 +61,20 @@ body {
     left: calc(var(--pixelate) * 0);
     width: var(--percentage);
     height: var(--percentage);
-    -webkit-transition: calc(var(--time) / 5) opacity ease-in-out;
     transition: calc(var(--time) / 5) opacity ease-in-out;
+}
+#Homepage main .continue a span:nth-child(1) {
+    top: calc(var(--pixelate) * 0);
+    left: calc(var(--pixelate) * 0);
+    width: var(--percentage);
+    height: calc(var(--pixelate) / 540);
+    animation: calc(var(--time) * 2) animateTop linear infinite;
+}
+@keyframes animateTop {
+    0% {
+        transform: translateX(var(--percentage));
+    }
+    100% {
+        transform: translateX(calc(var(--percentage) * -1));
+    }
 }
