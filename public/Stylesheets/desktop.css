@@ -50,10 +50,10 @@ body {
         calc(var(--percentage) * 0)
     );
     overflow: hidden;
-    font-size: calc(var(--textSize) * 2);
-    letter-spacing: calc(var(--pixelate) / 540);
-    box-shadow: 0 calc(var(--pixelate) / 54)
-        calc(var(--pixelate) * 0.0462962962962962962962962962963) var(--color7);
+    font-size: calc(var(--pixelate) / 54);
+    letter-spacing: calc(var(--pixelate) / 432);
+    box-shadow: 0 calc(var(--pixelate) / 54) calc(var(--pixelate) / 21.6)
+        var(--color7);
 }
 #Homepage main .continue a::before {
     position: absolute;

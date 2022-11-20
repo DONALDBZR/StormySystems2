@@ -51,6 +51,16 @@
         calc(var(--percentage) * 0.1484375),
         calc(var(--percentage) * 0.84765625)
     );
+    --color11: rgb(
+        calc(var(--percentage) * 0.021484375),
+        calc(var(--percentage) * 0.021484375),
+        calc(var(--percentage) * 0.119140625)
+    );
+    --color12: rgb(
+        calc(var(--percentage) / 64),
+        calc(var(--percentage) / 64),
+        calc(var(--percentage) * 0.083984375)
+    );
 }
 /* Styling that applies for all pages */
 body {
@@ -81,6 +91,13 @@ body {
     content: "";
     background-color: var(--color8);
     opacity: calc(var(--percentage) * 0);
+}
+#Homepage main .continue a:hover {
+    background: linear-gradient(
+        -30deg,
+        var(--color11) calc(var(--percentage) / 2),
+        var(--color12) calc(var(--percentage) / 2)
+    );
 }
 #Homepage main .continue a span:nth-child(1) {
     background: linear-gradient(to left, var(--color9), var(--color10));
