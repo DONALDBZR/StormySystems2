@@ -1,0 +1,42 @@
+/* Importing Proxima Nova */
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../Fonts/Proxima Nova.otf");
+    src: url("../Fonts/Proxima Nova - Alternate.otf");
+}
+/* Importing KG Red Hands */
+@font-face {
+    font-family: "KG Red Hands";
+    src: url("../Fonts/KG Red Hands.ttf");
+}
+/* Variables */
+:root {
+    --proximaNova: "Proxima Nova";
+    --percentage: 100%;
+    --color1: rgb(
+        calc(var(--percentage) / 4),
+        calc(var(--percentage) / 4),
+        calc(var(--percentage) / 4)
+    );
+    --color2: rgb(var(--percentage), var(--percentage), var(--percentage));
+    --color3: rgb(
+        calc(var(--percentage) * 0.15),
+        calc(var(--percentage) / 4),
+        calc(var(--percentage) / 2)
+    );
+    --kgRedHands: "KG Red Hands";
+}
+/* Styling that applies for all pages */
+body {
+    background-color: var(--color1);
+    color: var(--color2);
+    font-family: sans-serif;
+}
+/* / */
+#Homepage {
+    background-color: var(--color3);
+}
+#Homepage main #persona header {
+    text-align: center;
+    font-family: var(--kgRedHands);
+}
