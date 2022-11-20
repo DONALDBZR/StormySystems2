@@ -141,6 +141,7 @@ body {
 #About main #person #introduction,
 #About main #person #image {
     width: calc(var(--percentage) / 2);
+    margin: calc(var(--percentage) / 100) calc(var(--percentage) * 0);
 }
 #About main #person #image {
     display: flex;
